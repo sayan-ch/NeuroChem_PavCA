@@ -1,61 +1,29 @@
-# Tabs {.tabset}
-
-## 1 {.tabset}
-
-### 1.1 
-
-```{r p11, echo=FALSE}
-plot(x = 1, y = 2)
+```{r panel-setup, include = FALSE}
+xaringanExtra::use_panelset()
+xaringanExtra::style_panelset(font_family = "inherit")
 ```
 
-### 1.2
+# Panelset In R Markdown!
 
-```{r p12, echo=FALSE}
-plot(x = 1, y = 2)
-```
+## Panelset In R Markdown! {.panelset}
 
-## 2
+### Tab One
 
-### 2.1
+Amet enim aptent molestie vulputate pharetra
+vulputate primis et vivamus semper.
 
-```{r p21, echo=FALSE}
-plot(x = 1, y = 2)
-```
+### Tab Two
 
-### 2.2
+#### Sub heading one
 
-```{r p22, echo=FALSE}
-plot(x = 1, y = 2)
-```
+Sit etiam malesuada arcu fusce ullamcorper
+interdum proin tincidunt curabitur felis?
 
-## 3 {.tabset .tabset-fade .tabset-pills}
+### Tab Three
 
-### 3.1 
+Adipiscing mauris egestas vitae pretium 
+ad dignissim dictumst platea!
 
-```{r p1, echo=FALSE}
-plot(x = 1, y = 2)
-```
+## Another section
 
-### 3.2 
-
-```{r p2, echo=FALSE}
-plot(x = 4, y = 10)
-```
-
-### 3.3
-
-```{r p3, echo=FALSE}
-plot(x = 1, y = 10)
-```
-
-#### 3.3.1
-
-```{r p4, echo=FALSE}
-plot(x = 1:100, y = 100:1)
-```
-
-#### 3.3.2
-
-```{r p5, echo=FALSE}
-plot(x = 1:100, y = sqrt(100:1))
-```
+This content won't appear in a panel.
