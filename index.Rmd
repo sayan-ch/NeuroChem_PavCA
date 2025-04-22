@@ -13,11 +13,10 @@ description: |
   set in the _output.yml file.
 link-citations: yes
 output:
-  bookdown::tufte_html_book: default
-  bookdown::html_document2: default
-  blogdown::html_page: default
-  rmarkdown::html_document: 
-    self_contained: false
+  bookdown::tufte_html_book:
+    tufte_variant: "envisioned"
+    toc: true
+    css: toc.css
 # github-repo: rstudio/bookdown-demo
 ---
 
