@@ -12,8 +12,19 @@ description: |
   The HTML output format for this example is bookdown::gitbook,
   set in the _output.yml file.
 link-citations: yes
-github-repo: rstudio/bookdown-demo
+output:
+  bookdown::tufte_html_book: default
+  bookdown::html_document2: default
+  blogdown::html_page: default
+  rmarkdown::html_document: 
+    self_contained: false
+# github-repo: rstudio/bookdown-demo
 ---
+
+```{r panel-setup, include = FALSE}
+xaringanExtra::use_panelset()
+# xaringanExtra::style_panelset(font_family = "inherit")
+```
 
 # About
 

@@ -1,29 +1,34 @@
-```{r panel-setup, include = FALSE}
-xaringanExtra::use_panelset()
-xaringanExtra::style_panelset(font_family = "inherit")
+
+
+# Panelset In R Markdown! {#panels}
+
+You can label chapter and section titles using `{#label}` after them, e.g., we can reference Chapter \@ref(intro).
+If you do not manually label them, there will be automatic labels anyway, e.g., Chapter \@ref(cross).
+
+## Figures and Tables {.panelset}
+
+### Figures
+
+Figures and tables with captions will be placed in `figure` and `table` environments, respectively.
+
+```{r nice-fig2, fig.cap='Here is a nice figure!', out.width='80%', fig.asp=.75, fig.align='center'}
+par(mar = c(4, 4, .1, .1))
+plot(pressure, type = 'b', pch = 19)
 ```
 
-# Panelset In R Markdown!
+### Tables
 
-## Panelset In R Markdown! {.panelset}
+Reference a figure by its code chunk label with the `fig:` prefix, e.g., see Figure \@ref(fig:nice-fig).
+Similarly, you can reference tables generated from `knitr::kable()`, e.g., see Table \@ref(tab:nice-tab).
 
-### Tab One
+```{r nice-tab2, tidy=FALSE}
+knitr::kable(
+  head(iris, 20), caption = 'Here is a nice table!',
+  booktabs = TRUE
+)
+```
 
-Amet enim aptent molestie vulputate pharetra
-vulputate primis et vivamus semper.
+##  {.unnumbered}
 
-### Tab Two
-
-#### Sub heading one
-
-Sit etiam malesuada arcu fusce ullamcorper
-interdum proin tincidunt curabitur felis?
-
-### Tab Three
-
-Adipiscing mauris egestas vitae pretium 
-ad dignissim dictumst platea!
-
-## Another section
-
-This content won't appear in a panel.
+You can write citations, too.
+For example, we are using the **bookdown** package [@R-bookdown] in this sample book, which was built on top of R Markdown and **knitr** [@xie2015].
