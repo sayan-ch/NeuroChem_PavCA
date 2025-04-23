@@ -1,0 +1,67 @@
+# MLR With Pre-Learning Concentrations {.panelset}
+
+* Response Variable: PavCA
+* Predictors: Pre-learning concentrations of analytes
+* Covariate: Sex
+
+```{r}
+pre.data <- all.data %>%
+  select(PavCA, Sex, ends_with("Pre")) %>%
+  drop_na()
+```
+
+
+## Full Model
+
+### Model Fitting
+```{r}
+pre.full <- mod.runner(pre.data)
+pre.cv <- cv.lm(pre.data)
+```
+
+* **$R^2$**: `r paste0(round(100*pre.full$R2, 2), "%")`
+* **RMSE**: `r round(pre.full$rmse, 4)`, **Cross-Validated RMSE**: `r round(pre.cv$cv.rmse, 4)`
+* **NRMSE**: `r paste0(round(pre.full$nrmse, 2), "%")`, **Cross-Validated NRMSE**: `r paste0(round(pre.cv$cv.nrmse, 2), "%")`
+* **Significant Predictors**: `r paste0(pre.full$signif05, collapse = ", ")`
+* **Phenotype Prediction Accuracy**: 
+```{r} 
+nice_table(data.frame(
+  "Cutoff" = c(0.3, 0.4, 0.5),
+  "Accuracy" = paste0(c(
+    round(pre.full$Phenotype3.accu, 2),
+    round(pre.full$Phenotype4.accu, 2),
+    round(pre.full$Phenotype5.accu, 2)
+  ), "%"),
+  "CV Accuracy" = paste0(c(
+    round(pre.cv$cv.P3.acc, 2),
+    round(pre.cv$cv.P4.acc, 2),
+    round(pre.cv$cv.P5.acc, 2)
+  ), "%")
+  ))
+```
+
+### Model Diagnostics
+* *Checking Multicollinearity*
+```{r pre-coll, message = FALSE, warning = FALSE, out.width='80%', fig.asp=.75, fig.align='center'}
+pre.full$check_collinearity
+
+```
+
+* *Other Diagnostics*
+```{r pre-diag, message = FALSE, warning = FALSE, out.width='80%', fig.asp=.75, fig.align='center'}
+pre.full$check_model
+```
+* *Influential Points*: `r paste0(pre.full$influential, collapse = ", ")`
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -23,7 +23,10 @@ functions
 model-runner
 plotters
 cross-validation
-parts
+mlr-with-pre-learning-concentrations
+full-model
+model-fitting
+model-diagnostics
 footnotes-and-citations
 footnotes
 citations

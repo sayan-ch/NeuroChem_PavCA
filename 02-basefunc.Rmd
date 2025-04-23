@@ -194,9 +194,9 @@ cv.lm <- function(b.pca, ncv = 10000, train.cv = 0.8, nn = nrow(b.pca)){
   cv.tab %>% summarize(
     cv.rmse = sqrt(mean(test.mse)),
     cv.nrmse = 100*sqrt(mean(test.nmse)),
-    cv.P3.acc = mean(test.P3.acc),
-    cv.P4.acc = mean(test.P4.acc),
-    cv.P5.acc = mean(test.P5.acc)
+    cv.P3.acc = 100*mean(test.P3.acc),
+    cv.P4.acc = 100*mean(test.P4.acc),
+    cv.P5.acc = 100*mean(test.P5.acc)
   )
 }
 ```
