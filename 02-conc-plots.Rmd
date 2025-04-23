@@ -1,0 +1,291 @@
+# Concentration Plots {.panelset}
+
+```{r}
+full.comp <- c("Choline", "Acetylcholine", "Taurine", "Histamine",
+               "Serine", "Glutamine", "Aspartate", "Glycine",
+               "Glucose", "Glutamate", "GABA", "Adenosine", 
+               "VMA", "MOPEG", "DOPEG", "HVA", 
+               "Normetanephrine", "DOPAC", "Norepinephrine", "Serotonin")
+```
+
+
+
+## Overall Plots
+```{r overall.fig, message = FALSE, warning = FALSE, out.width='80%', fig.asp=.75, fig.align='center'}
+overall.plots <- list()
+
+for(ch in seq_along(full.comp)){
+    overall.plots[[ch]] <- long.data %>%
+      filter(!is.na(PavCA), 
+             compound == good.compound[ch],
+             type %in% c("Pre", "Post"),
+             !(ID %in% outlier)) %>%
+      select(ID, type, conc) %>%
+      mutate(type = factor(type, levels = c("Pre", "Post"))) %>% 
+      # group_by(type) %>%
+      ggplot(aes(x = type, y = conc, fill = type, color = type)) +
+      stat_summary(fun = function(x) {mean(x) - sd(x)/sqrt(length(x))},
+                   geom = "errorbar", aes(ymin = after_stat(y), ymax = after_stat(y)), 
+                   width = 0.4, lwd = 0.7) +
+      stat_summary(fun = function(x) {mean(x) + sd(x)/sqrt(length(x))},
+                   geom = "errorbar", aes(ymin = after_stat(y), ymax = after_stat(y)), 
+                   width = 0.4, lwd = 0.7) +
+      stat_summary(
+        fun = mean, geom = "point",
+        # aes(fill = type),
+        size = 2.2, alpha = 1.5, 
+        # shape = 1,
+        stroke = 1.5
+      ) +
+      stat_summary(
+        fun = mean, geom = "line",
+        lwd = 1.2, alpha = 1.5
+      ) +
+      geom_point(
+        # aes(color = Phenotype, shape = type),
+        size = 2, alpha = 0.5, 
+        # shape = 1,
+        stroke = 1) +
+      geom_line(aes(group = ID), alpha = 0.4, color = "black") +
+      # facet_wrap(~ Phenotype, scales = "fixed", nrow = 1) +
+      # scale_shape_manual(values = c("Pre" = 1, "Post" = 16)) +
+      # scale_color_manual(values = c("Pre" = "#1B5E20",  # Pastel green
+                                    # "Post" = "#4B0082")) + # Pastel purple
+      scale_fill_manual(values = c("Pre" = "#1B5E20",  # Pastel green
+                                   "Post" = "#4B0082")) + # Pastel purple
+      theme_minimal() +
+      labs(y = "Concentration (nM)", 
+           title = paste0("Pre and Post-Learning Concentrations of ",
+                          full.comp[ch]),
+           # subtitle = paste0("(PavCA cutoff = ", cutoff.value,", Outliers removed)")
+           subtitle = paste0(" (Outliers removed)"),
+           shape = "Time point"
+      ) +
+      theme(axis.title.x = element_blank(),
+            axis.text = element_text(size = 10, face = "bold"),
+            axis.title.y = element_text(size = 10, face = "bold"),
+            strip.text = element_text(size = 10, face = "bold"),
+            title = element_text(size = 12, face = "bold")
+      )
+}
+
+overall.plots
+```
+
+## Cutoff = $0.3$
+```{r cut3.fig, message = FALSE, warning = FALSE, out.width='80%', fig.asp=.75, fig.align='center'}
+cutoff.value <- 0.3
+Phenotype.lab <- paste0("Phenotype", round(10*cutoff.value))
+cut3.plots <- list()
+
+
+for(ch in seq_along(full.comp)){
+    cut3.plots[[ch]] <- long.data %>%
+      filter(!is.na(PavCA), 
+             compound == good.compound[ch],
+             type %in% c("Pre", "Post"),
+             !(ID %in% outlier)) %>%
+      select(ID, Phenotype = all_of(Phenotype.lab), type, conc) %>%
+      mutate(type = factor(type, levels = c("Pre", "Post")),
+             Phenotype = factor(Phenotype, levels = c("GT", "IN", "ST"))) %>% 
+      group_by(type, Phenotype) %>%
+      ggplot(aes(x = type, y = conc, color = Phenotype, shape = type)) +
+      stat_summary(fun = function(x) {mean(x) - sd(x)/sqrt(length(x))},
+                   geom = "errorbar", aes(ymin = after_stat(y), ymax = after_stat(y),
+                                          color = Phenotype), 
+                   width = 0.4, lwd = 0.7) +
+      stat_summary(fun = function(x) {mean(x) + sd(x)/sqrt(length(x))},
+                   geom = "errorbar", aes(ymin = after_stat(y), ymax = after_stat(y),
+                                          color = Phenotype), 
+                   width = 0.4, lwd = 0.7) +
+      stat_summary(
+        fun = mean, geom = "point",
+        aes(fill = Phenotype),
+        # aes(fill = type),
+        size = 2.2, alpha = 1.5, 
+        # shape = 1,
+        stroke = 1.5
+      ) +
+      stat_summary(
+        fun = mean, geom = "line",
+        aes(group = Phenotype), lwd = 1.2, alpha = 1.5
+      ) +
+      geom_point(
+        # aes(color = Phenotype, shape = type),
+                 size = 2, alpha = 0.5, 
+                 # shape = 1,
+                 stroke = 1) +
+      geom_line(aes(group = ID), alpha = 0.4) +
+      facet_wrap(~ Phenotype, scales = "fixed", nrow = 1) +
+      scale_shape_manual(values = c("Pre" = 1, "Post" = 16)) +
+      scale_color_manual(values = c("GT" = "#1B5E20",  # Pastel green
+                                    "IN" = "#996C00",  # Pastel yellow
+                                    "ST" = "#4B0082")) + # Pastel purple
+      scale_fill_manual(values = c("GT" = "#1B5E20",  # Pastel green
+                                    "IN" = "#996C00",  # Pastel yellow
+                                    "ST" = "#4B0082")) + # Pastel purple
+      theme_minimal() +
+      labs(y = "Concentration (nM)", 
+           title = paste0("Pre and Post-Learning Concentrations of ",
+                          full.comp[ch], " by Phenotype"),
+           # subtitle = paste0("(PavCA cutoff = ", cutoff.value,", Outliers removed)")
+           subtitle = paste0("GT: PavCA ≤ ", cutoff.value, ", IN: |PavCA| < ",
+                            cutoff.value, ", ST: PavCA ≥ ", cutoff.value, 
+                            " (Outliers removed)"),
+           shape = "Time point"
+           ) +
+      theme(axis.title.x = element_blank(),
+            axis.text = element_text(size = 10, face = "bold"),
+            axis.title.y = element_text(size = 10, face = "bold"),
+            strip.text = element_text(size = 10, face = "bold"),
+            title = element_text(size = 12, face = "bold")
+      )
+}
+
+cut3.plots
+```
+
+## Cutoff = $0.4$
+```{r cut4.fig, message = FALSE, warning = FALSE, out.width='80%', fig.asp=.75, fig.align='center'}
+cutoff.value <- 0.4
+Phenotype.lab <- paste0("Phenotype", round(10*cutoff.value))
+cut4.plots <- list()
+
+for(ch in seq_along(full.comp)){
+    cut4.plots[[ch]] <- long.data %>%
+      filter(!is.na(PavCA), 
+             compound == good.compound[ch],
+             type %in% c("Pre", "Post"),
+             !(ID %in% outlier)) %>%
+      select(ID, Phenotype = all_of(Phenotype.lab), type, conc) %>%
+      mutate(type = factor(type, levels = c("Pre", "Post")),
+             Phenotype = factor(Phenotype, levels = c("GT", "IN", "ST"))) %>% 
+      group_by(type, Phenotype) %>%
+      ggplot(aes(x = type, y = conc, color = Phenotype, shape = type)) +
+      stat_summary(fun = function(x) {mean(x) - sd(x)/sqrt(length(x))},
+                   geom = "errorbar", aes(ymin = after_stat(y), ymax = after_stat(y),
+                                          color = Phenotype), 
+                   width = 0.4, lwd = 0.7) +
+      stat_summary(fun = function(x) {mean(x) + sd(x)/sqrt(length(x))},
+                   geom = "errorbar", aes(ymin = after_stat(y), ymax = after_stat(y),
+                                          color = Phenotype), 
+                   width = 0.4, lwd = 0.7) +
+      stat_summary(
+        fun = mean, geom = "point",
+        aes(fill = Phenotype),
+        # aes(fill = type),
+        size = 2.2, alpha = 1.5, 
+        # shape = 1,
+        stroke = 1.5
+      ) +
+      stat_summary(
+        fun = mean, geom = "line",
+        aes(group = Phenotype), lwd = 1.2, alpha = 1.5
+      ) +
+      geom_point(
+        # aes(color = Phenotype, shape = type),
+                 size = 2, alpha = 0.5, 
+                 # shape = 1,
+                 stroke = 1) +
+      geom_line(aes(group = ID), alpha = 0.4) +
+      facet_wrap(~ Phenotype, scales = "fixed", nrow = 1) +
+      scale_shape_manual(values = c("Pre" = 1, "Post" = 16)) +
+      scale_color_manual(values = c("GT" = "#1B5E20",  # Pastel green
+                                    "IN" = "#996C00",  # Pastel yellow
+                                    "ST" = "#4B0082")) + # Pastel purple
+      scale_fill_manual(values = c("GT" = "#1B5E20",  # Pastel green
+                                    "IN" = "#996C00",  # Pastel yellow
+                                    "ST" = "#4B0082")) + # Pastel purple
+      theme_minimal() +
+      labs(y = "Concentration (nM)", 
+           title = paste0("Pre and Post-Learning Concentrations of ",
+                          full.comp[ch], " by Phenotype"),
+           # subtitle = paste0("(PavCA cutoff = ", cutoff.value,", Outliers removed)")
+           subtitle = paste0("GT: PavCA ≤ ", cutoff.value, ", IN: |PavCA| < ",
+                            cutoff.value, ", ST: PavCA ≥ ", cutoff.value, 
+                            " (Outliers removed)"),
+           shape = "Time point"
+           ) +
+      theme(axis.title.x = element_blank(),
+            axis.text = element_text(size = 10, face = "bold"),
+            axis.title.y = element_text(size = 10, face = "bold"),
+            strip.text = element_text(size = 10, face = "bold"),
+            title = element_text(size = 12, face = "bold")
+      )
+}
+
+cut4.plots
+```
+
+## Cutoff = $0.5$
+```{r cut5.fig, message = FALSE, warning = FALSE, out.width='80%', fig.asp=.75, fig.align='center'}
+cutoff.value <- 0.5
+Phenotype.lab <- paste0("Phenotype", round(10*cutoff.value))
+cut5.plots <- list()
+
+for(ch in seq_along(full.comp)){
+    cut5.plots[[ch]] <- long.data %>%
+      filter(!is.na(PavCA), 
+             compound == good.compound[ch],
+             type %in% c("Pre", "Post"),
+             !(ID %in% outlier)) %>%
+      select(ID, Phenotype = all_of(Phenotype.lab), type, conc) %>%
+      mutate(type = factor(type, levels = c("Pre", "Post")),
+             Phenotype = factor(Phenotype, levels = c("GT", "IN", "ST"))) %>% 
+      group_by(type, Phenotype) %>%
+      ggplot(aes(x = type, y = conc, color = Phenotype, shape = type)) +
+      stat_summary(fun = function(x) {mean(x) - sd(x)/sqrt(length(x))},
+                   geom = "errorbar", aes(ymin = after_stat(y), ymax = after_stat(y),
+                                          color = Phenotype), 
+                   width = 0.4, lwd = 0.7) +
+      stat_summary(fun = function(x) {mean(x) + sd(x)/sqrt(length(x))},
+                   geom = "errorbar", aes(ymin = after_stat(y), ymax = after_stat(y),
+                                          color = Phenotype), 
+                   width = 0.4, lwd = 0.7) +
+      stat_summary(
+        fun = mean, geom = "point",
+        aes(fill = Phenotype),
+        # aes(fill = type),
+        size = 2.2, alpha = 1.5, 
+        # shape = 1,
+        stroke = 1.5
+      ) +
+      stat_summary(
+        fun = mean, geom = "line",
+        aes(group = Phenotype), lwd = 1.2, alpha = 1.5
+      ) +
+      geom_point(
+        # aes(color = Phenotype, shape = type),
+                 size = 2, alpha = 0.5, 
+                 # shape = 1,
+                 stroke = 1) +
+      geom_line(aes(group = ID), alpha = 0.4) +
+      facet_wrap(~ Phenotype, scales = "fixed", nrow = 1) +
+      scale_shape_manual(values = c("Pre" = 1, "Post" = 16)) +
+      scale_color_manual(values = c("GT" = "#1B5E20",  # Pastel green
+                                    "IN" = "#996C00",  # Pastel yellow
+                                    "ST" = "#4B0082")) + # Pastel purple
+      scale_fill_manual(values = c("GT" = "#1B5E20",  # Pastel green
+                                    "IN" = "#996C00",  # Pastel yellow
+                                    "ST" = "#4B0082")) + # Pastel purple
+      theme_minimal() +
+      labs(y = "Concentration (nM)", 
+           title = paste0("Pre and Post-Learning Concentrations of ",
+                          full.comp[ch], " by Phenotype"),
+           # subtitle = paste0("(PavCA cutoff = ", cutoff.value,", Outliers removed)")
+           subtitle = paste0("GT: PavCA ≤ ", cutoff.value, ", IN: |PavCA| < ",
+                            cutoff.value, ", ST: PavCA ≥ ", cutoff.value, 
+                            " (Outliers removed)"),
+           shape = "Time point"
+           ) +
+      theme(axis.title.x = element_blank(),
+            axis.text = element_text(size = 10, face = "bold"),
+            axis.title.y = element_text(size = 10, face = "bold"),
+            strip.text = element_text(size = 10, face = "bold"),
+            title = element_text(size = 12, face = "bold")
+      )
+}
+
+cut5.plots
+```
+

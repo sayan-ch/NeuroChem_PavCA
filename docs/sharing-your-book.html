@@ -5,17 +5,15 @@
 <meta charset="utf-8" />
 <meta name="generator" content="pandoc" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="Chapter 7 Sharing your book | A Minimal Book Example" />
+<meta property="og:title" content="Chapter 7 Sharing your book | Neurochemical Concentrations as Predictors of PavCA" />
 <meta property="og:type" content="book" />
 
-<meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
-The HTML output format for this example is bookdown::gitbook,
-set in the _output.yml file.</p>" />
+<meta property="og:description" content="…" />
 
 
-<meta name="author" content="John Doe" />
+<meta name="author" content="Sayan Chakrabarty" />
 
-<meta name="date" content="2025-04-22" />
+<meta name="date" content="2025-04-23" />
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -24,16 +22,32 @@ MathJax.Hub.Config({
 </script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
-The HTML output format for this example is bookdown::gitbook,
-set in the _output.yml file.</p>">
+<meta name="description" content="…">
 
-<title>Chapter 7 Sharing your book | A Minimal Book Example</title>
+<title>Chapter 7 Sharing your book | Neurochemical Concentrations as Predictors of PavCA</title>
 
-<link href="libs/tufte-css-2015.12.29/tufte.css" rel="stylesheet" />
-<link href="libs/tufte-css-2015.12.29/envisioned.css" rel="stylesheet" />
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="libs/navigation-1.1/tabsets.js"></script>
 <link href="libs/panelset-0.3.0/panelset.css" rel="stylesheet" />
 <script src="libs/panelset-0.3.0/panelset.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
+<script src="libs/tabwid-1.1.3/tabwid.js"></script>
 
 
 <style type="text/css">code{white-space: pre;}</style>
@@ -102,6 +116,11 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
 
 
 <style type="text/css">
@@ -130,33 +149,69 @@ div.csl-indent {
 
 <link rel="stylesheet" href="toc.css" type="text/css" />
 
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+/* show arrow before summary tag as in bootstrap
+TODO: remove if bootstrap in updated in html_document (rmarkdown#1485) */
+details > summary {
+  display: list-item;
+  cursor: pointer;
+}
+</style>
 </head>
 
 <body>
 
+<div class="container-fluid main-container">
 
 
 <div class="row">
 <div class="col-sm-12">
 <div id="TOC">
 <ul>
-<li class="has-sub"><a href="index.html#about" id="toc-about"><span class="toc-section-number">1</span> About</a>
+<li class="has-sub"><a href="index.html#data-description-and-cleaning" id="toc-data-description-and-cleaning"><span class="toc-section-number">1</span> Data Description and Cleaning</a>
 <ul>
-<li><a href="index.html#usage" id="toc-usage"><span class="toc-section-number">1.1</span> Usage</a></li>
-<li><a href="index.html#render-book" id="toc-render-book"><span class="toc-section-number">1.2</span> Render book</a></li>
-<li><a href="index.html#preview-book" id="toc-preview-book"><span class="toc-section-number">1.3</span> Preview book</a></li>
+<li><a href="index.html#loading-the-packages-and-setting-up" id="toc-loading-the-packages-and-setting-up"><span class="toc-section-number">1.1</span> Loading the Packages and Setting Up</a></li>
+<li><a href="index.html#data-description" id="toc-data-description"><span class="toc-section-number">1.2</span> Data Description</a></li>
+<li class="has-sub"><a href="index.html#data-cleaning" id="toc-data-cleaning"><span class="toc-section-number">1.3</span> Data Cleaning</a>
+<ul>
+<li><a href="index.html#all-analytes-with-geq-50-missing-values-na-or-0-or-0-were-removed." id="toc-all-analytes-with-geq-50-missing-values-na-or-0-or-0-were-removed."><span class="toc-section-number">1.3.1</span> All analytes with <span class="math inline">\(\geq 50\%\)</span> missing values (NA or <span class="math inline">\(0\)</span> or <span class="math inline">\(&lt;0\)</span>) were removed.</a></li>
+<li><a href="index.html#new-phenotypes-were-defined-based-on-cutoffs-in-0.3-0.4-0.5" id="toc-new-phenotypes-were-defined-based-on-cutoffs-in-0.3-0.4-0.5"><span class="toc-section-number">1.3.2</span> New Phenotypes were defined based on cutoffs <span class="math inline">\(\in \{0.3, 0.4, 0.5\}\)</span></a></li>
 </ul></li>
-<li class="has-sub"><a href="intro.html#intro" id="toc-intro"><span class="toc-section-number">2</span> Hello bookdown</a>
+<li class="has-sub"><a href="index.html#grouping-of-analytes" id="toc-grouping-of-analytes"><span class="toc-section-number">1.4</span> Grouping of Analytes</a>
 <ul>
-<li class="has-sub"><a href="intro.html#a-section" id="toc-a-section"><span class="toc-section-number">2.1</span> A section</a>
+<li><a href="index.html#groups" id="toc-groups"><span class="toc-section-number">1.4.1</span> Groups:</a></li>
+</ul></li>
+<li><a href="index.html#outliers" id="toc-outliers"><span class="toc-section-number">1.5</span> Outliers</a></li>
+<li><a href="index.html#saving-the-cleaned-data" id="toc-saving-the-cleaned-data"><span class="toc-section-number">1.6</span> Saving the Cleaned Data</a></li>
+</ul></li>
+<li class="has-sub"><a href="basefunctions.html#basefunctions" id="toc-basefunctions"><span class="toc-section-number">2</span> Repeatedly Used Functions</a>
 <ul>
-<li><a href="intro.html#an-unnumbered-section" id="toc-an-unnumbered-section">An unnumbered section</a></li>
+<li class="has-sub"><a href="basefunctions.html#functions" id="toc-functions"><span class="toc-section-number">2.1</span> Functions</a>
+<ul>
+<li><a href="basefunctions.html#model-runner" id="toc-model-runner"><span class="toc-section-number">2.1.1</span> Model Runner</a></li>
+<li><a href="basefunctions.html#plotters" id="toc-plotters"><span class="toc-section-number">2.1.2</span> Plotters</a></li>
+<li><a href="basefunctions.html#cross-validation" id="toc-cross-validation"><span class="toc-section-number">2.1.3</span> Cross-Validation</a></li>
 </ul></li>
 </ul></li>
-<li class="has-sub"><a href="cross.html#cross" id="toc-cross"><span class="toc-section-number">3</span> Cross-references</a>
+<li class="has-sub"><a href="concentration-plots.html#concentration-plots" id="toc-concentration-plots"><span class="toc-section-number">3</span> Concentration Plots</a>
 <ul>
-<li><a href="cross.html#chapters-and-sub-chapters" id="toc-chapters-and-sub-chapters"><span class="toc-section-number">3.1</span> Chapters and sub-chapters</a></li>
-<li><a href="cross.html#captioned-figures-and-tables" id="toc-captioned-figures-and-tables"><span class="toc-section-number">3.2</span> Captioned figures and tables</a></li>
+<li><a href="concentration-plots.html#overall-plots" id="toc-overall-plots"><span class="toc-section-number">3.1</span> Overall Plots</a></li>
+<li><a href="concentration-plots.html#cutoff-0.3" id="toc-cutoff-0.3"><span class="toc-section-number">3.2</span> Cutoff = <span class="math inline">\(0.3\)</span></a></li>
+<li><a href="concentration-plots.html#cutoff-0.4" id="toc-cutoff-0.4"><span class="toc-section-number">3.3</span> Cutoff = <span class="math inline">\(0.4\)</span></a></li>
+<li><a href="concentration-plots.html#cutoff-0.5" id="toc-cutoff-0.5"><span class="toc-section-number">3.4</span> Cutoff = <span class="math inline">\(0.5\)</span></a></li>
 </ul></li>
 <li><a href="parts.html#parts" id="toc-parts"><span class="toc-section-number">4</span> Parts</a></li>
 <li class="has-sub"><a href="footnotes-and-citations.html#footnotes-and-citations" id="toc-footnotes-and-citations"><span class="toc-section-number">5</span> Footnotes and citations</a>
@@ -210,7 +265,7 @@ div.csl-indent {
 <p>Read more about the features of this output format here:</p>
 <p><a href="https://pkgs.rstudio.com/bookdown/reference/gitbook.html" class="uri">https://pkgs.rstudio.com/bookdown/reference/gitbook.html</a></p>
 <p>Or use:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="sharing-your-book.html#cb5-1" tabindex="-1"></a>?bookdown<span class="sc">::</span>gitbook</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="sharing-your-book.html#cb99-1" tabindex="-1"></a>?bookdown<span class="sc">::</span>gitbook</span></code></pre></div>
 
 </div>
 </div>
@@ -222,6 +277,16 @@ div.csl-indent {
 </div>
 
 
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
 
 </body>
 </html>

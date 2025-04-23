@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Chapter 3 Concentration Plots | Neurochemical Concentrations as Predictors of PavCA" />
+<meta property="og:type" content="book" />
+
+<meta property="og:description" content="…" />
+
+
+<meta name="author" content="Sayan Chakrabarty" />
+
+<meta name="date" content="2025-04-23" />
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<meta name="description" content="…">
+
+<title>Chapter 3 Concentration Plots | Neurochemical Concentrations as Predictors of PavCA</title>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="libs/navigation-1.1/tabsets.js"></script>
+<link href="libs/panelset-0.3.0/panelset.css" rel="stylesheet" />
+<script src="libs/panelset-0.3.0/panelset.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
+<script src="libs/tabwid-1.1.3/tabwid.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="toc.css" type="text/css" />
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+/* show arrow before summary tag as in bootstrap
+TODO: remove if bootstrap in updated in html_document (rmarkdown#1485) */
+details > summary {
+  display: list-item;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container-fluid main-container">
+
+
+<div class="row">
+<div class="col-sm-12">
+<div id="TOC">
+<ul>
+<li class="has-sub"><a href="index.html#data-description-and-cleaning" id="toc-data-description-and-cleaning"><span class="toc-section-number">1</span> Data Description and Cleaning</a>
+<ul>
+<li><a href="index.html#loading-the-packages-and-setting-up" id="toc-loading-the-packages-and-setting-up"><span class="toc-section-number">1.1</span> Loading the Packages and Setting Up</a></li>
+<li><a href="index.html#data-description" id="toc-data-description"><span class="toc-section-number">1.2</span> Data Description</a></li>
+<li class="has-sub"><a href="index.html#data-cleaning" id="toc-data-cleaning"><span class="toc-section-number">1.3</span> Data Cleaning</a>
+<ul>
+<li><a href="index.html#all-analytes-with-geq-50-missing-values-na-or-0-or-0-were-removed." id="toc-all-analytes-with-geq-50-missing-values-na-or-0-or-0-were-removed."><span class="toc-section-number">1.3.1</span> All analytes with <span class="math inline">\(\geq 50\%\)</span> missing values (NA or <span class="math inline">\(0\)</span> or <span class="math inline">\(&lt;0\)</span>) were removed.</a></li>
+<li><a href="index.html#new-phenotypes-were-defined-based-on-cutoffs-in-0.3-0.4-0.5" id="toc-new-phenotypes-were-defined-based-on-cutoffs-in-0.3-0.4-0.5"><span class="toc-section-number">1.3.2</span> New Phenotypes were defined based on cutoffs <span class="math inline">\(\in \{0.3, 0.4, 0.5\}\)</span></a></li>
+</ul></li>
+<li class="has-sub"><a href="index.html#grouping-of-analytes" id="toc-grouping-of-analytes"><span class="toc-section-number">1.4</span> Grouping of Analytes</a>
+<ul>
+<li><a href="index.html#groups" id="toc-groups"><span class="toc-section-number">1.4.1</span> Groups:</a></li>
+</ul></li>
+<li><a href="index.html#outliers" id="toc-outliers"><span class="toc-section-number">1.5</span> Outliers</a></li>
+<li><a href="index.html#saving-the-cleaned-data" id="toc-saving-the-cleaned-data"><span class="toc-section-number">1.6</span> Saving the Cleaned Data</a></li>
+</ul></li>
+<li class="has-sub"><a href="basefunctions.html#basefunctions" id="toc-basefunctions"><span class="toc-section-number">2</span> Repeatedly Used Functions</a>
+<ul>
+<li class="has-sub"><a href="basefunctions.html#functions" id="toc-functions"><span class="toc-section-number">2.1</span> Functions</a>
+<ul>
+<li><a href="basefunctions.html#model-runner" id="toc-model-runner"><span class="toc-section-number">2.1.1</span> Model Runner</a></li>
+<li><a href="basefunctions.html#plotters" id="toc-plotters"><span class="toc-section-number">2.1.2</span> Plotters</a></li>
+<li><a href="basefunctions.html#cross-validation" id="toc-cross-validation"><span class="toc-section-number">2.1.3</span> Cross-Validation</a></li>
+</ul></li>
+</ul></li>
+<li class="has-sub"><a href="concentration-plots.html#concentration-plots" id="toc-concentration-plots"><span class="toc-section-number">3</span> Concentration Plots</a>
+<ul>
+<li><a href="concentration-plots.html#overall-plots" id="toc-overall-plots"><span class="toc-section-number">3.1</span> Overall Plots</a></li>
+<li><a href="concentration-plots.html#cutoff-0.3" id="toc-cutoff-0.3"><span class="toc-section-number">3.2</span> Cutoff = <span class="math inline">\(0.3\)</span></a></li>
+<li><a href="concentration-plots.html#cutoff-0.4" id="toc-cutoff-0.4"><span class="toc-section-number">3.3</span> Cutoff = <span class="math inline">\(0.4\)</span></a></li>
+<li><a href="concentration-plots.html#cutoff-0.5" id="toc-cutoff-0.5"><span class="toc-section-number">3.4</span> Cutoff = <span class="math inline">\(0.5\)</span></a></li>
+</ul></li>
+<li><a href="parts.html#parts" id="toc-parts"><span class="toc-section-number">4</span> Parts</a></li>
+<li class="has-sub"><a href="footnotes-and-citations.html#footnotes-and-citations" id="toc-footnotes-and-citations"><span class="toc-section-number">5</span> Footnotes and citations</a>
+<ul>
+<li><a href="footnotes-and-citations.html#footnotes" id="toc-footnotes"><span class="toc-section-number">5.1</span> Footnotes</a></li>
+<li><a href="footnotes-and-citations.html#citations" id="toc-citations"><span class="toc-section-number">5.2</span> Citations</a></li>
+</ul></li>
+<li class="has-sub"><a href="blocks.html#blocks" id="toc-blocks"><span class="toc-section-number">6</span> Blocks</a>
+<ul>
+<li><a href="blocks.html#equations" id="toc-equations"><span class="toc-section-number">6.1</span> Equations</a></li>
+<li><a href="blocks.html#theorems-and-proofs" id="toc-theorems-and-proofs"><span class="toc-section-number">6.2</span> Theorems and proofs</a></li>
+<li><a href="blocks.html#callout-blocks" id="toc-callout-blocks"><span class="toc-section-number">6.3</span> Callout blocks</a></li>
+</ul></li>
+<li class="has-sub"><a href="sharing-your-book.html#sharing-your-book" id="toc-sharing-your-book"><span class="toc-section-number">7</span> Sharing your book</a>
+<ul>
+<li><a href="sharing-your-book.html#publishing" id="toc-publishing"><span class="toc-section-number">7.1</span> Publishing</a></li>
+<li><a href="sharing-your-book.html#pages" id="toc-pages"><span class="toc-section-number">7.2</span> 404 pages</a></li>
+<li><a href="sharing-your-book.html#metadata-for-sharing" id="toc-metadata-for-sharing"><span class="toc-section-number">7.3</span> Metadata for sharing</a></li>
+</ul></li>
+<li class="has-sub"><a href="panels.html#panels" id="toc-panels"><span class="toc-section-number">8</span> Panelset In R Markdown!</a>
+<ul>
+<li class="has-sub"><a href="panels.html#figures-and-tables" id="toc-figures-and-tables"><span class="toc-section-number">8.1</span> Figures and Tables</a>
+<ul>
+<li><a href="panels.html#figures" id="toc-figures"><span class="toc-section-number">8.1.1</span> Figures</a></li>
+<li><a href="panels.html#tables" id="toc-tables"><span class="toc-section-number">8.1.2</span> Tables</a></li>
+</ul></li>
+<li><a href="panels.html#section" id="toc-section"></a></li>
+</ul></li>
+<li><a href="references.html#references" id="toc-references">References</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<div id="concentration-plots" class="section level1 panelset" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Concentration Plots</h1>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="concentration-plots.html#cb14-1" tabindex="-1"></a>full.comp <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Choline&quot;</span>, <span class="st">&quot;Acetylcholine&quot;</span>, <span class="st">&quot;Taurine&quot;</span>, <span class="st">&quot;Histamine&quot;</span>,</span>
+<span id="cb14-2"><a href="concentration-plots.html#cb14-2" tabindex="-1"></a>               <span class="st">&quot;Serine&quot;</span>, <span class="st">&quot;Glutamine&quot;</span>, <span class="st">&quot;Aspartate&quot;</span>, <span class="st">&quot;Glycine&quot;</span>,</span>
+<span id="cb14-3"><a href="concentration-plots.html#cb14-3" tabindex="-1"></a>               <span class="st">&quot;Glucose&quot;</span>, <span class="st">&quot;Glutamate&quot;</span>, <span class="st">&quot;GABA&quot;</span>, <span class="st">&quot;Adenosine&quot;</span>, </span>
+<span id="cb14-4"><a href="concentration-plots.html#cb14-4" tabindex="-1"></a>               <span class="st">&quot;VMA&quot;</span>, <span class="st">&quot;MOPEG&quot;</span>, <span class="st">&quot;DOPEG&quot;</span>, <span class="st">&quot;HVA&quot;</span>, </span>
+<span id="cb14-5"><a href="concentration-plots.html#cb14-5" tabindex="-1"></a>               <span class="st">&quot;Normetanephrine&quot;</span>, <span class="st">&quot;DOPAC&quot;</span>, <span class="st">&quot;Norepinephrine&quot;</span>, <span class="st">&quot;Serotonin&quot;</span>)</span></code></pre></div>
+<div id="overall-plots" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Overall Plots</h2>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="concentration-plots.html#cb15-1" tabindex="-1"></a>overall.plots <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb15-2"><a href="concentration-plots.html#cb15-2" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="concentration-plots.html#cb15-3" tabindex="-1"></a><span class="cf">for</span>(ch <span class="cf">in</span> <span class="fu">seq_along</span>(full.comp)){</span>
+<span id="cb15-4"><a href="concentration-plots.html#cb15-4" tabindex="-1"></a>    overall.plots[[ch]] <span class="ot">&lt;-</span> long.data <span class="sc">%&gt;%</span></span>
+<span id="cb15-5"><a href="concentration-plots.html#cb15-5" tabindex="-1"></a>      <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(PavCA), </span>
+<span id="cb15-6"><a href="concentration-plots.html#cb15-6" tabindex="-1"></a>             compound <span class="sc">==</span> good.compound[ch],</span>
+<span id="cb15-7"><a href="concentration-plots.html#cb15-7" tabindex="-1"></a>             type <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Pre&quot;</span>, <span class="st">&quot;Post&quot;</span>),</span>
+<span id="cb15-8"><a href="concentration-plots.html#cb15-8" tabindex="-1"></a>             <span class="sc">!</span>(ID <span class="sc">%in%</span> outlier)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-9"><a href="concentration-plots.html#cb15-9" tabindex="-1"></a>      <span class="fu">select</span>(ID, type, conc) <span class="sc">%&gt;%</span></span>
+<span id="cb15-10"><a href="concentration-plots.html#cb15-10" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">type =</span> <span class="fu">factor</span>(type, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Pre&quot;</span>, <span class="st">&quot;Post&quot;</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-11"><a href="concentration-plots.html#cb15-11" tabindex="-1"></a>      <span class="co"># group_by(type) %&gt;%</span></span>
+<span id="cb15-12"><a href="concentration-plots.html#cb15-12" tabindex="-1"></a>      <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> type, <span class="at">y =</span> conc, <span class="at">fill =</span> type, <span class="at">color =</span> type)) <span class="sc">+</span></span>
+<span id="cb15-13"><a href="concentration-plots.html#cb15-13" tabindex="-1"></a>      <span class="fu">stat_summary</span>(<span class="at">fun =</span> <span class="cf">function</span>(x) {<span class="fu">mean</span>(x) <span class="sc">-</span> <span class="fu">sd</span>(x)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">length</span>(x))},</span>
+<span id="cb15-14"><a href="concentration-plots.html#cb15-14" tabindex="-1"></a>                   <span class="at">geom =</span> <span class="st">&quot;errorbar&quot;</span>, <span class="fu">aes</span>(<span class="at">ymin =</span> <span class="fu">after_stat</span>(y), <span class="at">ymax =</span> <span class="fu">after_stat</span>(y)), </span>
+<span id="cb15-15"><a href="concentration-plots.html#cb15-15" tabindex="-1"></a>                   <span class="at">width =</span> <span class="fl">0.4</span>, <span class="at">lwd =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb15-16"><a href="concentration-plots.html#cb15-16" tabindex="-1"></a>      <span class="fu">stat_summary</span>(<span class="at">fun =</span> <span class="cf">function</span>(x) {<span class="fu">mean</span>(x) <span class="sc">+</span> <span class="fu">sd</span>(x)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">length</span>(x))},</span>
+<span id="cb15-17"><a href="concentration-plots.html#cb15-17" tabindex="-1"></a>                   <span class="at">geom =</span> <span class="st">&quot;errorbar&quot;</span>, <span class="fu">aes</span>(<span class="at">ymin =</span> <span class="fu">after_stat</span>(y), <span class="at">ymax =</span> <span class="fu">after_stat</span>(y)), </span>
+<span id="cb15-18"><a href="concentration-plots.html#cb15-18" tabindex="-1"></a>                   <span class="at">width =</span> <span class="fl">0.4</span>, <span class="at">lwd =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb15-19"><a href="concentration-plots.html#cb15-19" tabindex="-1"></a>      <span class="fu">stat_summary</span>(</span>
+<span id="cb15-20"><a href="concentration-plots.html#cb15-20" tabindex="-1"></a>        <span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">&quot;point&quot;</span>,</span>
+<span id="cb15-21"><a href="concentration-plots.html#cb15-21" tabindex="-1"></a>        <span class="co"># aes(fill = type),</span></span>
+<span id="cb15-22"><a href="concentration-plots.html#cb15-22" tabindex="-1"></a>        <span class="at">size =</span> <span class="fl">2.2</span>, <span class="at">alpha =</span> <span class="fl">1.5</span>, </span>
+<span id="cb15-23"><a href="concentration-plots.html#cb15-23" tabindex="-1"></a>        <span class="co"># shape = 1,</span></span>
+<span id="cb15-24"><a href="concentration-plots.html#cb15-24" tabindex="-1"></a>        <span class="at">stroke =</span> <span class="fl">1.5</span></span>
+<span id="cb15-25"><a href="concentration-plots.html#cb15-25" tabindex="-1"></a>      ) <span class="sc">+</span></span>
+<span id="cb15-26"><a href="concentration-plots.html#cb15-26" tabindex="-1"></a>      <span class="fu">stat_summary</span>(</span>
+<span id="cb15-27"><a href="concentration-plots.html#cb15-27" tabindex="-1"></a>        <span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">&quot;line&quot;</span>,</span>
+<span id="cb15-28"><a href="concentration-plots.html#cb15-28" tabindex="-1"></a>        <span class="at">lwd =</span> <span class="fl">1.2</span>, <span class="at">alpha =</span> <span class="fl">1.5</span></span>
+<span id="cb15-29"><a href="concentration-plots.html#cb15-29" tabindex="-1"></a>      ) <span class="sc">+</span></span>
+<span id="cb15-30"><a href="concentration-plots.html#cb15-30" tabindex="-1"></a>      <span class="fu">geom_point</span>(</span>
+<span id="cb15-31"><a href="concentration-plots.html#cb15-31" tabindex="-1"></a>        <span class="co"># aes(color = Phenotype, shape = type),</span></span>
+<span id="cb15-32"><a href="concentration-plots.html#cb15-32" tabindex="-1"></a>        <span class="at">size =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>, </span>
+<span id="cb15-33"><a href="concentration-plots.html#cb15-33" tabindex="-1"></a>        <span class="co"># shape = 1,</span></span>
+<span id="cb15-34"><a href="concentration-plots.html#cb15-34" tabindex="-1"></a>        <span class="at">stroke =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb15-35"><a href="concentration-plots.html#cb15-35" tabindex="-1"></a>      <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> ID), <span class="at">alpha =</span> <span class="fl">0.4</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
+<span id="cb15-36"><a href="concentration-plots.html#cb15-36" tabindex="-1"></a>      <span class="co"># facet_wrap(~ Phenotype, scales = &quot;fixed&quot;, nrow = 1) +</span></span>
+<span id="cb15-37"><a href="concentration-plots.html#cb15-37" tabindex="-1"></a>      <span class="co"># scale_shape_manual(values = c(&quot;Pre&quot; = 1, &quot;Post&quot; = 16)) +</span></span>
+<span id="cb15-38"><a href="concentration-plots.html#cb15-38" tabindex="-1"></a>      <span class="co"># scale_color_manual(values = c(&quot;Pre&quot; = &quot;#1B5E20&quot;,  # Pastel green</span></span>
+<span id="cb15-39"><a href="concentration-plots.html#cb15-39" tabindex="-1"></a>                                    <span class="co"># &quot;Post&quot; = &quot;#4B0082&quot;)) + # Pastel purple</span></span>
+<span id="cb15-40"><a href="concentration-plots.html#cb15-40" tabindex="-1"></a>      <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;Pre&quot;</span> <span class="ot">=</span> <span class="st">&quot;#1B5E20&quot;</span>,  <span class="co"># Pastel green</span></span>
+<span id="cb15-41"><a href="concentration-plots.html#cb15-41" tabindex="-1"></a>                                   <span class="st">&quot;Post&quot;</span> <span class="ot">=</span> <span class="st">&quot;#4B0082&quot;</span>)) <span class="sc">+</span> <span class="co"># Pastel purple</span></span>
+<span id="cb15-42"><a href="concentration-plots.html#cb15-42" tabindex="-1"></a>      <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb15-43"><a href="concentration-plots.html#cb15-43" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Concentration (nM)&quot;</span>, </span>
+<span id="cb15-44"><a href="concentration-plots.html#cb15-44" tabindex="-1"></a>           <span class="at">title =</span> <span class="fu">paste0</span>(<span class="st">&quot;Pre and Post-Learning Concentrations of &quot;</span>,</span>
+<span id="cb15-45"><a href="concentration-plots.html#cb15-45" tabindex="-1"></a>                          full.comp[ch]),</span>
+<span id="cb15-46"><a href="concentration-plots.html#cb15-46" tabindex="-1"></a>           <span class="co"># subtitle = paste0(&quot;(PavCA cutoff = &quot;, cutoff.value,&quot;, Outliers removed)&quot;)</span></span>
+<span id="cb15-47"><a href="concentration-plots.html#cb15-47" tabindex="-1"></a>           <span class="at">subtitle =</span> <span class="fu">paste0</span>(<span class="st">&quot; (Outliers removed)&quot;</span>),</span>
+<span id="cb15-48"><a href="concentration-plots.html#cb15-48" tabindex="-1"></a>           <span class="at">shape =</span> <span class="st">&quot;Time point&quot;</span></span>
+<span id="cb15-49"><a href="concentration-plots.html#cb15-49" tabindex="-1"></a>      ) <span class="sc">+</span></span>
+<span id="cb15-50"><a href="concentration-plots.html#cb15-50" tabindex="-1"></a>      <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb15-51"><a href="concentration-plots.html#cb15-51" tabindex="-1"></a>            <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb15-52"><a href="concentration-plots.html#cb15-52" tabindex="-1"></a>            <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb15-53"><a href="concentration-plots.html#cb15-53" tabindex="-1"></a>            <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb15-54"><a href="concentration-plots.html#cb15-54" tabindex="-1"></a>            <span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>)</span>
+<span id="cb15-55"><a href="concentration-plots.html#cb15-55" tabindex="-1"></a>      )</span>
+<span id="cb15-56"><a href="concentration-plots.html#cb15-56" tabindex="-1"></a>}</span>
+<span id="cb15-57"><a href="concentration-plots.html#cb15-57" tabindex="-1"></a></span>
+<span id="cb15-58"><a href="concentration-plots.html#cb15-58" tabindex="-1"></a>overall.plots</span></code></pre></div>
+<pre><code>## [[1]]</code></pre>
+<p><img src="_main_files/figure-html/overall.fig-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[2]]</code></pre>
+<p><img src="_main_files/figure-html/overall.fig-2.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[3]]</code></pre>
+<p><img src="_main_files/figure-html/overall.fig-3.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[4]]</code></pre>
+<p><img src="_main_files/figure-html/overall.fig-4.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[5]]</code></pre>
+<p><img src="_main_files/figure-html/overall.fig-5.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[6]]</code></pre>
+<p><img src="_main_files/figure-html/overall.fig-6.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[7]]</code></pre>
+<p><img src="_main_files/figure-html/overall.fig-7.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[8]]</code></pre>
+<p><img src="_main_files/figure-html/overall.fig-8.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[9]]</code></pre>
+<p><img src="_main_files/figure-html/overall.fig-9.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[10]]</code></pre>
+<p><img src="_main_files/figure-html/overall.fig-10.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[11]]</code></pre>
+<p><img src="_main_files/figure-html/overall.fig-11.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[12]]</code></pre>
+<p><img src="_main_files/figure-html/overall.fig-12.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[13]]</code></pre>
+<p><img src="_main_files/figure-html/overall.fig-13.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[14]]</code></pre>
+<p><img src="_main_files/figure-html/overall.fig-14.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[15]]</code></pre>
+<p><img src="_main_files/figure-html/overall.fig-15.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[16]]</code></pre>
+<p><img src="_main_files/figure-html/overall.fig-16.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[17]]</code></pre>
+<p><img src="_main_files/figure-html/overall.fig-17.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[18]]</code></pre>
+<p><img src="_main_files/figure-html/overall.fig-18.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[19]]</code></pre>
+<p><img src="_main_files/figure-html/overall.fig-19.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[20]]</code></pre>
+<p><img src="_main_files/figure-html/overall.fig-20.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="cutoff-0.3" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Cutoff = <span class="math inline">\(0.3\)</span></h2>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="concentration-plots.html#cb36-1" tabindex="-1"></a>cutoff.value <span class="ot">&lt;-</span> <span class="fl">0.3</span></span>
+<span id="cb36-2"><a href="concentration-plots.html#cb36-2" tabindex="-1"></a>Phenotype.lab <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;Phenotype&quot;</span>, <span class="fu">round</span>(<span class="dv">10</span><span class="sc">*</span>cutoff.value))</span>
+<span id="cb36-3"><a href="concentration-plots.html#cb36-3" tabindex="-1"></a>cut3.plots <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb36-4"><a href="concentration-plots.html#cb36-4" tabindex="-1"></a></span>
+<span id="cb36-5"><a href="concentration-plots.html#cb36-5" tabindex="-1"></a></span>
+<span id="cb36-6"><a href="concentration-plots.html#cb36-6" tabindex="-1"></a><span class="cf">for</span>(ch <span class="cf">in</span> <span class="fu">seq_along</span>(full.comp)){</span>
+<span id="cb36-7"><a href="concentration-plots.html#cb36-7" tabindex="-1"></a>    cut3.plots[[ch]] <span class="ot">&lt;-</span> long.data <span class="sc">%&gt;%</span></span>
+<span id="cb36-8"><a href="concentration-plots.html#cb36-8" tabindex="-1"></a>      <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(PavCA), </span>
+<span id="cb36-9"><a href="concentration-plots.html#cb36-9" tabindex="-1"></a>             compound <span class="sc">==</span> good.compound[ch],</span>
+<span id="cb36-10"><a href="concentration-plots.html#cb36-10" tabindex="-1"></a>             type <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Pre&quot;</span>, <span class="st">&quot;Post&quot;</span>),</span>
+<span id="cb36-11"><a href="concentration-plots.html#cb36-11" tabindex="-1"></a>             <span class="sc">!</span>(ID <span class="sc">%in%</span> outlier)) <span class="sc">%&gt;%</span></span>
+<span id="cb36-12"><a href="concentration-plots.html#cb36-12" tabindex="-1"></a>      <span class="fu">select</span>(ID, <span class="at">Phenotype =</span> <span class="fu">all_of</span>(Phenotype.lab), type, conc) <span class="sc">%&gt;%</span></span>
+<span id="cb36-13"><a href="concentration-plots.html#cb36-13" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">type =</span> <span class="fu">factor</span>(type, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Pre&quot;</span>, <span class="st">&quot;Post&quot;</span>)),</span>
+<span id="cb36-14"><a href="concentration-plots.html#cb36-14" tabindex="-1"></a>             <span class="at">Phenotype =</span> <span class="fu">factor</span>(Phenotype, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;GT&quot;</span>, <span class="st">&quot;IN&quot;</span>, <span class="st">&quot;ST&quot;</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb36-15"><a href="concentration-plots.html#cb36-15" tabindex="-1"></a>      <span class="fu">group_by</span>(type, Phenotype) <span class="sc">%&gt;%</span></span>
+<span id="cb36-16"><a href="concentration-plots.html#cb36-16" tabindex="-1"></a>      <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> type, <span class="at">y =</span> conc, <span class="at">color =</span> Phenotype, <span class="at">shape =</span> type)) <span class="sc">+</span></span>
+<span id="cb36-17"><a href="concentration-plots.html#cb36-17" tabindex="-1"></a>      <span class="fu">stat_summary</span>(<span class="at">fun =</span> <span class="cf">function</span>(x) {<span class="fu">mean</span>(x) <span class="sc">-</span> <span class="fu">sd</span>(x)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">length</span>(x))},</span>
+<span id="cb36-18"><a href="concentration-plots.html#cb36-18" tabindex="-1"></a>                   <span class="at">geom =</span> <span class="st">&quot;errorbar&quot;</span>, <span class="fu">aes</span>(<span class="at">ymin =</span> <span class="fu">after_stat</span>(y), <span class="at">ymax =</span> <span class="fu">after_stat</span>(y),</span>
+<span id="cb36-19"><a href="concentration-plots.html#cb36-19" tabindex="-1"></a>                                          <span class="at">color =</span> Phenotype), </span>
+<span id="cb36-20"><a href="concentration-plots.html#cb36-20" tabindex="-1"></a>                   <span class="at">width =</span> <span class="fl">0.4</span>, <span class="at">lwd =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb36-21"><a href="concentration-plots.html#cb36-21" tabindex="-1"></a>      <span class="fu">stat_summary</span>(<span class="at">fun =</span> <span class="cf">function</span>(x) {<span class="fu">mean</span>(x) <span class="sc">+</span> <span class="fu">sd</span>(x)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">length</span>(x))},</span>
+<span id="cb36-22"><a href="concentration-plots.html#cb36-22" tabindex="-1"></a>                   <span class="at">geom =</span> <span class="st">&quot;errorbar&quot;</span>, <span class="fu">aes</span>(<span class="at">ymin =</span> <span class="fu">after_stat</span>(y), <span class="at">ymax =</span> <span class="fu">after_stat</span>(y),</span>
+<span id="cb36-23"><a href="concentration-plots.html#cb36-23" tabindex="-1"></a>                                          <span class="at">color =</span> Phenotype), </span>
+<span id="cb36-24"><a href="concentration-plots.html#cb36-24" tabindex="-1"></a>                   <span class="at">width =</span> <span class="fl">0.4</span>, <span class="at">lwd =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb36-25"><a href="concentration-plots.html#cb36-25" tabindex="-1"></a>      <span class="fu">stat_summary</span>(</span>
+<span id="cb36-26"><a href="concentration-plots.html#cb36-26" tabindex="-1"></a>        <span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">&quot;point&quot;</span>,</span>
+<span id="cb36-27"><a href="concentration-plots.html#cb36-27" tabindex="-1"></a>        <span class="fu">aes</span>(<span class="at">fill =</span> Phenotype),</span>
+<span id="cb36-28"><a href="concentration-plots.html#cb36-28" tabindex="-1"></a>        <span class="co"># aes(fill = type),</span></span>
+<span id="cb36-29"><a href="concentration-plots.html#cb36-29" tabindex="-1"></a>        <span class="at">size =</span> <span class="fl">2.2</span>, <span class="at">alpha =</span> <span class="fl">1.5</span>, </span>
+<span id="cb36-30"><a href="concentration-plots.html#cb36-30" tabindex="-1"></a>        <span class="co"># shape = 1,</span></span>
+<span id="cb36-31"><a href="concentration-plots.html#cb36-31" tabindex="-1"></a>        <span class="at">stroke =</span> <span class="fl">1.5</span></span>
+<span id="cb36-32"><a href="concentration-plots.html#cb36-32" tabindex="-1"></a>      ) <span class="sc">+</span></span>
+<span id="cb36-33"><a href="concentration-plots.html#cb36-33" tabindex="-1"></a>      <span class="fu">stat_summary</span>(</span>
+<span id="cb36-34"><a href="concentration-plots.html#cb36-34" tabindex="-1"></a>        <span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">&quot;line&quot;</span>,</span>
+<span id="cb36-35"><a href="concentration-plots.html#cb36-35" tabindex="-1"></a>        <span class="fu">aes</span>(<span class="at">group =</span> Phenotype), <span class="at">lwd =</span> <span class="fl">1.2</span>, <span class="at">alpha =</span> <span class="fl">1.5</span></span>
+<span id="cb36-36"><a href="concentration-plots.html#cb36-36" tabindex="-1"></a>      ) <span class="sc">+</span></span>
+<span id="cb36-37"><a href="concentration-plots.html#cb36-37" tabindex="-1"></a>      <span class="fu">geom_point</span>(</span>
+<span id="cb36-38"><a href="concentration-plots.html#cb36-38" tabindex="-1"></a>        <span class="co"># aes(color = Phenotype, shape = type),</span></span>
+<span id="cb36-39"><a href="concentration-plots.html#cb36-39" tabindex="-1"></a>                 <span class="at">size =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>, </span>
+<span id="cb36-40"><a href="concentration-plots.html#cb36-40" tabindex="-1"></a>                 <span class="co"># shape = 1,</span></span>
+<span id="cb36-41"><a href="concentration-plots.html#cb36-41" tabindex="-1"></a>                 <span class="at">stroke =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb36-42"><a href="concentration-plots.html#cb36-42" tabindex="-1"></a>      <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> ID), <span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">+</span></span>
+<span id="cb36-43"><a href="concentration-plots.html#cb36-43" tabindex="-1"></a>      <span class="fu">facet_wrap</span>(<span class="sc">~</span> Phenotype, <span class="at">scales =</span> <span class="st">&quot;fixed&quot;</span>, <span class="at">nrow =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb36-44"><a href="concentration-plots.html#cb36-44" tabindex="-1"></a>      <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;Pre&quot;</span> <span class="ot">=</span> <span class="dv">1</span>, <span class="st">&quot;Post&quot;</span> <span class="ot">=</span> <span class="dv">16</span>)) <span class="sc">+</span></span>
+<span id="cb36-45"><a href="concentration-plots.html#cb36-45" tabindex="-1"></a>      <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;GT&quot;</span> <span class="ot">=</span> <span class="st">&quot;#1B5E20&quot;</span>,  <span class="co"># Pastel green</span></span>
+<span id="cb36-46"><a href="concentration-plots.html#cb36-46" tabindex="-1"></a>                                    <span class="st">&quot;IN&quot;</span> <span class="ot">=</span> <span class="st">&quot;#996C00&quot;</span>,  <span class="co"># Pastel yellow</span></span>
+<span id="cb36-47"><a href="concentration-plots.html#cb36-47" tabindex="-1"></a>                                    <span class="st">&quot;ST&quot;</span> <span class="ot">=</span> <span class="st">&quot;#4B0082&quot;</span>)) <span class="sc">+</span> <span class="co"># Pastel purple</span></span>
+<span id="cb36-48"><a href="concentration-plots.html#cb36-48" tabindex="-1"></a>      <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;GT&quot;</span> <span class="ot">=</span> <span class="st">&quot;#1B5E20&quot;</span>,  <span class="co"># Pastel green</span></span>
+<span id="cb36-49"><a href="concentration-plots.html#cb36-49" tabindex="-1"></a>                                    <span class="st">&quot;IN&quot;</span> <span class="ot">=</span> <span class="st">&quot;#996C00&quot;</span>,  <span class="co"># Pastel yellow</span></span>
+<span id="cb36-50"><a href="concentration-plots.html#cb36-50" tabindex="-1"></a>                                    <span class="st">&quot;ST&quot;</span> <span class="ot">=</span> <span class="st">&quot;#4B0082&quot;</span>)) <span class="sc">+</span> <span class="co"># Pastel purple</span></span>
+<span id="cb36-51"><a href="concentration-plots.html#cb36-51" tabindex="-1"></a>      <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb36-52"><a href="concentration-plots.html#cb36-52" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Concentration (nM)&quot;</span>, </span>
+<span id="cb36-53"><a href="concentration-plots.html#cb36-53" tabindex="-1"></a>           <span class="at">title =</span> <span class="fu">paste0</span>(<span class="st">&quot;Pre and Post-Learning Concentrations of &quot;</span>,</span>
+<span id="cb36-54"><a href="concentration-plots.html#cb36-54" tabindex="-1"></a>                          full.comp[ch], <span class="st">&quot; by Phenotype&quot;</span>),</span>
+<span id="cb36-55"><a href="concentration-plots.html#cb36-55" tabindex="-1"></a>           <span class="co"># subtitle = paste0(&quot;(PavCA cutoff = &quot;, cutoff.value,&quot;, Outliers removed)&quot;)</span></span>
+<span id="cb36-56"><a href="concentration-plots.html#cb36-56" tabindex="-1"></a>           <span class="at">subtitle =</span> <span class="fu">paste0</span>(<span class="st">&quot;GT: PavCA ≤ &quot;</span>, cutoff.value, <span class="st">&quot;, IN: |PavCA| &lt; &quot;</span>,</span>
+<span id="cb36-57"><a href="concentration-plots.html#cb36-57" tabindex="-1"></a>                            cutoff.value, <span class="st">&quot;, ST: PavCA ≥ &quot;</span>, cutoff.value, </span>
+<span id="cb36-58"><a href="concentration-plots.html#cb36-58" tabindex="-1"></a>                            <span class="st">&quot; (Outliers removed)&quot;</span>),</span>
+<span id="cb36-59"><a href="concentration-plots.html#cb36-59" tabindex="-1"></a>           <span class="at">shape =</span> <span class="st">&quot;Time point&quot;</span></span>
+<span id="cb36-60"><a href="concentration-plots.html#cb36-60" tabindex="-1"></a>           ) <span class="sc">+</span></span>
+<span id="cb36-61"><a href="concentration-plots.html#cb36-61" tabindex="-1"></a>      <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb36-62"><a href="concentration-plots.html#cb36-62" tabindex="-1"></a>            <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb36-63"><a href="concentration-plots.html#cb36-63" tabindex="-1"></a>            <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb36-64"><a href="concentration-plots.html#cb36-64" tabindex="-1"></a>            <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb36-65"><a href="concentration-plots.html#cb36-65" tabindex="-1"></a>            <span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>)</span>
+<span id="cb36-66"><a href="concentration-plots.html#cb36-66" tabindex="-1"></a>      )</span>
+<span id="cb36-67"><a href="concentration-plots.html#cb36-67" tabindex="-1"></a>}</span>
+<span id="cb36-68"><a href="concentration-plots.html#cb36-68" tabindex="-1"></a></span>
+<span id="cb36-69"><a href="concentration-plots.html#cb36-69" tabindex="-1"></a>cut3.plots</span></code></pre></div>
+<pre><code>## [[1]]</code></pre>
+<p><img src="_main_files/figure-html/cut3.fig-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[2]]</code></pre>
+<p><img src="_main_files/figure-html/cut3.fig-2.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[3]]</code></pre>
+<p><img src="_main_files/figure-html/cut3.fig-3.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[4]]</code></pre>
+<p><img src="_main_files/figure-html/cut3.fig-4.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[5]]</code></pre>
+<p><img src="_main_files/figure-html/cut3.fig-5.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[6]]</code></pre>
+<p><img src="_main_files/figure-html/cut3.fig-6.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[7]]</code></pre>
+<p><img src="_main_files/figure-html/cut3.fig-7.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[8]]</code></pre>
+<p><img src="_main_files/figure-html/cut3.fig-8.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[9]]</code></pre>
+<p><img src="_main_files/figure-html/cut3.fig-9.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[10]]</code></pre>
+<p><img src="_main_files/figure-html/cut3.fig-10.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[11]]</code></pre>
+<p><img src="_main_files/figure-html/cut3.fig-11.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[12]]</code></pre>
+<p><img src="_main_files/figure-html/cut3.fig-12.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[13]]</code></pre>
+<p><img src="_main_files/figure-html/cut3.fig-13.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[14]]</code></pre>
+<p><img src="_main_files/figure-html/cut3.fig-14.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[15]]</code></pre>
+<p><img src="_main_files/figure-html/cut3.fig-15.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[16]]</code></pre>
+<p><img src="_main_files/figure-html/cut3.fig-16.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[17]]</code></pre>
+<p><img src="_main_files/figure-html/cut3.fig-17.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[18]]</code></pre>
+<p><img src="_main_files/figure-html/cut3.fig-18.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[19]]</code></pre>
+<p><img src="_main_files/figure-html/cut3.fig-19.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[20]]</code></pre>
+<p><img src="_main_files/figure-html/cut3.fig-20.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="cutoff-0.4" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Cutoff = <span class="math inline">\(0.4\)</span></h2>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="concentration-plots.html#cb57-1" tabindex="-1"></a>cutoff.value <span class="ot">&lt;-</span> <span class="fl">0.4</span></span>
+<span id="cb57-2"><a href="concentration-plots.html#cb57-2" tabindex="-1"></a>Phenotype.lab <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;Phenotype&quot;</span>, <span class="fu">round</span>(<span class="dv">10</span><span class="sc">*</span>cutoff.value))</span>
+<span id="cb57-3"><a href="concentration-plots.html#cb57-3" tabindex="-1"></a>cut4.plots <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb57-4"><a href="concentration-plots.html#cb57-4" tabindex="-1"></a></span>
+<span id="cb57-5"><a href="concentration-plots.html#cb57-5" tabindex="-1"></a><span class="cf">for</span>(ch <span class="cf">in</span> <span class="fu">seq_along</span>(full.comp)){</span>
+<span id="cb57-6"><a href="concentration-plots.html#cb57-6" tabindex="-1"></a>    cut4.plots[[ch]] <span class="ot">&lt;-</span> long.data <span class="sc">%&gt;%</span></span>
+<span id="cb57-7"><a href="concentration-plots.html#cb57-7" tabindex="-1"></a>      <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(PavCA), </span>
+<span id="cb57-8"><a href="concentration-plots.html#cb57-8" tabindex="-1"></a>             compound <span class="sc">==</span> good.compound[ch],</span>
+<span id="cb57-9"><a href="concentration-plots.html#cb57-9" tabindex="-1"></a>             type <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Pre&quot;</span>, <span class="st">&quot;Post&quot;</span>),</span>
+<span id="cb57-10"><a href="concentration-plots.html#cb57-10" tabindex="-1"></a>             <span class="sc">!</span>(ID <span class="sc">%in%</span> outlier)) <span class="sc">%&gt;%</span></span>
+<span id="cb57-11"><a href="concentration-plots.html#cb57-11" tabindex="-1"></a>      <span class="fu">select</span>(ID, <span class="at">Phenotype =</span> <span class="fu">all_of</span>(Phenotype.lab), type, conc) <span class="sc">%&gt;%</span></span>
+<span id="cb57-12"><a href="concentration-plots.html#cb57-12" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">type =</span> <span class="fu">factor</span>(type, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Pre&quot;</span>, <span class="st">&quot;Post&quot;</span>)),</span>
+<span id="cb57-13"><a href="concentration-plots.html#cb57-13" tabindex="-1"></a>             <span class="at">Phenotype =</span> <span class="fu">factor</span>(Phenotype, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;GT&quot;</span>, <span class="st">&quot;IN&quot;</span>, <span class="st">&quot;ST&quot;</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb57-14"><a href="concentration-plots.html#cb57-14" tabindex="-1"></a>      <span class="fu">group_by</span>(type, Phenotype) <span class="sc">%&gt;%</span></span>
+<span id="cb57-15"><a href="concentration-plots.html#cb57-15" tabindex="-1"></a>      <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> type, <span class="at">y =</span> conc, <span class="at">color =</span> Phenotype, <span class="at">shape =</span> type)) <span class="sc">+</span></span>
+<span id="cb57-16"><a href="concentration-plots.html#cb57-16" tabindex="-1"></a>      <span class="fu">stat_summary</span>(<span class="at">fun =</span> <span class="cf">function</span>(x) {<span class="fu">mean</span>(x) <span class="sc">-</span> <span class="fu">sd</span>(x)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">length</span>(x))},</span>
+<span id="cb57-17"><a href="concentration-plots.html#cb57-17" tabindex="-1"></a>                   <span class="at">geom =</span> <span class="st">&quot;errorbar&quot;</span>, <span class="fu">aes</span>(<span class="at">ymin =</span> <span class="fu">after_stat</span>(y), <span class="at">ymax =</span> <span class="fu">after_stat</span>(y),</span>
+<span id="cb57-18"><a href="concentration-plots.html#cb57-18" tabindex="-1"></a>                                          <span class="at">color =</span> Phenotype), </span>
+<span id="cb57-19"><a href="concentration-plots.html#cb57-19" tabindex="-1"></a>                   <span class="at">width =</span> <span class="fl">0.4</span>, <span class="at">lwd =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb57-20"><a href="concentration-plots.html#cb57-20" tabindex="-1"></a>      <span class="fu">stat_summary</span>(<span class="at">fun =</span> <span class="cf">function</span>(x) {<span class="fu">mean</span>(x) <span class="sc">+</span> <span class="fu">sd</span>(x)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">length</span>(x))},</span>
+<span id="cb57-21"><a href="concentration-plots.html#cb57-21" tabindex="-1"></a>                   <span class="at">geom =</span> <span class="st">&quot;errorbar&quot;</span>, <span class="fu">aes</span>(<span class="at">ymin =</span> <span class="fu">after_stat</span>(y), <span class="at">ymax =</span> <span class="fu">after_stat</span>(y),</span>
+<span id="cb57-22"><a href="concentration-plots.html#cb57-22" tabindex="-1"></a>                                          <span class="at">color =</span> Phenotype), </span>
+<span id="cb57-23"><a href="concentration-plots.html#cb57-23" tabindex="-1"></a>                   <span class="at">width =</span> <span class="fl">0.4</span>, <span class="at">lwd =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb57-24"><a href="concentration-plots.html#cb57-24" tabindex="-1"></a>      <span class="fu">stat_summary</span>(</span>
+<span id="cb57-25"><a href="concentration-plots.html#cb57-25" tabindex="-1"></a>        <span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">&quot;point&quot;</span>,</span>
+<span id="cb57-26"><a href="concentration-plots.html#cb57-26" tabindex="-1"></a>        <span class="fu">aes</span>(<span class="at">fill =</span> Phenotype),</span>
+<span id="cb57-27"><a href="concentration-plots.html#cb57-27" tabindex="-1"></a>        <span class="co"># aes(fill = type),</span></span>
+<span id="cb57-28"><a href="concentration-plots.html#cb57-28" tabindex="-1"></a>        <span class="at">size =</span> <span class="fl">2.2</span>, <span class="at">alpha =</span> <span class="fl">1.5</span>, </span>
+<span id="cb57-29"><a href="concentration-plots.html#cb57-29" tabindex="-1"></a>        <span class="co"># shape = 1,</span></span>
+<span id="cb57-30"><a href="concentration-plots.html#cb57-30" tabindex="-1"></a>        <span class="at">stroke =</span> <span class="fl">1.5</span></span>
+<span id="cb57-31"><a href="concentration-plots.html#cb57-31" tabindex="-1"></a>      ) <span class="sc">+</span></span>
+<span id="cb57-32"><a href="concentration-plots.html#cb57-32" tabindex="-1"></a>      <span class="fu">stat_summary</span>(</span>
+<span id="cb57-33"><a href="concentration-plots.html#cb57-33" tabindex="-1"></a>        <span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">&quot;line&quot;</span>,</span>
+<span id="cb57-34"><a href="concentration-plots.html#cb57-34" tabindex="-1"></a>        <span class="fu">aes</span>(<span class="at">group =</span> Phenotype), <span class="at">lwd =</span> <span class="fl">1.2</span>, <span class="at">alpha =</span> <span class="fl">1.5</span></span>
+<span id="cb57-35"><a href="concentration-plots.html#cb57-35" tabindex="-1"></a>      ) <span class="sc">+</span></span>
+<span id="cb57-36"><a href="concentration-plots.html#cb57-36" tabindex="-1"></a>      <span class="fu">geom_point</span>(</span>
+<span id="cb57-37"><a href="concentration-plots.html#cb57-37" tabindex="-1"></a>        <span class="co"># aes(color = Phenotype, shape = type),</span></span>
+<span id="cb57-38"><a href="concentration-plots.html#cb57-38" tabindex="-1"></a>                 <span class="at">size =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>, </span>
+<span id="cb57-39"><a href="concentration-plots.html#cb57-39" tabindex="-1"></a>                 <span class="co"># shape = 1,</span></span>
+<span id="cb57-40"><a href="concentration-plots.html#cb57-40" tabindex="-1"></a>                 <span class="at">stroke =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb57-41"><a href="concentration-plots.html#cb57-41" tabindex="-1"></a>      <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> ID), <span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">+</span></span>
+<span id="cb57-42"><a href="concentration-plots.html#cb57-42" tabindex="-1"></a>      <span class="fu">facet_wrap</span>(<span class="sc">~</span> Phenotype, <span class="at">scales =</span> <span class="st">&quot;fixed&quot;</span>, <span class="at">nrow =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb57-43"><a href="concentration-plots.html#cb57-43" tabindex="-1"></a>      <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;Pre&quot;</span> <span class="ot">=</span> <span class="dv">1</span>, <span class="st">&quot;Post&quot;</span> <span class="ot">=</span> <span class="dv">16</span>)) <span class="sc">+</span></span>
+<span id="cb57-44"><a href="concentration-plots.html#cb57-44" tabindex="-1"></a>      <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;GT&quot;</span> <span class="ot">=</span> <span class="st">&quot;#1B5E20&quot;</span>,  <span class="co"># Pastel green</span></span>
+<span id="cb57-45"><a href="concentration-plots.html#cb57-45" tabindex="-1"></a>                                    <span class="st">&quot;IN&quot;</span> <span class="ot">=</span> <span class="st">&quot;#996C00&quot;</span>,  <span class="co"># Pastel yellow</span></span>
+<span id="cb57-46"><a href="concentration-plots.html#cb57-46" tabindex="-1"></a>                                    <span class="st">&quot;ST&quot;</span> <span class="ot">=</span> <span class="st">&quot;#4B0082&quot;</span>)) <span class="sc">+</span> <span class="co"># Pastel purple</span></span>
+<span id="cb57-47"><a href="concentration-plots.html#cb57-47" tabindex="-1"></a>      <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;GT&quot;</span> <span class="ot">=</span> <span class="st">&quot;#1B5E20&quot;</span>,  <span class="co"># Pastel green</span></span>
+<span id="cb57-48"><a href="concentration-plots.html#cb57-48" tabindex="-1"></a>                                    <span class="st">&quot;IN&quot;</span> <span class="ot">=</span> <span class="st">&quot;#996C00&quot;</span>,  <span class="co"># Pastel yellow</span></span>
+<span id="cb57-49"><a href="concentration-plots.html#cb57-49" tabindex="-1"></a>                                    <span class="st">&quot;ST&quot;</span> <span class="ot">=</span> <span class="st">&quot;#4B0082&quot;</span>)) <span class="sc">+</span> <span class="co"># Pastel purple</span></span>
+<span id="cb57-50"><a href="concentration-plots.html#cb57-50" tabindex="-1"></a>      <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb57-51"><a href="concentration-plots.html#cb57-51" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Concentration (nM)&quot;</span>, </span>
+<span id="cb57-52"><a href="concentration-plots.html#cb57-52" tabindex="-1"></a>           <span class="at">title =</span> <span class="fu">paste0</span>(<span class="st">&quot;Pre and Post-Learning Concentrations of &quot;</span>,</span>
+<span id="cb57-53"><a href="concentration-plots.html#cb57-53" tabindex="-1"></a>                          full.comp[ch], <span class="st">&quot; by Phenotype&quot;</span>),</span>
+<span id="cb57-54"><a href="concentration-plots.html#cb57-54" tabindex="-1"></a>           <span class="co"># subtitle = paste0(&quot;(PavCA cutoff = &quot;, cutoff.value,&quot;, Outliers removed)&quot;)</span></span>
+<span id="cb57-55"><a href="concentration-plots.html#cb57-55" tabindex="-1"></a>           <span class="at">subtitle =</span> <span class="fu">paste0</span>(<span class="st">&quot;GT: PavCA ≤ &quot;</span>, cutoff.value, <span class="st">&quot;, IN: |PavCA| &lt; &quot;</span>,</span>
+<span id="cb57-56"><a href="concentration-plots.html#cb57-56" tabindex="-1"></a>                            cutoff.value, <span class="st">&quot;, ST: PavCA ≥ &quot;</span>, cutoff.value, </span>
+<span id="cb57-57"><a href="concentration-plots.html#cb57-57" tabindex="-1"></a>                            <span class="st">&quot; (Outliers removed)&quot;</span>),</span>
+<span id="cb57-58"><a href="concentration-plots.html#cb57-58" tabindex="-1"></a>           <span class="at">shape =</span> <span class="st">&quot;Time point&quot;</span></span>
+<span id="cb57-59"><a href="concentration-plots.html#cb57-59" tabindex="-1"></a>           ) <span class="sc">+</span></span>
+<span id="cb57-60"><a href="concentration-plots.html#cb57-60" tabindex="-1"></a>      <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb57-61"><a href="concentration-plots.html#cb57-61" tabindex="-1"></a>            <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb57-62"><a href="concentration-plots.html#cb57-62" tabindex="-1"></a>            <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb57-63"><a href="concentration-plots.html#cb57-63" tabindex="-1"></a>            <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb57-64"><a href="concentration-plots.html#cb57-64" tabindex="-1"></a>            <span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>)</span>
+<span id="cb57-65"><a href="concentration-plots.html#cb57-65" tabindex="-1"></a>      )</span>
+<span id="cb57-66"><a href="concentration-plots.html#cb57-66" tabindex="-1"></a>}</span>
+<span id="cb57-67"><a href="concentration-plots.html#cb57-67" tabindex="-1"></a></span>
+<span id="cb57-68"><a href="concentration-plots.html#cb57-68" tabindex="-1"></a>cut4.plots</span></code></pre></div>
+<pre><code>## [[1]]</code></pre>
+<p><img src="_main_files/figure-html/cut4.fig-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[2]]</code></pre>
+<p><img src="_main_files/figure-html/cut4.fig-2.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[3]]</code></pre>
+<p><img src="_main_files/figure-html/cut4.fig-3.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[4]]</code></pre>
+<p><img src="_main_files/figure-html/cut4.fig-4.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[5]]</code></pre>
+<p><img src="_main_files/figure-html/cut4.fig-5.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[6]]</code></pre>
+<p><img src="_main_files/figure-html/cut4.fig-6.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[7]]</code></pre>
+<p><img src="_main_files/figure-html/cut4.fig-7.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[8]]</code></pre>
+<p><img src="_main_files/figure-html/cut4.fig-8.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[9]]</code></pre>
+<p><img src="_main_files/figure-html/cut4.fig-9.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[10]]</code></pre>
+<p><img src="_main_files/figure-html/cut4.fig-10.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[11]]</code></pre>
+<p><img src="_main_files/figure-html/cut4.fig-11.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[12]]</code></pre>
+<p><img src="_main_files/figure-html/cut4.fig-12.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[13]]</code></pre>
+<p><img src="_main_files/figure-html/cut4.fig-13.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[14]]</code></pre>
+<p><img src="_main_files/figure-html/cut4.fig-14.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[15]]</code></pre>
+<p><img src="_main_files/figure-html/cut4.fig-15.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[16]]</code></pre>
+<p><img src="_main_files/figure-html/cut4.fig-16.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[17]]</code></pre>
+<p><img src="_main_files/figure-html/cut4.fig-17.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[18]]</code></pre>
+<p><img src="_main_files/figure-html/cut4.fig-18.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[19]]</code></pre>
+<p><img src="_main_files/figure-html/cut4.fig-19.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[20]]</code></pre>
+<p><img src="_main_files/figure-html/cut4.fig-20.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="cutoff-0.5" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Cutoff = <span class="math inline">\(0.5\)</span></h2>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="concentration-plots.html#cb78-1" tabindex="-1"></a>cutoff.value <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
+<span id="cb78-2"><a href="concentration-plots.html#cb78-2" tabindex="-1"></a>Phenotype.lab <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;Phenotype&quot;</span>, <span class="fu">round</span>(<span class="dv">10</span><span class="sc">*</span>cutoff.value))</span>
+<span id="cb78-3"><a href="concentration-plots.html#cb78-3" tabindex="-1"></a>cut5.plots <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb78-4"><a href="concentration-plots.html#cb78-4" tabindex="-1"></a></span>
+<span id="cb78-5"><a href="concentration-plots.html#cb78-5" tabindex="-1"></a><span class="cf">for</span>(ch <span class="cf">in</span> <span class="fu">seq_along</span>(full.comp)){</span>
+<span id="cb78-6"><a href="concentration-plots.html#cb78-6" tabindex="-1"></a>    cut5.plots[[ch]] <span class="ot">&lt;-</span> long.data <span class="sc">%&gt;%</span></span>
+<span id="cb78-7"><a href="concentration-plots.html#cb78-7" tabindex="-1"></a>      <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(PavCA), </span>
+<span id="cb78-8"><a href="concentration-plots.html#cb78-8" tabindex="-1"></a>             compound <span class="sc">==</span> good.compound[ch],</span>
+<span id="cb78-9"><a href="concentration-plots.html#cb78-9" tabindex="-1"></a>             type <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Pre&quot;</span>, <span class="st">&quot;Post&quot;</span>),</span>
+<span id="cb78-10"><a href="concentration-plots.html#cb78-10" tabindex="-1"></a>             <span class="sc">!</span>(ID <span class="sc">%in%</span> outlier)) <span class="sc">%&gt;%</span></span>
+<span id="cb78-11"><a href="concentration-plots.html#cb78-11" tabindex="-1"></a>      <span class="fu">select</span>(ID, <span class="at">Phenotype =</span> <span class="fu">all_of</span>(Phenotype.lab), type, conc) <span class="sc">%&gt;%</span></span>
+<span id="cb78-12"><a href="concentration-plots.html#cb78-12" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">type =</span> <span class="fu">factor</span>(type, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Pre&quot;</span>, <span class="st">&quot;Post&quot;</span>)),</span>
+<span id="cb78-13"><a href="concentration-plots.html#cb78-13" tabindex="-1"></a>             <span class="at">Phenotype =</span> <span class="fu">factor</span>(Phenotype, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;GT&quot;</span>, <span class="st">&quot;IN&quot;</span>, <span class="st">&quot;ST&quot;</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb78-14"><a href="concentration-plots.html#cb78-14" tabindex="-1"></a>      <span class="fu">group_by</span>(type, Phenotype) <span class="sc">%&gt;%</span></span>
+<span id="cb78-15"><a href="concentration-plots.html#cb78-15" tabindex="-1"></a>      <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> type, <span class="at">y =</span> conc, <span class="at">color =</span> Phenotype, <span class="at">shape =</span> type)) <span class="sc">+</span></span>
+<span id="cb78-16"><a href="concentration-plots.html#cb78-16" tabindex="-1"></a>      <span class="fu">stat_summary</span>(<span class="at">fun =</span> <span class="cf">function</span>(x) {<span class="fu">mean</span>(x) <span class="sc">-</span> <span class="fu">sd</span>(x)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">length</span>(x))},</span>
+<span id="cb78-17"><a href="concentration-plots.html#cb78-17" tabindex="-1"></a>                   <span class="at">geom =</span> <span class="st">&quot;errorbar&quot;</span>, <span class="fu">aes</span>(<span class="at">ymin =</span> <span class="fu">after_stat</span>(y), <span class="at">ymax =</span> <span class="fu">after_stat</span>(y),</span>
+<span id="cb78-18"><a href="concentration-plots.html#cb78-18" tabindex="-1"></a>                                          <span class="at">color =</span> Phenotype), </span>
+<span id="cb78-19"><a href="concentration-plots.html#cb78-19" tabindex="-1"></a>                   <span class="at">width =</span> <span class="fl">0.4</span>, <span class="at">lwd =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb78-20"><a href="concentration-plots.html#cb78-20" tabindex="-1"></a>      <span class="fu">stat_summary</span>(<span class="at">fun =</span> <span class="cf">function</span>(x) {<span class="fu">mean</span>(x) <span class="sc">+</span> <span class="fu">sd</span>(x)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">length</span>(x))},</span>
+<span id="cb78-21"><a href="concentration-plots.html#cb78-21" tabindex="-1"></a>                   <span class="at">geom =</span> <span class="st">&quot;errorbar&quot;</span>, <span class="fu">aes</span>(<span class="at">ymin =</span> <span class="fu">after_stat</span>(y), <span class="at">ymax =</span> <span class="fu">after_stat</span>(y),</span>
+<span id="cb78-22"><a href="concentration-plots.html#cb78-22" tabindex="-1"></a>                                          <span class="at">color =</span> Phenotype), </span>
+<span id="cb78-23"><a href="concentration-plots.html#cb78-23" tabindex="-1"></a>                   <span class="at">width =</span> <span class="fl">0.4</span>, <span class="at">lwd =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb78-24"><a href="concentration-plots.html#cb78-24" tabindex="-1"></a>      <span class="fu">stat_summary</span>(</span>
+<span id="cb78-25"><a href="concentration-plots.html#cb78-25" tabindex="-1"></a>        <span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">&quot;point&quot;</span>,</span>
+<span id="cb78-26"><a href="concentration-plots.html#cb78-26" tabindex="-1"></a>        <span class="fu">aes</span>(<span class="at">fill =</span> Phenotype),</span>
+<span id="cb78-27"><a href="concentration-plots.html#cb78-27" tabindex="-1"></a>        <span class="co"># aes(fill = type),</span></span>
+<span id="cb78-28"><a href="concentration-plots.html#cb78-28" tabindex="-1"></a>        <span class="at">size =</span> <span class="fl">2.2</span>, <span class="at">alpha =</span> <span class="fl">1.5</span>, </span>
+<span id="cb78-29"><a href="concentration-plots.html#cb78-29" tabindex="-1"></a>        <span class="co"># shape = 1,</span></span>
+<span id="cb78-30"><a href="concentration-plots.html#cb78-30" tabindex="-1"></a>        <span class="at">stroke =</span> <span class="fl">1.5</span></span>
+<span id="cb78-31"><a href="concentration-plots.html#cb78-31" tabindex="-1"></a>      ) <span class="sc">+</span></span>
+<span id="cb78-32"><a href="concentration-plots.html#cb78-32" tabindex="-1"></a>      <span class="fu">stat_summary</span>(</span>
+<span id="cb78-33"><a href="concentration-plots.html#cb78-33" tabindex="-1"></a>        <span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">&quot;line&quot;</span>,</span>
+<span id="cb78-34"><a href="concentration-plots.html#cb78-34" tabindex="-1"></a>        <span class="fu">aes</span>(<span class="at">group =</span> Phenotype), <span class="at">lwd =</span> <span class="fl">1.2</span>, <span class="at">alpha =</span> <span class="fl">1.5</span></span>
+<span id="cb78-35"><a href="concentration-plots.html#cb78-35" tabindex="-1"></a>      ) <span class="sc">+</span></span>
+<span id="cb78-36"><a href="concentration-plots.html#cb78-36" tabindex="-1"></a>      <span class="fu">geom_point</span>(</span>
+<span id="cb78-37"><a href="concentration-plots.html#cb78-37" tabindex="-1"></a>        <span class="co"># aes(color = Phenotype, shape = type),</span></span>
+<span id="cb78-38"><a href="concentration-plots.html#cb78-38" tabindex="-1"></a>                 <span class="at">size =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>, </span>
+<span id="cb78-39"><a href="concentration-plots.html#cb78-39" tabindex="-1"></a>                 <span class="co"># shape = 1,</span></span>
+<span id="cb78-40"><a href="concentration-plots.html#cb78-40" tabindex="-1"></a>                 <span class="at">stroke =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb78-41"><a href="concentration-plots.html#cb78-41" tabindex="-1"></a>      <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> ID), <span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">+</span></span>
+<span id="cb78-42"><a href="concentration-plots.html#cb78-42" tabindex="-1"></a>      <span class="fu">facet_wrap</span>(<span class="sc">~</span> Phenotype, <span class="at">scales =</span> <span class="st">&quot;fixed&quot;</span>, <span class="at">nrow =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb78-43"><a href="concentration-plots.html#cb78-43" tabindex="-1"></a>      <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;Pre&quot;</span> <span class="ot">=</span> <span class="dv">1</span>, <span class="st">&quot;Post&quot;</span> <span class="ot">=</span> <span class="dv">16</span>)) <span class="sc">+</span></span>
+<span id="cb78-44"><a href="concentration-plots.html#cb78-44" tabindex="-1"></a>      <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;GT&quot;</span> <span class="ot">=</span> <span class="st">&quot;#1B5E20&quot;</span>,  <span class="co"># Pastel green</span></span>
+<span id="cb78-45"><a href="concentration-plots.html#cb78-45" tabindex="-1"></a>                                    <span class="st">&quot;IN&quot;</span> <span class="ot">=</span> <span class="st">&quot;#996C00&quot;</span>,  <span class="co"># Pastel yellow</span></span>
+<span id="cb78-46"><a href="concentration-plots.html#cb78-46" tabindex="-1"></a>                                    <span class="st">&quot;ST&quot;</span> <span class="ot">=</span> <span class="st">&quot;#4B0082&quot;</span>)) <span class="sc">+</span> <span class="co"># Pastel purple</span></span>
+<span id="cb78-47"><a href="concentration-plots.html#cb78-47" tabindex="-1"></a>      <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;GT&quot;</span> <span class="ot">=</span> <span class="st">&quot;#1B5E20&quot;</span>,  <span class="co"># Pastel green</span></span>
+<span id="cb78-48"><a href="concentration-plots.html#cb78-48" tabindex="-1"></a>                                    <span class="st">&quot;IN&quot;</span> <span class="ot">=</span> <span class="st">&quot;#996C00&quot;</span>,  <span class="co"># Pastel yellow</span></span>
+<span id="cb78-49"><a href="concentration-plots.html#cb78-49" tabindex="-1"></a>                                    <span class="st">&quot;ST&quot;</span> <span class="ot">=</span> <span class="st">&quot;#4B0082&quot;</span>)) <span class="sc">+</span> <span class="co"># Pastel purple</span></span>
+<span id="cb78-50"><a href="concentration-plots.html#cb78-50" tabindex="-1"></a>      <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb78-51"><a href="concentration-plots.html#cb78-51" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Concentration (nM)&quot;</span>, </span>
+<span id="cb78-52"><a href="concentration-plots.html#cb78-52" tabindex="-1"></a>           <span class="at">title =</span> <span class="fu">paste0</span>(<span class="st">&quot;Pre and Post-Learning Concentrations of &quot;</span>,</span>
+<span id="cb78-53"><a href="concentration-plots.html#cb78-53" tabindex="-1"></a>                          full.comp[ch], <span class="st">&quot; by Phenotype&quot;</span>),</span>
+<span id="cb78-54"><a href="concentration-plots.html#cb78-54" tabindex="-1"></a>           <span class="co"># subtitle = paste0(&quot;(PavCA cutoff = &quot;, cutoff.value,&quot;, Outliers removed)&quot;)</span></span>
+<span id="cb78-55"><a href="concentration-plots.html#cb78-55" tabindex="-1"></a>           <span class="at">subtitle =</span> <span class="fu">paste0</span>(<span class="st">&quot;GT: PavCA ≤ &quot;</span>, cutoff.value, <span class="st">&quot;, IN: |PavCA| &lt; &quot;</span>,</span>
+<span id="cb78-56"><a href="concentration-plots.html#cb78-56" tabindex="-1"></a>                            cutoff.value, <span class="st">&quot;, ST: PavCA ≥ &quot;</span>, cutoff.value, </span>
+<span id="cb78-57"><a href="concentration-plots.html#cb78-57" tabindex="-1"></a>                            <span class="st">&quot; (Outliers removed)&quot;</span>),</span>
+<span id="cb78-58"><a href="concentration-plots.html#cb78-58" tabindex="-1"></a>           <span class="at">shape =</span> <span class="st">&quot;Time point&quot;</span></span>
+<span id="cb78-59"><a href="concentration-plots.html#cb78-59" tabindex="-1"></a>           ) <span class="sc">+</span></span>
+<span id="cb78-60"><a href="concentration-plots.html#cb78-60" tabindex="-1"></a>      <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb78-61"><a href="concentration-plots.html#cb78-61" tabindex="-1"></a>            <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb78-62"><a href="concentration-plots.html#cb78-62" tabindex="-1"></a>            <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb78-63"><a href="concentration-plots.html#cb78-63" tabindex="-1"></a>            <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb78-64"><a href="concentration-plots.html#cb78-64" tabindex="-1"></a>            <span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>)</span>
+<span id="cb78-65"><a href="concentration-plots.html#cb78-65" tabindex="-1"></a>      )</span>
+<span id="cb78-66"><a href="concentration-plots.html#cb78-66" tabindex="-1"></a>}</span>
+<span id="cb78-67"><a href="concentration-plots.html#cb78-67" tabindex="-1"></a></span>
+<span id="cb78-68"><a href="concentration-plots.html#cb78-68" tabindex="-1"></a>cut5.plots</span></code></pre></div>
+<pre><code>## [[1]]</code></pre>
+<p><img src="_main_files/figure-html/cut5.fig-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[2]]</code></pre>
+<p><img src="_main_files/figure-html/cut5.fig-2.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[3]]</code></pre>
+<p><img src="_main_files/figure-html/cut5.fig-3.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[4]]</code></pre>
+<p><img src="_main_files/figure-html/cut5.fig-4.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[5]]</code></pre>
+<p><img src="_main_files/figure-html/cut5.fig-5.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[6]]</code></pre>
+<p><img src="_main_files/figure-html/cut5.fig-6.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[7]]</code></pre>
+<p><img src="_main_files/figure-html/cut5.fig-7.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[8]]</code></pre>
+<p><img src="_main_files/figure-html/cut5.fig-8.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[9]]</code></pre>
+<p><img src="_main_files/figure-html/cut5.fig-9.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[10]]</code></pre>
+<p><img src="_main_files/figure-html/cut5.fig-10.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[11]]</code></pre>
+<p><img src="_main_files/figure-html/cut5.fig-11.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[12]]</code></pre>
+<p><img src="_main_files/figure-html/cut5.fig-12.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[13]]</code></pre>
+<p><img src="_main_files/figure-html/cut5.fig-13.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[14]]</code></pre>
+<p><img src="_main_files/figure-html/cut5.fig-14.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[15]]</code></pre>
+<p><img src="_main_files/figure-html/cut5.fig-15.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[16]]</code></pre>
+<p><img src="_main_files/figure-html/cut5.fig-16.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[17]]</code></pre>
+<p><img src="_main_files/figure-html/cut5.fig-17.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[18]]</code></pre>
+<p><img src="_main_files/figure-html/cut5.fig-18.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[19]]</code></pre>
+<p><img src="_main_files/figure-html/cut5.fig-19.png" width="80%" style="display: block; margin: auto;" /></p>
+<pre><code>## 
+## [[20]]</code></pre>
+<p><img src="_main_files/figure-html/cut5.fig-20.png" width="80%" style="display: block; margin: auto;" /></p>
+
+</div>
+</div>
+<p style="text-align: center;">
+<a href="basefunctions.html"><button class="btn btn-default">Previous</button></a>
+<a href="parts.html"><button class="btn btn-default">Next</button></a>
+</p>
+</div>
+</div>
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+</body>
+</html>

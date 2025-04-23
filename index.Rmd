@@ -1,65 +1,224 @@
 --- 
-title: "A Minimal Book Example"
-author: "John Doe"
+title: "Neurochemical Concentrations as Predictors of PavCA "
+author: "Sayan Chakrabarty"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
 # url: your book url like https://bookdown.org/yihui/bookdown
 # cover-image: path to the social sharing image like images/cover.jpg
-description: |
-  This is a minimal example of using the bookdown package to write a book.
-  The HTML output format for this example is bookdown::gitbook,
-  set in the _output.yml file.
+description: ...
 link-citations: yes
 output:
-  bookdown::tufte_html_book:
-    tufte_variant: "envisioned"
+  bookdown::html_book:
     toc: true
     css: toc.css
 # github-repo: rstudio/bookdown-demo
 ---
+# Data Description and Cleaning {.panelset}
 
-```{r panel-setup, include = FALSE}
+## Loading the Packages and Setting Up
+```{r panel-setup, message = FALSE, warning=FALSE}
+library(tidyverse)
+library(gtsummary)
+library(lme4)
+library(performance)
+library(glmnet)
+library(rempsyc)
+library(effectsize)
+library(data.table)
+library(ggpubr)
+library(rstatix)
+library(pROC)
+
+library(broom)
+library(knitr)
+library(kableExtra)
+library(gtsummary)
+library(nnet)
+library(gridExtra)
+library(igraph)
+library(xaringanExtra)
+library(vtable)
+
 xaringanExtra::use_panelset()
-# xaringanExtra::style_panelset(font_family = "inherit")
+xaringanExtra::style_panelset(font_family = "inherit")
+
+setwd('/Users/sayanc/Library/CloudStorage/OneDrive-Umich/Github repos/npc/NeuroChem_PavCA')
+
+# Load the data
+data <- readxl::read_xlsx('clean_data.xlsx')
+
+data <- data %>%
+  rename(Phenotype = `Phenotype...7`) %>%
+  mutate(
+    Time = factor(Time, , levels = c("Pre", "Post")),
+    Phenotype = factor(Phenotype, levels = c("Control", "ST", "IN", "GT"))
+  )
 ```
 
-# About
+## Data Description
 
-This is a _sample_ book written in **Markdown**. You can use anything that Pandoc's Markdown supports; for example, a math equation $a^2 + b^2 = c^2$.
-
-## Usage 
-
-Each **bookdown** chapter is an .Rmd file, and each .Rmd file can contain one (and only one) chapter. A chapter *must* start with a first-level heading: `# A good chapter`, and can contain one (and only one) first-level heading.
-
-Use second-level and higher headings within chapters like: `## A short section` or `### An even shorter section`.
-
-The `index.Rmd` file is required, and is also your first book chapter. It will be the homepage when you render the book.
-
-## Render book
-
-You can render the HTML version of this example book without changing anything:
-
-1. Find the **Build** pane in the RStudio IDE, and
-
-1. Click on **Build Book**, then select your output format, or select "All formats" if you'd like to use multiple formats from the same book source files.
-
-Or build the book from the R console:
-
-```{r, eval=FALSE}
-bookdown::render_book()
+```{r}
+vtable::sumtable(data, group = "Time")
 ```
 
-To render this example to PDF as a `bookdown::pdf_book`, you'll need to install XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <https://yihui.org/tinytex/>.
+## Data Cleaning
 
-## Preview book
+### All analytes with $\geq 50\%$ missing values (NA or $0$ or $<0$) were removed.
+```{r}
+na.data <- data %>%
+  mutate(across(-(1:7), ~if_else(. <= 1e-6, NA, .))) %>%
+  filter(`Rat ID` != "107_Rd3") %>%
+  select(-`Animal Num Per Phenotype`, -Phenotype...3, -Phenotype)
 
-As you work, you may start a local server to live preview this HTML book. This preview will update as you edit the book when you save individual .Rmd files. You can start the server in a work session by using the RStudio add-in "Preview book", or from the R console:
+bad.compound <- na.data %>%
+  select(-(1:7)) %>%
+  summarize(across(everything(), ~sum(is.na(.))/n())) %>%
+  pivot_longer(everything(), names_to = "compound", values_to = "missing") %>%
+  filter(missing >= 0.5) %>%
+  pull(compound)
 
-```{r eval=FALSE}
-bookdown::serve_book()
+other.var <- c("Time", "Rat ID", "PavCA Index", "Sex")
+good.compound <- setdiff(names(na.data), bad.compound)
+good.compound <- good.compound[!(good.compound %in% other.var)]
+
+good.long.data <- na.data %>%
+  select(all_of(c(other.var, good.compound)))
+
+id.var <- other.var[other.var != "Time"] 
+
 ```
+* Analytes removed due to $\geq 50\%$ missing values:
+  * `r paste0(bad.compound, collapse = ", ")`
+
+### New Phenotypes were defined based on cutoffs $\in \{0.3, 0.4, 0.5\}$
+* **ST**: PavCA $\geq$ cutoff
+* **IN**: $-$cutoff $<$ PavCA $<$ cutoff
+* **GT**: PavCA $\leq$ $-$cutoff
+
+```{r message = FALSE, warning=FALSE}
+mod.data <- good.long.data %>%
+  pivot_wider(names_from = `Time`, values_from = all_of(good.compound)) %>%
+  mutate(across(-all_of(id.var), ~replace_na(., min(., na.rm = TRUE)/5))) %>%
+  mutate(
+    Phenotype3 = factor(
+      if_else(is.na(`PavCA Index`), "Control", 
+              if_else(abs(`PavCA Index`) < 0.3, "IN", 
+                      if_else(`PavCA Index` >= 0.3, 
+                              "ST", "GT"))),
+      levels = c("Control", "ST", "IN", "GT")),
+    Phenotype4 = factor(
+      if_else(is.na(`PavCA Index`), "Control", 
+              if_else(abs(`PavCA Index`) < 0.4, "IN", 
+                      if_else(`PavCA Index` >= 0.4, 
+                              "ST", "GT"))),
+      levels = c("Control", "ST", "IN", "GT")),
+    Phenotype5 = factor(
+      if_else(is.na(`PavCA Index`), "Control", 
+              if_else(abs(`PavCA Index`) < 0.5, "IN", 
+                      if_else(`PavCA Index` >= 0.5, 
+                              "ST", "GT"))),
+      levels = c("Control", "ST", "IN", "GT")),
+    .after = `PavCA Index`
+  ) %>%
+  mutate(across(
+    .cols = ends_with("Pre"),
+    .fns = ~ get(sub("_Pre", "_Post", cur_column())) - .,
+    .names = "{.col}_Change"
+  )
+  ) %>%
+  rename_with(
+    .fn = ~str_replace(., "_Pre_Change", "_Change"),
+    all_of(contains("Pre_Change"))
+  )
+
+# all.data <- mod.data
+
+all.data <- mod.data %>%
+  rename(PavCA = `PavCA Index`,
+         ID = `Rat ID`,
+         `X5HT_Pre` = `5HT_Pre`,
+         `X5HT_Post` = `5HT_Post`,
+         `X5HT_Change` = `5HT_Change`
+         )
+
+nice_table(bind_rows(
+  all.data %>%
+    filter(Phenotype3 == "Control") %>%
+    summarize(n = n()) %>%
+    mutate(cutoff = "", Phenotype = "Control", .before = 1),
+  
+  all.data %>%
+    filter(Phenotype3 != "Control") %>%
+    reshape2::melt(measure.vars = c("Phenotype3", "Phenotype4", "Phenotype5"),
+                   variable.name = "cutoff", value.name = "Phenotype") %>%
+    mutate(cutoff = str_replace(cutoff, "Phenotype", "0.")) %>%
+    group_by(cutoff, Phenotype) %>%
+    summarize(n = n())
+))
+```
+
+
+## Grouping of Analytes
+### Groups:
+  * **DA Metabolite**: `r paste0(c("DA", "DOPAC", "3MT", "HVA"), collapse = ", ")`
+  * **NE Metabolite**: `r paste0(c("NE", "NM", "VMA", "MOPEG", "DOPEG", "E"), collapse = ", ")`
+  * **5HT Metabolite**: `r paste0(c("X5HT", "5HIAA"), collapse = ", ")`
+  * **Amino Acid**: `r paste0(c("Glu", "Gln", "Gly", "Asp", "Ser"), collapse = ", ")`
+  * **Neurotransmitter**: `r paste0(c("Hist", "GABA", "Tau", "Ado"), collapse = ", ")`
+  * **ACh Ch**: `r paste0(c("ACh", "Ch"), collapse = ", ")`
+  * **Energy**: `r paste0(c("Glc"), collapse = ", ")`
+  
+```{r}
+good.compound[good.compound == "5HT"] <- "X5HT"
+
+long.data <- all.data %>%
+  reshape2::melt(id.vars = 1:6, 
+                 variable.name = "compound", value.name = "conc") %>%
+  mutate(
+    type = str_extract(compound, "[^_]+$"),
+    .before = compound
+  ) %>%
+  mutate(compound = str_extract(compound, "^[^_]+")) %>%
+  mutate(
+    group1 = case_when(
+      compound %in% c("Glu", "Gln", "Gly", "Asp", "Ser") ~ "Amino Acid",
+      compound %in% c("Glc") ~ "Energy",
+      .default = "Neurotransmitter"
+    ),
+    group2 = case_when(
+      compound %in% c("DA", "DOPAC", "3MT", "HVA") ~ "DA Metabolite",
+      compound %in% c("NE", "NM", "VMA", "MOPEG", "DOPEG", "E") ~ 
+        "NE Metabolite",
+      compound %in% c("X5HT", "5HIAA") ~ "X5HT Metabolite",
+      compound %in% c("Glu", "Gln", "Gly", "Asp", "Ser") ~ "Amino Acid",
+      compound %in% c("Hist", "GABA", "Tau", "Ado") ~ "Neurotransmitter",
+      compound %in% c("ACh", "Ch") ~ "Ach Ch",
+      compound %in% c("Glc") ~ "Energy"
+    ),
+  .after = "compound")
+```
+
+## Outliers
+
+```{r}
+outlier <- data %>% filter(Time == "Pre") %>%
+  select("Animal Num Per Phenotype", "Rat ID") %>%
+  filter(grepl("out",`Animal Num Per Phenotype`, ignore.case = TRUE)) %>%
+  pull("Rat ID")
+
+paste0(c(outlier, "107_Rd3"), collapse = ", ")
+```
+
+
+## Saving the Cleaned Data 
+```{r}
+saveRDS(long.data, "long_data.rds")
+saveRDS(all.data, "all_data.rds")
+```
+
+
 
 
 ```{r include=FALSE}

@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Chapter 2 Repeatedly Used Functions | Neurochemical Concentrations as Predictors of PavCA" />
+<meta property="og:type" content="book" />
+
+<meta property="og:description" content="…" />
+
+
+<meta name="author" content="Sayan Chakrabarty" />
+
+<meta name="date" content="2025-04-23" />
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<meta name="description" content="…">
+
+<title>Chapter 2 Repeatedly Used Functions | Neurochemical Concentrations as Predictors of PavCA</title>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="libs/navigation-1.1/tabsets.js"></script>
+<link href="libs/panelset-0.3.0/panelset.css" rel="stylesheet" />
+<script src="libs/panelset-0.3.0/panelset.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
+<script src="libs/tabwid-1.1.3/tabwid.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="toc.css" type="text/css" />
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+/* show arrow before summary tag as in bootstrap
+TODO: remove if bootstrap in updated in html_document (rmarkdown#1485) */
+details > summary {
+  display: list-item;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container-fluid main-container">
+
+
+<div class="row">
+<div class="col-sm-12">
+<div id="TOC">
+<ul>
+<li class="has-sub"><a href="index.html#data-description-and-cleaning" id="toc-data-description-and-cleaning"><span class="toc-section-number">1</span> Data Description and Cleaning</a>
+<ul>
+<li><a href="index.html#loading-the-packages-and-setting-up" id="toc-loading-the-packages-and-setting-up"><span class="toc-section-number">1.1</span> Loading the Packages and Setting Up</a></li>
+<li><a href="index.html#data-description" id="toc-data-description"><span class="toc-section-number">1.2</span> Data Description</a></li>
+<li class="has-sub"><a href="index.html#data-cleaning" id="toc-data-cleaning"><span class="toc-section-number">1.3</span> Data Cleaning</a>
+<ul>
+<li><a href="index.html#all-analytes-with-geq-50-missing-values-na-or-0-or-0-were-removed." id="toc-all-analytes-with-geq-50-missing-values-na-or-0-or-0-were-removed."><span class="toc-section-number">1.3.1</span> All analytes with <span class="math inline">\(\geq 50\%\)</span> missing values (NA or <span class="math inline">\(0\)</span> or <span class="math inline">\(&lt;0\)</span>) were removed.</a></li>
+<li><a href="index.html#new-phenotypes-were-defined-based-on-cutoffs-in-0.3-0.4-0.5" id="toc-new-phenotypes-were-defined-based-on-cutoffs-in-0.3-0.4-0.5"><span class="toc-section-number">1.3.2</span> New Phenotypes were defined based on cutoffs <span class="math inline">\(\in \{0.3, 0.4, 0.5\}\)</span></a></li>
+</ul></li>
+<li class="has-sub"><a href="index.html#grouping-of-analytes" id="toc-grouping-of-analytes"><span class="toc-section-number">1.4</span> Grouping of Analytes</a>
+<ul>
+<li><a href="index.html#groups" id="toc-groups"><span class="toc-section-number">1.4.1</span> Groups:</a></li>
+</ul></li>
+<li><a href="index.html#outliers" id="toc-outliers"><span class="toc-section-number">1.5</span> Outliers</a></li>
+<li><a href="index.html#saving-the-cleaned-data" id="toc-saving-the-cleaned-data"><span class="toc-section-number">1.6</span> Saving the Cleaned Data</a></li>
+</ul></li>
+<li class="has-sub"><a href="basefunctions.html#basefunctions" id="toc-basefunctions"><span class="toc-section-number">2</span> Repeatedly Used Functions</a>
+<ul>
+<li class="has-sub"><a href="basefunctions.html#functions" id="toc-functions"><span class="toc-section-number">2.1</span> Functions</a>
+<ul>
+<li><a href="basefunctions.html#model-runner" id="toc-model-runner"><span class="toc-section-number">2.1.1</span> Model Runner</a></li>
+<li><a href="basefunctions.html#plotters" id="toc-plotters"><span class="toc-section-number">2.1.2</span> Plotters</a></li>
+<li><a href="basefunctions.html#cross-validation" id="toc-cross-validation"><span class="toc-section-number">2.1.3</span> Cross-Validation</a></li>
+</ul></li>
+</ul></li>
+<li class="has-sub"><a href="concentration-plots.html#concentration-plots" id="toc-concentration-plots"><span class="toc-section-number">3</span> Concentration Plots</a>
+<ul>
+<li><a href="concentration-plots.html#overall-plots" id="toc-overall-plots"><span class="toc-section-number">3.1</span> Overall Plots</a></li>
+<li><a href="concentration-plots.html#cutoff-0.3" id="toc-cutoff-0.3"><span class="toc-section-number">3.2</span> Cutoff = <span class="math inline">\(0.3\)</span></a></li>
+<li><a href="concentration-plots.html#cutoff-0.4" id="toc-cutoff-0.4"><span class="toc-section-number">3.3</span> Cutoff = <span class="math inline">\(0.4\)</span></a></li>
+<li><a href="concentration-plots.html#cutoff-0.5" id="toc-cutoff-0.5"><span class="toc-section-number">3.4</span> Cutoff = <span class="math inline">\(0.5\)</span></a></li>
+</ul></li>
+<li><a href="parts.html#parts" id="toc-parts"><span class="toc-section-number">4</span> Parts</a></li>
+<li class="has-sub"><a href="footnotes-and-citations.html#footnotes-and-citations" id="toc-footnotes-and-citations"><span class="toc-section-number">5</span> Footnotes and citations</a>
+<ul>
+<li><a href="footnotes-and-citations.html#footnotes" id="toc-footnotes"><span class="toc-section-number">5.1</span> Footnotes</a></li>
+<li><a href="footnotes-and-citations.html#citations" id="toc-citations"><span class="toc-section-number">5.2</span> Citations</a></li>
+</ul></li>
+<li class="has-sub"><a href="blocks.html#blocks" id="toc-blocks"><span class="toc-section-number">6</span> Blocks</a>
+<ul>
+<li><a href="blocks.html#equations" id="toc-equations"><span class="toc-section-number">6.1</span> Equations</a></li>
+<li><a href="blocks.html#theorems-and-proofs" id="toc-theorems-and-proofs"><span class="toc-section-number">6.2</span> Theorems and proofs</a></li>
+<li><a href="blocks.html#callout-blocks" id="toc-callout-blocks"><span class="toc-section-number">6.3</span> Callout blocks</a></li>
+</ul></li>
+<li class="has-sub"><a href="sharing-your-book.html#sharing-your-book" id="toc-sharing-your-book"><span class="toc-section-number">7</span> Sharing your book</a>
+<ul>
+<li><a href="sharing-your-book.html#publishing" id="toc-publishing"><span class="toc-section-number">7.1</span> Publishing</a></li>
+<li><a href="sharing-your-book.html#pages" id="toc-pages"><span class="toc-section-number">7.2</span> 404 pages</a></li>
+<li><a href="sharing-your-book.html#metadata-for-sharing" id="toc-metadata-for-sharing"><span class="toc-section-number">7.3</span> Metadata for sharing</a></li>
+</ul></li>
+<li class="has-sub"><a href="panels.html#panels" id="toc-panels"><span class="toc-section-number">8</span> Panelset In R Markdown!</a>
+<ul>
+<li class="has-sub"><a href="panels.html#figures-and-tables" id="toc-figures-and-tables"><span class="toc-section-number">8.1</span> Figures and Tables</a>
+<ul>
+<li><a href="panels.html#figures" id="toc-figures"><span class="toc-section-number">8.1.1</span> Figures</a></li>
+<li><a href="panels.html#tables" id="toc-tables"><span class="toc-section-number">8.1.2</span> Tables</a></li>
+</ul></li>
+<li><a href="panels.html#section" id="toc-section"></a></li>
+</ul></li>
+<li><a href="references.html#references" id="toc-references">References</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<div id="basefunctions" class="section level1" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Repeatedly Used Functions</h1>
+<p>In this chapter, we define a few convenient functions that we used throughout the analysis.</p>
+<div id="functions" class="section level2 panelset" number="2.1">
+<h2><span class="header-section-number">2.1</span> Functions</h2>
+<div id="model-runner" class="section level3" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> Model Runner</h3>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="basefunctions.html#cb11-1" tabindex="-1"></a>mod.runner <span class="ot">&lt;-</span> <span class="cf">function</span>(mod.data){</span>
+<span id="cb11-2"><a href="basefunctions.html#cb11-2" tabindex="-1"></a>  </span>
+<span id="cb11-3"><a href="basefunctions.html#cb11-3" tabindex="-1"></a>  base.model <span class="ot">&lt;-</span> <span class="fu">lm</span>(PavCA <span class="sc">~</span> ., <span class="at">data =</span> mod.data)</span>
+<span id="cb11-4"><a href="basefunctions.html#cb11-4" tabindex="-1"></a>  <span class="fu">nice_lm</span>(base.model)</span>
+<span id="cb11-5"><a href="basefunctions.html#cb11-5" tabindex="-1"></a>  <span class="co"># plot_selectivity_ratio(base.model, mod.data)</span></span>
+<span id="cb11-6"><a href="basefunctions.html#cb11-6" tabindex="-1"></a>  </span>
+<span id="cb11-7"><a href="basefunctions.html#cb11-7" tabindex="-1"></a>  base.R2 <span class="ot">&lt;-</span> <span class="fu">summary</span>(base.model)<span class="sc">$</span>r.squared</span>
+<span id="cb11-8"><a href="basefunctions.html#cb11-8" tabindex="-1"></a>  base.rmse <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(base.model<span class="sc">$</span>residuals<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb11-9"><a href="basefunctions.html#cb11-9" tabindex="-1"></a>  base.nrmse <span class="ot">&lt;-</span> <span class="dv">100</span><span class="sc">*</span>base.rmse<span class="sc">/</span>(<span class="fu">max</span>(mod.data <span class="sc">%&gt;%</span> </span>
+<span id="cb11-10"><a href="basefunctions.html#cb11-10" tabindex="-1"></a>                                     <span class="fu">pull</span>(PavCA)) <span class="sc">-</span> </span>
+<span id="cb11-11"><a href="basefunctions.html#cb11-11" tabindex="-1"></a>                                 <span class="fu">min</span>((mod.data <span class="sc">%&gt;%</span> </span>
+<span id="cb11-12"><a href="basefunctions.html#cb11-12" tabindex="-1"></a>                                        <span class="fu">pull</span>(PavCA))))</span>
+<span id="cb11-13"><a href="basefunctions.html#cb11-13" tabindex="-1"></a>  base.R2; base.rmse; base.nrmse</span>
+<span id="cb11-14"><a href="basefunctions.html#cb11-14" tabindex="-1"></a>  sum.base <span class="ot">&lt;-</span> <span class="fu">summary</span>(base.model)</span>
+<span id="cb11-15"><a href="basefunctions.html#cb11-15" tabindex="-1"></a>  sum.base</span>
+<span id="cb11-16"><a href="basefunctions.html#cb11-16" tabindex="-1"></a>  <span class="co"># rownames(sum.base$coefficients[sum.base$coefficients[,4] &lt;= 0.05, ])</span></span>
+<span id="cb11-17"><a href="basefunctions.html#cb11-17" tabindex="-1"></a>  <span class="co"># rownames(sum.base$coefficients[sum.base$coefficients[,4] &lt;= 0.1, ])</span></span>
+<span id="cb11-18"><a href="basefunctions.html#cb11-18" tabindex="-1"></a>  <span class="co"># rownames(sum.base$coefficients[order(sum.base$coefficients[,4]),])[1:5]</span></span>
+<span id="cb11-19"><a href="basefunctions.html#cb11-19" tabindex="-1"></a>  </span>
+<span id="cb11-20"><a href="basefunctions.html#cb11-20" tabindex="-1"></a>  base.PavCA.hat <span class="ot">&lt;-</span> <span class="fu">predict</span>(base.model, <span class="at">newdata =</span> mod.data)</span>
+<span id="cb11-21"><a href="basefunctions.html#cb11-21" tabindex="-1"></a>  base.Phenotype3.hat <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">abs</span>(base.PavCA.hat) <span class="sc">&lt;</span> <span class="fl">0.3</span>, <span class="st">&quot;IN&quot;</span>, </span>
+<span id="cb11-22"><a href="basefunctions.html#cb11-22" tabindex="-1"></a>                                <span class="fu">ifelse</span>(base.PavCA.hat <span class="sc">&gt;=</span> <span class="fl">0.3</span>, <span class="st">&quot;ST&quot;</span>, <span class="st">&quot;GT&quot;</span>))</span>
+<span id="cb11-23"><a href="basefunctions.html#cb11-23" tabindex="-1"></a>  </span>
+<span id="cb11-24"><a href="basefunctions.html#cb11-24" tabindex="-1"></a>  <span class="co"># 100*mean(base.Phenotype3.hat == (all.data %&gt;% drop_na %&gt;% pull(Phenotype3)))</span></span>
+<span id="cb11-25"><a href="basefunctions.html#cb11-25" tabindex="-1"></a>  </span>
+<span id="cb11-26"><a href="basefunctions.html#cb11-26" tabindex="-1"></a>  base.Phenotype4.hat <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">abs</span>(base.PavCA.hat) <span class="sc">&lt;</span> <span class="fl">0.4</span>, <span class="st">&quot;IN&quot;</span>, </span>
+<span id="cb11-27"><a href="basefunctions.html#cb11-27" tabindex="-1"></a>                                <span class="fu">ifelse</span>(base.PavCA.hat <span class="sc">&gt;=</span> <span class="fl">0.4</span>, <span class="st">&quot;ST&quot;</span>, <span class="st">&quot;GT&quot;</span>))</span>
+<span id="cb11-28"><a href="basefunctions.html#cb11-28" tabindex="-1"></a>  </span>
+<span id="cb11-29"><a href="basefunctions.html#cb11-29" tabindex="-1"></a>  <span class="co"># 100*mean(base.Phenotype4.hat == (all.data %&gt;% drop_na %&gt;% pull(Phenotype4)))</span></span>
+<span id="cb11-30"><a href="basefunctions.html#cb11-30" tabindex="-1"></a>  </span>
+<span id="cb11-31"><a href="basefunctions.html#cb11-31" tabindex="-1"></a>  base.Phenotype5.hat <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">abs</span>(base.PavCA.hat) <span class="sc">&lt;</span> <span class="fl">0.5</span>, <span class="st">&quot;IN&quot;</span>, </span>
+<span id="cb11-32"><a href="basefunctions.html#cb11-32" tabindex="-1"></a>                                <span class="fu">ifelse</span>(base.PavCA.hat <span class="sc">&gt;=</span> <span class="fl">0.5</span>, <span class="st">&quot;ST&quot;</span>, <span class="st">&quot;GT&quot;</span>))</span>
+<span id="cb11-33"><a href="basefunctions.html#cb11-33" tabindex="-1"></a>  </span>
+<span id="cb11-34"><a href="basefunctions.html#cb11-34" tabindex="-1"></a>  <span class="co"># 100*mean(base.Phenotype5.hat == (all.data %&gt;% drop_na %&gt;% pull(Phenotype5)))</span></span>
+<span id="cb11-35"><a href="basefunctions.html#cb11-35" tabindex="-1"></a>  </span>
+<span id="cb11-36"><a href="basefunctions.html#cb11-36" tabindex="-1"></a>  <span class="co"># check_model(base.model, panel = T, </span></span>
+<span id="cb11-37"><a href="basefunctions.html#cb11-37" tabindex="-1"></a>              <span class="co"># check = c(&quot;qq&quot;, &quot;outliers&quot;, &quot;normality&quot;, &quot;linearity&quot;),</span></span>
+<span id="cb11-38"><a href="basefunctions.html#cb11-38" tabindex="-1"></a>              <span class="co"># residual_type = &quot;normal&quot;)</span></span>
+<span id="cb11-39"><a href="basefunctions.html#cb11-39" tabindex="-1"></a>  </span>
+<span id="cb11-40"><a href="basefunctions.html#cb11-40" tabindex="-1"></a>  base.infl <span class="ot">&lt;-</span> </span>
+<span id="cb11-41"><a href="basefunctions.html#cb11-41" tabindex="-1"></a>    (all.data <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>() <span class="sc">%&gt;%</span> <span class="fu">pull</span>(ID))[<span class="fu">check_outliers</span>(base.model)]</span>
+<span id="cb11-42"><a href="basefunctions.html#cb11-42" tabindex="-1"></a>  </span>
+<span id="cb11-43"><a href="basefunctions.html#cb11-43" tabindex="-1"></a>  <span class="co"># plot(check_collinearity(base.model)) + coord_flip()</span></span>
+<span id="cb11-44"><a href="basefunctions.html#cb11-44" tabindex="-1"></a>  </span>
+<span id="cb11-45"><a href="basefunctions.html#cb11-45" tabindex="-1"></a>  </span>
+<span id="cb11-46"><a href="basefunctions.html#cb11-46" tabindex="-1"></a>  <span class="fu">list</span>(</span>
+<span id="cb11-47"><a href="basefunctions.html#cb11-47" tabindex="-1"></a>    <span class="at">model =</span> base.model,</span>
+<span id="cb11-48"><a href="basefunctions.html#cb11-48" tabindex="-1"></a>    <span class="at">R2 =</span> base.R2,</span>
+<span id="cb11-49"><a href="basefunctions.html#cb11-49" tabindex="-1"></a>    <span class="at">rmse =</span> base.rmse,</span>
+<span id="cb11-50"><a href="basefunctions.html#cb11-50" tabindex="-1"></a>    <span class="at">nrmse =</span> base.nrmse,</span>
+<span id="cb11-51"><a href="basefunctions.html#cb11-51" tabindex="-1"></a>    <span class="at">summary =</span> sum.base,</span>
+<span id="cb11-52"><a href="basefunctions.html#cb11-52" tabindex="-1"></a>    <span class="at">signif05 =</span> <span class="fu">rownames</span>(sum.base<span class="sc">$</span>coefficients[sum.base<span class="sc">$</span>coefficients[,<span class="dv">4</span>] <span class="sc">&lt;=</span> <span class="fl">0.05</span>, ]),</span>
+<span id="cb11-53"><a href="basefunctions.html#cb11-53" tabindex="-1"></a>    <span class="at">signif1 =</span> <span class="fu">rownames</span>(sum.base<span class="sc">$</span>coefficients[sum.base<span class="sc">$</span>coefficients[,<span class="dv">4</span>] <span class="sc">&lt;=</span> <span class="fl">0.1</span>, ]),</span>
+<span id="cb11-54"><a href="basefunctions.html#cb11-54" tabindex="-1"></a>    <span class="at">small5p =</span> <span class="fu">rownames</span>(sum.base<span class="sc">$</span>coefficients[<span class="fu">order</span>(sum.base<span class="sc">$</span>coefficients[,<span class="dv">4</span>]),])[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>],</span>
+<span id="cb11-55"><a href="basefunctions.html#cb11-55" tabindex="-1"></a>    <span class="co"># select.plot = plot_selectivity_ratio(base.model, mod.data),</span></span>
+<span id="cb11-56"><a href="basefunctions.html#cb11-56" tabindex="-1"></a>    <span class="at">PavCA.hat =</span> base.PavCA.hat,</span>
+<span id="cb11-57"><a href="basefunctions.html#cb11-57" tabindex="-1"></a>    <span class="at">Phenotype3.hat =</span> base.Phenotype3.hat,</span>
+<span id="cb11-58"><a href="basefunctions.html#cb11-58" tabindex="-1"></a>    <span class="at">Phenotype3.accu =</span> <span class="dv">100</span><span class="sc">*</span><span class="fu">mean</span>(base.Phenotype3.hat <span class="sc">==</span> </span>
+<span id="cb11-59"><a href="basefunctions.html#cb11-59" tabindex="-1"></a>                                 (all.data <span class="sc">%&gt;%</span> drop_na <span class="sc">%&gt;%</span> <span class="fu">pull</span>(Phenotype3))),</span>
+<span id="cb11-60"><a href="basefunctions.html#cb11-60" tabindex="-1"></a>    <span class="at">Phenotype4.hat =</span> base.Phenotype4.hat,</span>
+<span id="cb11-61"><a href="basefunctions.html#cb11-61" tabindex="-1"></a>    <span class="at">Phenotype4.accu =</span> <span class="dv">100</span><span class="sc">*</span><span class="fu">mean</span>(base.Phenotype4.hat <span class="sc">==</span> </span>
+<span id="cb11-62"><a href="basefunctions.html#cb11-62" tabindex="-1"></a>                                 (all.data <span class="sc">%&gt;%</span> drop_na <span class="sc">%&gt;%</span> <span class="fu">pull</span>(Phenotype4))),</span>
+<span id="cb11-63"><a href="basefunctions.html#cb11-63" tabindex="-1"></a>    <span class="at">Phenotype5.hat =</span> base.Phenotype5.hat,</span>
+<span id="cb11-64"><a href="basefunctions.html#cb11-64" tabindex="-1"></a>    <span class="at">Phenotype5.accu =</span> <span class="dv">100</span><span class="sc">*</span><span class="fu">mean</span>(base.Phenotype5.hat <span class="sc">==</span> </span>
+<span id="cb11-65"><a href="basefunctions.html#cb11-65" tabindex="-1"></a>                                 (all.data <span class="sc">%&gt;%</span> drop_na <span class="sc">%&gt;%</span> <span class="fu">pull</span>(Phenotype5))),</span>
+<span id="cb11-66"><a href="basefunctions.html#cb11-66" tabindex="-1"></a>    <span class="at">check_model =</span> <span class="fu">check_model</span>(base.model, <span class="at">panel =</span> T, </span>
+<span id="cb11-67"><a href="basefunctions.html#cb11-67" tabindex="-1"></a>                              <span class="at">check =</span> <span class="fu">c</span>(<span class="st">&quot;qq&quot;</span>, <span class="st">&quot;outliers&quot;</span>, <span class="st">&quot;normality&quot;</span>, <span class="st">&quot;linearity&quot;</span>),</span>
+<span id="cb11-68"><a href="basefunctions.html#cb11-68" tabindex="-1"></a>                              <span class="at">residual_type =</span> <span class="st">&quot;normal&quot;</span>),</span>
+<span id="cb11-69"><a href="basefunctions.html#cb11-69" tabindex="-1"></a>    <span class="at">influential =</span> base.infl,</span>
+<span id="cb11-70"><a href="basefunctions.html#cb11-70" tabindex="-1"></a>    <span class="at">check_collinearity =</span> <span class="fu">plot</span>(<span class="fu">check_collinearity</span>(base.model)) <span class="sc">+</span> <span class="fu">coord_flip</span>())</span>
+<span id="cb11-71"><a href="basefunctions.html#cb11-71" tabindex="-1"></a>    </span>
+<span id="cb11-72"><a href="basefunctions.html#cb11-72" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+<div id="plotters" class="section level3" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> Plotters</h3>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="basefunctions.html#cb12-1" tabindex="-1"></a>plot_selectivity_ratio <span class="ot">&lt;-</span> <span class="cf">function</span>(fit, data, <span class="at">cleanup =</span> <span class="st">&quot;_&quot;</span>) {</span>
+<span id="cb12-2"><a href="basefunctions.html#cb12-2" tabindex="-1"></a>  </span>
+<span id="cb12-3"><a href="basefunctions.html#cb12-3" tabindex="-1"></a>  <span class="co"># Extract model matrix (excluding intercept)</span></span>
+<span id="cb12-4"><a href="basefunctions.html#cb12-4" tabindex="-1"></a>  X <span class="ot">&lt;-</span> <span class="fu">model.matrix</span>(fit)[, <span class="sc">-</span><span class="dv">1</span>]  <span class="co"># Remove intercept column</span></span>
+<span id="cb12-5"><a href="basefunctions.html#cb12-5" tabindex="-1"></a>  Y <span class="ot">&lt;-</span> data[[<span class="fu">as.character</span>(<span class="fu">formula</span>(fit)[[<span class="dv">2</span>]])]]  <span class="co"># Extract response variable</span></span>
+<span id="cb12-6"><a href="basefunctions.html#cb12-6" tabindex="-1"></a>  </span>
+<span id="cb12-7"><a href="basefunctions.html#cb12-7" tabindex="-1"></a>  <span class="co"># Compute explained variance per predictor</span></span>
+<span id="cb12-8"><a href="basefunctions.html#cb12-8" tabindex="-1"></a>  sav <span class="ot">&lt;-</span> <span class="fu">anova</span>(fit)</span>
+<span id="cb12-9"><a href="basefunctions.html#cb12-9" tabindex="-1"></a>  SSR <span class="ot">&lt;-</span> sav<span class="sc">$</span><span class="st">`</span><span class="at">Sum Sq</span><span class="st">`</span>[<span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(X)]</span>
+<span id="cb12-10"><a href="basefunctions.html#cb12-10" tabindex="-1"></a>  </span>
+<span id="cb12-11"><a href="basefunctions.html#cb12-11" tabindex="-1"></a>  <span class="co"># Compute total residual variance</span></span>
+<span id="cb12-12"><a href="basefunctions.html#cb12-12" tabindex="-1"></a>  <span class="co"># SSE &lt;- sum(residuals^2)</span></span>
+<span id="cb12-13"><a href="basefunctions.html#cb12-13" tabindex="-1"></a>  SSE <span class="ot">&lt;-</span> <span class="fu">sum</span>(sav<span class="sc">$</span><span class="st">`</span><span class="at">Sum Sq</span><span class="st">`</span>[<span class="fu">ncol</span>(X) <span class="sc">+</span> <span class="dv">1</span>])</span>
+<span id="cb12-14"><a href="basefunctions.html#cb12-14" tabindex="-1"></a>  </span>
+<span id="cb12-15"><a href="basefunctions.html#cb12-15" tabindex="-1"></a>  <span class="co"># Compute Selectivity Ratio (SR)</span></span>
+<span id="cb12-16"><a href="basefunctions.html#cb12-16" tabindex="-1"></a>  SR <span class="ot">&lt;-</span> SSR <span class="sc">/</span> SSE</span>
+<span id="cb12-17"><a href="basefunctions.html#cb12-17" tabindex="-1"></a>  </span>
+<span id="cb12-18"><a href="basefunctions.html#cb12-18" tabindex="-1"></a>  <span class="co"># Create a data frame for plotting</span></span>
+<span id="cb12-19"><a href="basefunctions.html#cb12-19" tabindex="-1"></a>  SR_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb12-20"><a href="basefunctions.html#cb12-20" tabindex="-1"></a>    <span class="at">Predictor =</span> <span class="fu">colnames</span>(X),</span>
+<span id="cb12-21"><a href="basefunctions.html#cb12-21" tabindex="-1"></a>    <span class="at">Selectivity_Ratio =</span> SR</span>
+<span id="cb12-22"><a href="basefunctions.html#cb12-22" tabindex="-1"></a>  )</span>
+<span id="cb12-23"><a href="basefunctions.html#cb12-23" tabindex="-1"></a>  </span>
+<span id="cb12-24"><a href="basefunctions.html#cb12-24" tabindex="-1"></a>  <span class="co"># Add negative log p-value from t-test</span></span>
+<span id="cb12-25"><a href="basefunctions.html#cb12-25" tabindex="-1"></a>  sum.fit <span class="ot">&lt;-</span> <span class="fu">summary</span>(fit)<span class="sc">$</span>coefficients[<span class="sc">-</span><span class="dv">1</span>, ]</span>
+<span id="cb12-26"><a href="basefunctions.html#cb12-26" tabindex="-1"></a>  SR_df<span class="sc">$</span>neg_log_p <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fu">log10</span>(sum.fit[, <span class="dv">4</span>])</span>
+<span id="cb12-27"><a href="basefunctions.html#cb12-27" tabindex="-1"></a>  </span>
+<span id="cb12-28"><a href="basefunctions.html#cb12-28" tabindex="-1"></a>  <span class="co"># cleaning up names</span></span>
+<span id="cb12-29"><a href="basefunctions.html#cb12-29" tabindex="-1"></a>  SR_df <span class="ot">&lt;-</span> SR_df <span class="sc">%&gt;%</span></span>
+<span id="cb12-30"><a href="basefunctions.html#cb12-30" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Predictor =</span> <span class="fu">gsub</span>(cleanup, <span class="st">&quot;&quot;</span>, Predictor)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-31"><a href="basefunctions.html#cb12-31" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Predictor =</span> <span class="fu">gsub</span>(<span class="st">&quot;X&quot;</span>, <span class="st">&quot;&quot;</span>, Predictor)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-32"><a href="basefunctions.html#cb12-32" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Predictor =</span> <span class="fu">gsub</span>(<span class="st">&quot;`&quot;</span>, <span class="st">&quot;&quot;</span>, Predictor)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-33"><a href="basefunctions.html#cb12-33" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Predictor =</span> <span class="fu">gsub</span>(<span class="st">&quot; &quot;</span>, <span class="st">&quot;_&quot;</span>, Predictor))</span>
+<span id="cb12-34"><a href="basefunctions.html#cb12-34" tabindex="-1"></a>  </span>
+<span id="cb12-35"><a href="basefunctions.html#cb12-35" tabindex="-1"></a>  <span class="co"># Plot using ggplot2</span></span>
+<span id="cb12-36"><a href="basefunctions.html#cb12-36" tabindex="-1"></a>  sel.plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(SR_df, <span class="fu">aes</span>(<span class="at">y =</span> Selectivity_Ratio, <span class="at">x =</span> Predictor)) <span class="sc">+</span></span>
+<span id="cb12-37"><a href="basefunctions.html#cb12-37" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;steelblue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb12-38"><a href="basefunctions.html#cb12-38" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Selectivity Ratio&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Selectivity Ratio&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Predictors&quot;</span>) <span class="sc">+</span></span>
+<span id="cb12-39"><a href="basefunctions.html#cb12-39" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb12-40"><a href="basefunctions.html#cb12-40" tabindex="-1"></a>    <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fu">mean</span>(SR), <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb12-41"><a href="basefunctions.html#cb12-41" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>),</span>
+<span id="cb12-42"><a href="basefunctions.html#cb12-42" tabindex="-1"></a>          <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb12-43"><a href="basefunctions.html#cb12-43" tabindex="-1"></a>          <span class="at">axis.title.x =</span> <span class="fu">element_blank</span>())</span>
+<span id="cb12-44"><a href="basefunctions.html#cb12-44" tabindex="-1"></a>  </span>
+<span id="cb12-45"><a href="basefunctions.html#cb12-45" tabindex="-1"></a>  p.plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(SR_df, <span class="fu">aes</span>(<span class="at">y =</span> neg_log_p, <span class="at">x =</span> Predictor)) <span class="sc">+</span></span>
+<span id="cb12-46"><a href="basefunctions.html#cb12-46" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;steelblue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb12-47"><a href="basefunctions.html#cb12-47" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Significance&quot;</span>, <span class="at">y =</span> <span class="st">&quot;-log(p-value)&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Predictors&quot;</span>) <span class="sc">+</span></span>
+<span id="cb12-48"><a href="basefunctions.html#cb12-48" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb12-49"><a href="basefunctions.html#cb12-49" tabindex="-1"></a>    <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="sc">-</span><span class="fu">log10</span>(<span class="fl">0.05</span>), <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb12-50"><a href="basefunctions.html#cb12-50" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>),</span>
+<span id="cb12-51"><a href="basefunctions.html#cb12-51" tabindex="-1"></a>          <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb12-52"><a href="basefunctions.html#cb12-52" tabindex="-1"></a>          <span class="at">axis.title.x =</span> <span class="fu">element_blank</span>())</span>
+<span id="cb12-53"><a href="basefunctions.html#cb12-53" tabindex="-1"></a>  </span>
+<span id="cb12-54"><a href="basefunctions.html#cb12-54" tabindex="-1"></a>  <span class="fu">ggarrange</span>(sel.plot, p.plot, <span class="at">nrow =</span> <span class="dv">2</span>)</span>
+<span id="cb12-55"><a href="basefunctions.html#cb12-55" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+<div id="cross-validation" class="section level3" number="2.1.3">
+<h3><span class="header-section-number">2.1.3</span> Cross-Validation</h3>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="basefunctions.html#cb13-1" tabindex="-1"></a>cv.lm <span class="ot">&lt;-</span> <span class="cf">function</span>(b.pca, <span class="at">ncv =</span> <span class="dv">10000</span>, <span class="at">train.cv =</span> <span class="fl">0.8</span>, <span class="at">nn =</span> <span class="fu">nrow</span>(b.pca)){</span>
+<span id="cb13-2"><a href="basefunctions.html#cb13-2" tabindex="-1"></a>  cv.out <span class="ot">&lt;-</span> parallel<span class="sc">::</span><span class="fu">mclapply</span>(<span class="dv">1</span><span class="sc">:</span>ncv, <span class="cf">function</span>(vv) {</span>
+<span id="cb13-3"><a href="basefunctions.html#cb13-3" tabindex="-1"></a>    train.ind <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>nn, <span class="at">size =</span> <span class="fu">floor</span>(train.cv<span class="sc">*</span>nn), <span class="at">replace =</span> F)</span>
+<span id="cb13-4"><a href="basefunctions.html#cb13-4" tabindex="-1"></a>    test.ind <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(<span class="dv">1</span><span class="sc">:</span>nn, train.ind)</span>
+<span id="cb13-5"><a href="basefunctions.html#cb13-5" tabindex="-1"></a>    </span>
+<span id="cb13-6"><a href="basefunctions.html#cb13-6" tabindex="-1"></a>    train.data <span class="ot">&lt;-</span> b.pca[train.ind, ]</span>
+<span id="cb13-7"><a href="basefunctions.html#cb13-7" tabindex="-1"></a>    test.data <span class="ot">&lt;-</span> b.pca[test.ind, ]</span>
+<span id="cb13-8"><a href="basefunctions.html#cb13-8" tabindex="-1"></a>    </span>
+<span id="cb13-9"><a href="basefunctions.html#cb13-9" tabindex="-1"></a>    test.data<span class="sc">$</span>Phenotype3 <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">abs</span>(test.data<span class="sc">$</span>PavCA) <span class="sc">&lt;</span> <span class="fl">0.3</span>, <span class="st">&quot;IN&quot;</span>, </span>
+<span id="cb13-10"><a href="basefunctions.html#cb13-10" tabindex="-1"></a>                                   <span class="fu">ifelse</span>(test.data<span class="sc">$</span>PavCA <span class="sc">&gt;=</span> <span class="fl">0.3</span>, <span class="st">&quot;ST&quot;</span>, <span class="st">&quot;GT&quot;</span>))</span>
+<span id="cb13-11"><a href="basefunctions.html#cb13-11" tabindex="-1"></a>    test.data<span class="sc">$</span>Phenotype4 <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">abs</span>(test.data<span class="sc">$</span>PavCA) <span class="sc">&lt;</span> <span class="fl">0.4</span>, <span class="st">&quot;IN&quot;</span>,</span>
+<span id="cb13-12"><a href="basefunctions.html#cb13-12" tabindex="-1"></a>                                   <span class="fu">ifelse</span>(test.data<span class="sc">$</span>PavCA <span class="sc">&gt;=</span> <span class="fl">0.4</span>, <span class="st">&quot;ST&quot;</span>, <span class="st">&quot;GT&quot;</span>))</span>
+<span id="cb13-13"><a href="basefunctions.html#cb13-13" tabindex="-1"></a>    test.data<span class="sc">$</span>Phenotype5 <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">abs</span>(test.data<span class="sc">$</span>PavCA) <span class="sc">&lt;</span> <span class="fl">0.5</span>, <span class="st">&quot;IN&quot;</span>,</span>
+<span id="cb13-14"><a href="basefunctions.html#cb13-14" tabindex="-1"></a>                                   <span class="fu">ifelse</span>(test.data<span class="sc">$</span>PavCA <span class="sc">&gt;=</span> <span class="fl">0.5</span>, <span class="st">&quot;ST&quot;</span>, <span class="st">&quot;GT&quot;</span>))</span>
+<span id="cb13-15"><a href="basefunctions.html#cb13-15" tabindex="-1"></a>    </span>
+<span id="cb13-16"><a href="basefunctions.html#cb13-16" tabindex="-1"></a>    train.fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(PavCA <span class="sc">~</span> ., <span class="at">data =</span> train.data)</span>
+<span id="cb13-17"><a href="basefunctions.html#cb13-17" tabindex="-1"></a>    </span>
+<span id="cb13-18"><a href="basefunctions.html#cb13-18" tabindex="-1"></a>    test.pred.full <span class="ot">&lt;-</span> <span class="fu">predict</span>(train.fit, <span class="at">newdata =</span> test.data)</span>
+<span id="cb13-19"><a href="basefunctions.html#cb13-19" tabindex="-1"></a>    test.pred <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(test.pred.full <span class="sc">&gt;</span> <span class="dv">1</span>, <span class="dv">1</span>, </span>
+<span id="cb13-20"><a href="basefunctions.html#cb13-20" tabindex="-1"></a>                          <span class="fu">ifelse</span>(test.pred.full <span class="sc">&lt;</span> <span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>, test.pred.full))</span>
+<span id="cb13-21"><a href="basefunctions.html#cb13-21" tabindex="-1"></a>    </span>
+<span id="cb13-22"><a href="basefunctions.html#cb13-22" tabindex="-1"></a>    test.mse <span class="ot">&lt;-</span> <span class="fu">mean</span>((test.data<span class="sc">$</span>PavCA <span class="sc">-</span> test.pred)<span class="sc">^</span><span class="dv">2</span>) </span>
+<span id="cb13-23"><a href="basefunctions.html#cb13-23" tabindex="-1"></a>    </span>
+<span id="cb13-24"><a href="basefunctions.html#cb13-24" tabindex="-1"></a>    test.nmse <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(test.mse)<span class="sc">/</span>((</span>
+<span id="cb13-25"><a href="basefunctions.html#cb13-25" tabindex="-1"></a>      <span class="fu">max</span>(test.data<span class="sc">$</span>PavCA) <span class="sc">-</span> <span class="fu">min</span>(test.data<span class="sc">$</span>PavCA))<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb13-26"><a href="basefunctions.html#cb13-26" tabindex="-1"></a>    </span>
+<span id="cb13-27"><a href="basefunctions.html#cb13-27" tabindex="-1"></a>    test.P3.hat <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">abs</span>(test.pred) <span class="sc">&lt;</span> <span class="fl">0.3</span>, <span class="st">&quot;IN&quot;</span>, </span>
+<span id="cb13-28"><a href="basefunctions.html#cb13-28" tabindex="-1"></a>                          <span class="fu">ifelse</span>(test.pred <span class="sc">&gt;=</span> <span class="fl">0.3</span>, <span class="st">&quot;ST&quot;</span>, <span class="st">&quot;GT&quot;</span>))</span>
+<span id="cb13-29"><a href="basefunctions.html#cb13-29" tabindex="-1"></a>    </span>
+<span id="cb13-30"><a href="basefunctions.html#cb13-30" tabindex="-1"></a>    test.P4.hat <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">abs</span>(test.pred) <span class="sc">&lt;</span> <span class="fl">0.4</span>, <span class="st">&quot;IN&quot;</span>, </span>
+<span id="cb13-31"><a href="basefunctions.html#cb13-31" tabindex="-1"></a>                          <span class="fu">ifelse</span>(test.pred <span class="sc">&gt;=</span> <span class="fl">0.4</span>, <span class="st">&quot;ST&quot;</span>, <span class="st">&quot;GT&quot;</span>))</span>
+<span id="cb13-32"><a href="basefunctions.html#cb13-32" tabindex="-1"></a>    </span>
+<span id="cb13-33"><a href="basefunctions.html#cb13-33" tabindex="-1"></a>    test.P5.hat <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">abs</span>(test.pred) <span class="sc">&lt;</span> <span class="fl">0.5</span>, <span class="st">&quot;IN&quot;</span>,</span>
+<span id="cb13-34"><a href="basefunctions.html#cb13-34" tabindex="-1"></a>                          <span class="fu">ifelse</span>(test.pred <span class="sc">&gt;=</span> <span class="fl">0.5</span>, <span class="st">&quot;ST&quot;</span>, <span class="st">&quot;GT&quot;</span>))</span>
+<span id="cb13-35"><a href="basefunctions.html#cb13-35" tabindex="-1"></a>    </span>
+<span id="cb13-36"><a href="basefunctions.html#cb13-36" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">data.table</span>(</span>
+<span id="cb13-37"><a href="basefunctions.html#cb13-37" tabindex="-1"></a>      <span class="at">test.mse =</span> test.mse,</span>
+<span id="cb13-38"><a href="basefunctions.html#cb13-38" tabindex="-1"></a>      <span class="at">test.nmse =</span> test.nmse,</span>
+<span id="cb13-39"><a href="basefunctions.html#cb13-39" tabindex="-1"></a>      <span class="at">test.P3.acc =</span> <span class="fu">mean</span>(test.P3.hat <span class="sc">==</span> (test.data <span class="sc">%&gt;%</span> <span class="fu">pull</span>(Phenotype3))),</span>
+<span id="cb13-40"><a href="basefunctions.html#cb13-40" tabindex="-1"></a>      <span class="at">test.P4.acc =</span> <span class="fu">mean</span>(test.P4.hat <span class="sc">==</span> (test.data <span class="sc">%&gt;%</span> <span class="fu">pull</span>(Phenotype4))),</span>
+<span id="cb13-41"><a href="basefunctions.html#cb13-41" tabindex="-1"></a>      <span class="at">test.P5.acc =</span> <span class="fu">mean</span>(test.P5.hat <span class="sc">==</span> (test.data <span class="sc">%&gt;%</span> <span class="fu">pull</span>(Phenotype5)))</span>
+<span id="cb13-42"><a href="basefunctions.html#cb13-42" tabindex="-1"></a>    ))</span>
+<span id="cb13-43"><a href="basefunctions.html#cb13-43" tabindex="-1"></a>    </span>
+<span id="cb13-44"><a href="basefunctions.html#cb13-44" tabindex="-1"></a>  }, <span class="at">mc.cores =</span> <span class="dv">8</span>)</span>
+<span id="cb13-45"><a href="basefunctions.html#cb13-45" tabindex="-1"></a>  </span>
+<span id="cb13-46"><a href="basefunctions.html#cb13-46" tabindex="-1"></a>  cv.tab <span class="ot">&lt;-</span> <span class="fu">do.call</span>(bind_rows, cv.out)</span>
+<span id="cb13-47"><a href="basefunctions.html#cb13-47" tabindex="-1"></a>  </span>
+<span id="cb13-48"><a href="basefunctions.html#cb13-48" tabindex="-1"></a>  cv.tab <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(</span>
+<span id="cb13-49"><a href="basefunctions.html#cb13-49" tabindex="-1"></a>    <span class="at">cv.rmse =</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(test.mse)),</span>
+<span id="cb13-50"><a href="basefunctions.html#cb13-50" tabindex="-1"></a>    <span class="at">cv.nrmse =</span> <span class="dv">100</span><span class="sc">*</span><span class="fu">sqrt</span>(<span class="fu">mean</span>(test.nmse)),</span>
+<span id="cb13-51"><a href="basefunctions.html#cb13-51" tabindex="-1"></a>    <span class="at">cv.P3.acc =</span> <span class="fu">mean</span>(test.P3.acc),</span>
+<span id="cb13-52"><a href="basefunctions.html#cb13-52" tabindex="-1"></a>    <span class="at">cv.P4.acc =</span> <span class="fu">mean</span>(test.P4.acc),</span>
+<span id="cb13-53"><a href="basefunctions.html#cb13-53" tabindex="-1"></a>    <span class="at">cv.P5.acc =</span> <span class="fu">mean</span>(test.P5.acc)</span>
+<span id="cb13-54"><a href="basefunctions.html#cb13-54" tabindex="-1"></a>  )</span>
+<span id="cb13-55"><a href="basefunctions.html#cb13-55" tabindex="-1"></a>}</span></code></pre></div>
+
+</div>
+</div>
+</div>
+<p style="text-align: center;">
+<a href="index.html"><button class="btn btn-default">Previous</button></a>
+<a href="concentration-plots.html"><button class="btn btn-default">Next</button></a>
+</p>
+</div>
+</div>
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+</body>
+</html>

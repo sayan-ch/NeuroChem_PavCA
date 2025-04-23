@@ -5,17 +5,15 @@
 <meta charset="utf-8" />
 <meta name="generator" content="pandoc" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="A Minimal Book Example" />
+<meta property="og:title" content="Neurochemical Concentrations as Predictors of PavCA" />
 <meta property="og:type" content="book" />
 
-<meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
-The HTML output format for this example is bookdown::gitbook,
-set in the _output.yml file.</p>" />
+<meta property="og:description" content="…" />
 
 
-<meta name="author" content="John Doe" />
+<meta name="author" content="Sayan Chakrabarty" />
 
-<meta name="date" content="2025-04-22" />
+<meta name="date" content="2025-04-23" />
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -24,16 +22,32 @@ MathJax.Hub.Config({
 </script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
-The HTML output format for this example is bookdown::gitbook,
-set in the _output.yml file.</p>">
+<meta name="description" content="…">
 
-<title>A Minimal Book Example</title>
+<title>Neurochemical Concentrations as Predictors of PavCA</title>
 
-<link href="libs/tufte-css-2015.12.29/tufte.css" rel="stylesheet" />
-<link href="libs/tufte-css-2015.12.29/envisioned.css" rel="stylesheet" />
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="libs/navigation-1.1/tabsets.js"></script>
 <link href="libs/panelset-0.3.0/panelset.css" rel="stylesheet" />
 <script src="libs/panelset-0.3.0/panelset.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
+<script src="libs/tabwid-1.1.3/tabwid.js"></script>
 
 
 <style type="text/css">code{white-space: pre;}</style>
@@ -102,6 +116,11 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
 
 
 <style type="text/css">
@@ -130,33 +149,69 @@ div.csl-indent {
 
 <link rel="stylesheet" href="toc.css" type="text/css" />
 
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+/* show arrow before summary tag as in bootstrap
+TODO: remove if bootstrap in updated in html_document (rmarkdown#1485) */
+details > summary {
+  display: list-item;
+  cursor: pointer;
+}
+</style>
 </head>
 
 <body>
 
+<div class="container-fluid main-container">
 
 
 <div class="row">
 <div class="col-sm-12">
 <div id="TOC">
 <ul>
-<li class="has-sub"><a href="index.html#about" id="toc-about"><span class="toc-section-number">1</span> About</a>
+<li class="has-sub"><a href="index.html#data-description-and-cleaning" id="toc-data-description-and-cleaning"><span class="toc-section-number">1</span> Data Description and Cleaning</a>
 <ul>
-<li><a href="index.html#usage" id="toc-usage"><span class="toc-section-number">1.1</span> Usage</a></li>
-<li><a href="index.html#render-book" id="toc-render-book"><span class="toc-section-number">1.2</span> Render book</a></li>
-<li><a href="index.html#preview-book" id="toc-preview-book"><span class="toc-section-number">1.3</span> Preview book</a></li>
+<li><a href="index.html#loading-the-packages-and-setting-up" id="toc-loading-the-packages-and-setting-up"><span class="toc-section-number">1.1</span> Loading the Packages and Setting Up</a></li>
+<li><a href="index.html#data-description" id="toc-data-description"><span class="toc-section-number">1.2</span> Data Description</a></li>
+<li class="has-sub"><a href="index.html#data-cleaning" id="toc-data-cleaning"><span class="toc-section-number">1.3</span> Data Cleaning</a>
+<ul>
+<li><a href="index.html#all-analytes-with-geq-50-missing-values-na-or-0-or-0-were-removed." id="toc-all-analytes-with-geq-50-missing-values-na-or-0-or-0-were-removed."><span class="toc-section-number">1.3.1</span> All analytes with <span class="math inline">\(\geq 50\%\)</span> missing values (NA or <span class="math inline">\(0\)</span> or <span class="math inline">\(&lt;0\)</span>) were removed.</a></li>
+<li><a href="index.html#new-phenotypes-were-defined-based-on-cutoffs-in-0.3-0.4-0.5" id="toc-new-phenotypes-were-defined-based-on-cutoffs-in-0.3-0.4-0.5"><span class="toc-section-number">1.3.2</span> New Phenotypes were defined based on cutoffs <span class="math inline">\(\in \{0.3, 0.4, 0.5\}\)</span></a></li>
 </ul></li>
-<li class="has-sub"><a href="intro.html#intro" id="toc-intro"><span class="toc-section-number">2</span> Hello bookdown</a>
+<li class="has-sub"><a href="index.html#grouping-of-analytes" id="toc-grouping-of-analytes"><span class="toc-section-number">1.4</span> Grouping of Analytes</a>
 <ul>
-<li class="has-sub"><a href="intro.html#a-section" id="toc-a-section"><span class="toc-section-number">2.1</span> A section</a>
+<li><a href="index.html#groups" id="toc-groups"><span class="toc-section-number">1.4.1</span> Groups:</a></li>
+</ul></li>
+<li><a href="index.html#outliers" id="toc-outliers"><span class="toc-section-number">1.5</span> Outliers</a></li>
+<li><a href="index.html#saving-the-cleaned-data" id="toc-saving-the-cleaned-data"><span class="toc-section-number">1.6</span> Saving the Cleaned Data</a></li>
+</ul></li>
+<li class="has-sub"><a href="basefunctions.html#basefunctions" id="toc-basefunctions"><span class="toc-section-number">2</span> Repeatedly Used Functions</a>
 <ul>
-<li><a href="intro.html#an-unnumbered-section" id="toc-an-unnumbered-section">An unnumbered section</a></li>
+<li class="has-sub"><a href="basefunctions.html#functions" id="toc-functions"><span class="toc-section-number">2.1</span> Functions</a>
+<ul>
+<li><a href="basefunctions.html#model-runner" id="toc-model-runner"><span class="toc-section-number">2.1.1</span> Model Runner</a></li>
+<li><a href="basefunctions.html#plotters" id="toc-plotters"><span class="toc-section-number">2.1.2</span> Plotters</a></li>
+<li><a href="basefunctions.html#cross-validation" id="toc-cross-validation"><span class="toc-section-number">2.1.3</span> Cross-Validation</a></li>
 </ul></li>
 </ul></li>
-<li class="has-sub"><a href="cross.html#cross" id="toc-cross"><span class="toc-section-number">3</span> Cross-references</a>
+<li class="has-sub"><a href="concentration-plots.html#concentration-plots" id="toc-concentration-plots"><span class="toc-section-number">3</span> Concentration Plots</a>
 <ul>
-<li><a href="cross.html#chapters-and-sub-chapters" id="toc-chapters-and-sub-chapters"><span class="toc-section-number">3.1</span> Chapters and sub-chapters</a></li>
-<li><a href="cross.html#captioned-figures-and-tables" id="toc-captioned-figures-and-tables"><span class="toc-section-number">3.2</span> Captioned figures and tables</a></li>
+<li><a href="concentration-plots.html#overall-plots" id="toc-overall-plots"><span class="toc-section-number">3.1</span> Overall Plots</a></li>
+<li><a href="concentration-plots.html#cutoff-0.3" id="toc-cutoff-0.3"><span class="toc-section-number">3.2</span> Cutoff = <span class="math inline">\(0.3\)</span></a></li>
+<li><a href="concentration-plots.html#cutoff-0.4" id="toc-cutoff-0.4"><span class="toc-section-number">3.3</span> Cutoff = <span class="math inline">\(0.4\)</span></a></li>
+<li><a href="concentration-plots.html#cutoff-0.5" id="toc-cutoff-0.5"><span class="toc-section-number">3.4</span> Cutoff = <span class="math inline">\(0.5\)</span></a></li>
 </ul></li>
 <li><a href="parts.html#parts" id="toc-parts"><span class="toc-section-number">4</span> Parts</a></li>
 <li class="has-sub"><a href="footnotes-and-citations.html#footnotes-and-citations" id="toc-footnotes-and-citations"><span class="toc-section-number">5</span> Footnotes and citations</a>
@@ -193,44 +248,1019 @@ div.csl-indent {
 <div class="row">
 <div class="col-sm-12">
 <div id="header">
-<h1 class="title">A Minimal Book Example</h1>
-<h4 class="author"><em>John Doe</em></h4>
-<h4 class="date"><em>2025-04-22</em></h4>
+<h1 class="title">Neurochemical Concentrations as Predictors of PavCA</h1>
+<h4 class="author"><em>Sayan Chakrabarty</em></h4>
+<h4 class="date"><em>2025-04-23</em></h4>
 </div>
-<div id="about" class="section level1" number="1">
-<h1><span class="header-section-number">Chapter 1</span> About</h1>
-<p>This is a <em>sample</em> book written in <strong>Markdown</strong>. You can use anything that Pandoc’s Markdown supports; for example, a math equation <span class="math inline">\(a^2 + b^2 = c^2\)</span>.</p>
-<div id="usage" class="section level2" number="1.1">
-<h2><span class="header-section-number">1.1</span> Usage</h2>
-<p>Each <strong>bookdown</strong> chapter is an .Rmd file, and each .Rmd file can contain one (and only one) chapter. A chapter <em>must</em> start with a first-level heading: <code># A good chapter</code>, and can contain one (and only one) first-level heading.</p>
-<p>Use second-level and higher headings within chapters like: <code>## A short section</code> or <code>### An even shorter section</code>.</p>
-<p>The <code>index.Rmd</code> file is required, and is also your first book chapter. It will be the homepage when you render the book.</p>
+<div id="data-description-and-cleaning" class="section level1 panelset" number="1">
+<h1><span class="header-section-number">Chapter 1</span> Data Description and Cleaning</h1>
+<div id="loading-the-packages-and-setting-up" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Loading the Packages and Setting Up</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="index.html#cb1-2" tabindex="-1"></a><span class="fu">library</span>(gtsummary)</span>
+<span id="cb1-3"><a href="index.html#cb1-3" tabindex="-1"></a><span class="fu">library</span>(lme4)</span>
+<span id="cb1-4"><a href="index.html#cb1-4" tabindex="-1"></a><span class="fu">library</span>(performance)</span>
+<span id="cb1-5"><a href="index.html#cb1-5" tabindex="-1"></a><span class="fu">library</span>(glmnet)</span>
+<span id="cb1-6"><a href="index.html#cb1-6" tabindex="-1"></a><span class="fu">library</span>(rempsyc)</span>
+<span id="cb1-7"><a href="index.html#cb1-7" tabindex="-1"></a><span class="fu">library</span>(effectsize)</span>
+<span id="cb1-8"><a href="index.html#cb1-8" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb1-9"><a href="index.html#cb1-9" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb1-10"><a href="index.html#cb1-10" tabindex="-1"></a><span class="fu">library</span>(rstatix)</span>
+<span id="cb1-11"><a href="index.html#cb1-11" tabindex="-1"></a><span class="fu">library</span>(pROC)</span>
+<span id="cb1-12"><a href="index.html#cb1-12" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="index.html#cb1-13" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb1-14"><a href="index.html#cb1-14" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb1-15"><a href="index.html#cb1-15" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb1-16"><a href="index.html#cb1-16" tabindex="-1"></a><span class="fu">library</span>(gtsummary)</span>
+<span id="cb1-17"><a href="index.html#cb1-17" tabindex="-1"></a><span class="fu">library</span>(nnet)</span>
+<span id="cb1-18"><a href="index.html#cb1-18" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
+<span id="cb1-19"><a href="index.html#cb1-19" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
+<span id="cb1-20"><a href="index.html#cb1-20" tabindex="-1"></a><span class="fu">library</span>(xaringanExtra)</span>
+<span id="cb1-21"><a href="index.html#cb1-21" tabindex="-1"></a><span class="fu">library</span>(vtable)</span>
+<span id="cb1-22"><a href="index.html#cb1-22" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="index.html#cb1-23" tabindex="-1"></a>xaringanExtra<span class="sc">::</span><span class="fu">use_panelset</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="index.html#cb2-1" tabindex="-1"></a>xaringanExtra<span class="sc">::</span><span class="fu">style_panelset</span>(<span class="at">font_family =</span> <span class="st">&quot;inherit&quot;</span>)</span></code></pre></div>
+<style>:root{--panel-tab-font-family:inherit;}</style>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="index.html#cb3-1" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&#39;/Users/sayanc/Library/CloudStorage/OneDrive-Umich/Github repos/npc/NeuroChem_PavCA&#39;</span>)</span>
+<span id="cb3-2"><a href="index.html#cb3-2" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="index.html#cb3-3" tabindex="-1"></a><span class="co"># Load the data</span></span>
+<span id="cb3-4"><a href="index.html#cb3-4" tabindex="-1"></a>data <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(<span class="st">&#39;clean_data.xlsx&#39;</span>)</span>
+<span id="cb3-5"><a href="index.html#cb3-5" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="index.html#cb3-6" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb3-7"><a href="index.html#cb3-7" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Phenotype =</span> <span class="st">`</span><span class="at">Phenotype...7</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-8"><a href="index.html#cb3-8" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb3-9"><a href="index.html#cb3-9" tabindex="-1"></a>    <span class="at">Time =</span> <span class="fu">factor</span>(Time, , <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Pre&quot;</span>, <span class="st">&quot;Post&quot;</span>)),</span>
+<span id="cb3-10"><a href="index.html#cb3-10" tabindex="-1"></a>    <span class="at">Phenotype =</span> <span class="fu">factor</span>(Phenotype, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Control&quot;</span>, <span class="st">&quot;ST&quot;</span>, <span class="st">&quot;IN&quot;</span>, <span class="st">&quot;GT&quot;</span>))</span>
+<span id="cb3-11"><a href="index.html#cb3-11" tabindex="-1"></a>  )</span></code></pre></div>
 </div>
-<div id="render-book" class="section level2" number="1.2">
-<h2><span class="header-section-number">1.2</span> Render book</h2>
-<p>You can render the HTML version of this example book without changing anything:</p>
-<ol style="list-style-type: decimal">
-<li><p>Find the <strong>Build</strong> pane in the RStudio IDE, and</p></li>
-<li><p>Click on <strong>Build Book</strong>, then select your output format, or select “All formats” if you’d like to use multiple formats from the same book source files.</p></li>
-</ol>
-<p>Or build the book from the R console:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" tabindex="-1"></a>bookdown<span class="sc">::</span><span class="fu">render_book</span>()</span></code></pre></div>
-<p>To render this example to PDF as a <code>bookdown::pdf_book</code>, you’ll need to install XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <a href="https://yihui.org/tinytex/" class="uri">https://yihui.org/tinytex/</a>.</p>
+<div id="data-description" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> Data Description</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="index.html#cb4-1" tabindex="-1"></a>vtable<span class="sc">::</span><span class="fu">sumtable</span>(data, <span class="at">group =</span> <span class="st">&quot;Time&quot;</span>)</span></code></pre></div>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-1">Table 1.1: </span>Summary Statistics
+</caption>
+<thead>
+<tr>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Time
 </div>
-<div id="preview-book" class="section level2" number="1.3">
-<h2><span class="header-section-number">1.3</span> Preview book</h2>
-<p>As you work, you may start a local server to live preview this HTML book. This preview will update as you edit the book when you save individual .Rmd files. You can start the server in a work session by using the RStudio add-in “Preview book”, or from the R console:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="index.html#cb2-1" tabindex="-1"></a>bookdown<span class="sc">::</span><span class="fu">serve_book</span>()</span></code></pre></div>
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Pre
+</div>
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Post
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+Variable
+</th>
+<th style="text-align:left;">
+N
+</th>
+<th style="text-align:left;">
+Mean
+</th>
+<th style="text-align:left;">
+SD
+</th>
+<th style="text-align:left;">
+N
+</th>
+<th style="text-align:left;">
+Mean
+</th>
+<th style="text-align:left;">
+SD
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+PavCA Index
+</td>
+<td style="text-align:left;">
+36
+</td>
+<td style="text-align:left;">
+0.1
+</td>
+<td style="text-align:left;">
+0.52
+</td>
+<td style="text-align:left;">
+36
+</td>
+<td style="text-align:left;">
+0.1
+</td>
+<td style="text-align:left;">
+0.52
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sex
+</td>
+<td style="text-align:left;">
+53
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+53
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+… F
+</td>
+<td style="text-align:left;">
+27
+</td>
+<td style="text-align:left;">
+51%
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+27
+</td>
+<td style="text-align:left;">
+51%
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+… M
+</td>
+<td style="text-align:left;">
+26
+</td>
+<td style="text-align:left;">
+49%
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+26
+</td>
+<td style="text-align:left;">
+49%
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Phenotype
+</td>
+<td style="text-align:left;">
+53
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+53
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+… Control
+</td>
+<td style="text-align:left;">
+17
+</td>
+<td style="text-align:left;">
+32%
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+17
+</td>
+<td style="text-align:left;">
+32%
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+… ST
+</td>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+21%
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+21%
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+… IN
+</td>
+<td style="text-align:left;">
+21
+</td>
+<td style="text-align:left;">
+40%
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+21
+</td>
+<td style="text-align:left;">
+40%
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+… GT
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+8%
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+8%
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ch
+</td>
+<td style="text-align:left;">
+49
+</td>
+<td style="text-align:left;">
+945
+</td>
+<td style="text-align:left;">
+465
+</td>
+<td style="text-align:left;">
+50
+</td>
+<td style="text-align:left;">
+824
+</td>
+<td style="text-align:left;">
+483
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ACh
+</td>
+<td style="text-align:left;">
+50
+</td>
+<td style="text-align:left;">
+1.2
+</td>
+<td style="text-align:left;">
+0.87
+</td>
+<td style="text-align:left;">
+49
+</td>
+<td style="text-align:left;">
+2.9
+</td>
+<td style="text-align:left;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tau
+</td>
+<td style="text-align:left;">
+53
+</td>
+<td style="text-align:left;">
+1304
+</td>
+<td style="text-align:left;">
+4387
+</td>
+<td style="text-align:left;">
+53
+</td>
+<td style="text-align:left;">
+2105
+</td>
+<td style="text-align:left;">
+9389
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hist
+</td>
+<td style="text-align:left;">
+53
+</td>
+<td style="text-align:left;">
+1.7
+</td>
+<td style="text-align:left;">
+1.6
+</td>
+<td style="text-align:left;">
+53
+</td>
+<td style="text-align:left;">
+1.5
+</td>
+<td style="text-align:left;">
+1.8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ser
+</td>
+<td style="text-align:left;">
+49
+</td>
+<td style="text-align:left;">
+2066
+</td>
+<td style="text-align:left;">
+7393
+</td>
+<td style="text-align:left;">
+46
+</td>
+<td style="text-align:left;">
+2338
+</td>
+<td style="text-align:left;">
+9241
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gln
+</td>
+<td style="text-align:left;">
+53
+</td>
+<td style="text-align:left;">
+190845
+</td>
+<td style="text-align:left;">
+201829
+</td>
+<td style="text-align:left;">
+53
+</td>
+<td style="text-align:left;">
+124533
+</td>
+<td style="text-align:left;">
+152194
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Asp
+</td>
+<td style="text-align:left;">
+43
+</td>
+<td style="text-align:left;">
+114
+</td>
+<td style="text-align:left;">
+172
+</td>
+<td style="text-align:left;">
+42
+</td>
+<td style="text-align:left;">
+202
+</td>
+<td style="text-align:left;">
+701
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gly
+</td>
+<td style="text-align:left;">
+52
+</td>
+<td style="text-align:left;">
+2124
+</td>
+<td style="text-align:left;">
+8687
+</td>
+<td style="text-align:left;">
+52
+</td>
+<td style="text-align:left;">
+2590
+</td>
+<td style="text-align:left;">
+12867
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Glc
+</td>
+<td style="text-align:left;">
+52
+</td>
+<td style="text-align:left;">
+115490
+</td>
+<td style="text-align:left;">
+315069
+</td>
+<td style="text-align:left;">
+52
+</td>
+<td style="text-align:left;">
+104536
+</td>
+<td style="text-align:left;">
+378311
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Glu
+</td>
+<td style="text-align:left;">
+53
+</td>
+<td style="text-align:left;">
+1097
+</td>
+<td style="text-align:left;">
+3154
+</td>
+<td style="text-align:left;">
+53
+</td>
+<td style="text-align:left;">
+2480
+</td>
+<td style="text-align:left;">
+13050
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GABA
+</td>
+<td style="text-align:left;">
+53
+</td>
+<td style="text-align:left;">
+34
+</td>
+<td style="text-align:left;">
+72
+</td>
+<td style="text-align:left;">
+53
+</td>
+<td style="text-align:left;">
+21
+</td>
+<td style="text-align:left;">
+37
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ado
+</td>
+<td style="text-align:left;">
+53
+</td>
+<td style="text-align:left;">
+13
+</td>
+<td style="text-align:left;">
+44
+</td>
+<td style="text-align:left;">
+52
+</td>
+<td style="text-align:left;">
+6.8
+</td>
+<td style="text-align:left;">
+14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+VMA
+</td>
+<td style="text-align:left;">
+53
+</td>
+<td style="text-align:left;">
+1.1
+</td>
+<td style="text-align:left;">
+1.7
+</td>
+<td style="text-align:left;">
+51
+</td>
+<td style="text-align:left;">
+1.1
+</td>
+<td style="text-align:left;">
+1.7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MOPEG
+</td>
+<td style="text-align:left;">
+53
+</td>
+<td style="text-align:left;">
+3.8
+</td>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+52
+</td>
+<td style="text-align:left;">
+5.7
+</td>
+<td style="text-align:left;">
+17
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DOPEG
+</td>
+<td style="text-align:left;">
+53
+</td>
+<td style="text-align:left;">
+2.1
+</td>
+<td style="text-align:left;">
+8
+</td>
+<td style="text-align:left;">
+53
+</td>
+<td style="text-align:left;">
+0.62
+</td>
+<td style="text-align:left;">
+1.3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5HIAA
+</td>
+<td style="text-align:left;">
+12
+</td>
+<td style="text-align:left;">
+2948
+</td>
+<td style="text-align:left;">
+8323
+</td>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+257
+</td>
+<td style="text-align:left;">
+238
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+HVA
+</td>
+<td style="text-align:left;">
+53
+</td>
+<td style="text-align:left;">
+3.7
+</td>
+<td style="text-align:left;">
+4.9
+</td>
+<td style="text-align:left;">
+52
+</td>
+<td style="text-align:left;">
+3.5
+</td>
+<td style="text-align:left;">
+7.4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NM
+</td>
+<td style="text-align:left;">
+39
+</td>
+<td style="text-align:left;">
+2.2
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+32
+</td>
+<td style="text-align:left;">
+4.1
+</td>
+<td style="text-align:left;">
+5.2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DOPAC
+</td>
+<td style="text-align:left;">
+51
+</td>
+<td style="text-align:left;">
+26
+</td>
+<td style="text-align:left;">
+45
+</td>
+<td style="text-align:left;">
+53
+</td>
+<td style="text-align:left;">
+21
+</td>
+<td style="text-align:left;">
+31
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NE
+</td>
+<td style="text-align:left;">
+51
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+7.4
+</td>
+<td style="text-align:left;">
+48
+</td>
+<td style="text-align:left;">
+0.63
+</td>
+<td style="text-align:left;">
+0.71
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3MT
+</td>
+<td style="text-align:left;">
+35
+</td>
+<td style="text-align:left;">
+0.8
+</td>
+<td style="text-align:left;">
+0.61
+</td>
+<td style="text-align:left;">
+28
+</td>
+<td style="text-align:left;">
+0.96
+</td>
+<td style="text-align:left;">
+1.1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+E
+</td>
+<td style="text-align:left;">
+13
+</td>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+34
+</td>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+15
+</td>
+<td style="text-align:left;">
+25
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5HT
+</td>
+<td style="text-align:left;">
+50
+</td>
+<td style="text-align:left;">
+0.29
+</td>
+<td style="text-align:left;">
+0.36
+</td>
+<td style="text-align:left;">
+52
+</td>
+<td style="text-align:left;">
+0.63
+</td>
+<td style="text-align:left;">
+2.1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DA
+</td>
+<td style="text-align:left;">
+51
+</td>
+<td style="text-align:left;">
+0.19
+</td>
+<td style="text-align:left;">
+0.4
+</td>
+<td style="text-align:left;">
+51
+</td>
+<td style="text-align:left;">
+0.18
+</td>
+<td style="text-align:left;">
+0.65
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="data-cleaning" class="section level2" number="1.3">
+<h2><span class="header-section-number">1.3</span> Data Cleaning</h2>
+<div id="all-analytes-with-geq-50-missing-values-na-or-0-or-0-were-removed." class="section level3" number="1.3.1">
+<h3><span class="header-section-number">1.3.1</span> All analytes with <span class="math inline">\(\geq 50\%\)</span> missing values (NA or <span class="math inline">\(0\)</span> or <span class="math inline">\(&lt;0\)</span>) were removed.</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="index.html#cb5-1" tabindex="-1"></a>na.data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="index.html#cb5-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>), <span class="sc">~</span><span class="fu">if_else</span>(. <span class="sc">&lt;=</span> <span class="fl">1e-6</span>, <span class="cn">NA</span>, .))) <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="index.html#cb5-3" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="st">`</span><span class="at">Rat ID</span><span class="st">`</span> <span class="sc">!=</span> <span class="st">&quot;107_Rd3&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-4"><a href="index.html#cb5-4" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="st">`</span><span class="at">Animal Num Per Phenotype</span><span class="st">`</span>, <span class="sc">-</span>Phenotype...<span class="dv">3</span>, <span class="sc">-</span>Phenotype)</span>
+<span id="cb5-5"><a href="index.html#cb5-5" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="index.html#cb5-6" tabindex="-1"></a>bad.compound <span class="ot">&lt;-</span> na.data <span class="sc">%&gt;%</span></span>
+<span id="cb5-7"><a href="index.html#cb5-7" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-8"><a href="index.html#cb5-8" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span><span class="fu">sum</span>(<span class="fu">is.na</span>(.))<span class="sc">/</span><span class="fu">n</span>())) <span class="sc">%&gt;%</span></span>
+<span id="cb5-9"><a href="index.html#cb5-9" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">everything</span>(), <span class="at">names_to =</span> <span class="st">&quot;compound&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;missing&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-10"><a href="index.html#cb5-10" tabindex="-1"></a>  <span class="fu">filter</span>(missing <span class="sc">&gt;=</span> <span class="fl">0.5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-11"><a href="index.html#cb5-11" tabindex="-1"></a>  <span class="fu">pull</span>(compound)</span>
+<span id="cb5-12"><a href="index.html#cb5-12" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="index.html#cb5-13" tabindex="-1"></a>other.var <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Time&quot;</span>, <span class="st">&quot;Rat ID&quot;</span>, <span class="st">&quot;PavCA Index&quot;</span>, <span class="st">&quot;Sex&quot;</span>)</span>
+<span id="cb5-14"><a href="index.html#cb5-14" tabindex="-1"></a>good.compound <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(<span class="fu">names</span>(na.data), bad.compound)</span>
+<span id="cb5-15"><a href="index.html#cb5-15" tabindex="-1"></a>good.compound <span class="ot">&lt;-</span> good.compound[<span class="sc">!</span>(good.compound <span class="sc">%in%</span> other.var)]</span>
+<span id="cb5-16"><a href="index.html#cb5-16" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="index.html#cb5-17" tabindex="-1"></a>good.long.data <span class="ot">&lt;-</span> na.data <span class="sc">%&gt;%</span></span>
+<span id="cb5-18"><a href="index.html#cb5-18" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">all_of</span>(<span class="fu">c</span>(other.var, good.compound)))</span>
+<span id="cb5-19"><a href="index.html#cb5-19" tabindex="-1"></a></span>
+<span id="cb5-20"><a href="index.html#cb5-20" tabindex="-1"></a>id.var <span class="ot">&lt;-</span> other.var[other.var <span class="sc">!=</span> <span class="st">&quot;Time&quot;</span>] </span></code></pre></div>
+<ul>
+<li>Analytes removed due to <span class="math inline">\(\geq 50\%\)</span> missing values:
+<ul>
+<li>5HIAA, 3MT, E, DA</li>
+</ul></li>
+</ul>
+</div>
+<div id="new-phenotypes-were-defined-based-on-cutoffs-in-0.3-0.4-0.5" class="section level3" number="1.3.2">
+<h3><span class="header-section-number">1.3.2</span> New Phenotypes were defined based on cutoffs <span class="math inline">\(\in \{0.3, 0.4, 0.5\}\)</span></h3>
+<ul>
+<li><strong>ST</strong>: PavCA <span class="math inline">\(\geq\)</span> cutoff</li>
+<li><strong>IN</strong>: <span class="math inline">\(-\)</span>cutoff <span class="math inline">\(&lt;\)</span> PavCA <span class="math inline">\(&lt;\)</span> cutoff</li>
+<li><strong>GT</strong>: PavCA <span class="math inline">\(\leq\)</span> <span class="math inline">\(-\)</span>cutoff</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="index.html#cb6-1" tabindex="-1"></a>mod.data <span class="ot">&lt;-</span> good.long.data <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="index.html#cb6-2" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">`</span><span class="at">Time</span><span class="st">`</span>, <span class="at">values_from =</span> <span class="fu">all_of</span>(good.compound)) <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="index.html#cb6-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="sc">-</span><span class="fu">all_of</span>(id.var), <span class="sc">~</span><span class="fu">replace_na</span>(., <span class="fu">min</span>(., <span class="at">na.rm =</span> <span class="cn">TRUE</span>)<span class="sc">/</span><span class="dv">5</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb6-4"><a href="index.html#cb6-4" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb6-5"><a href="index.html#cb6-5" tabindex="-1"></a>    <span class="at">Phenotype3 =</span> <span class="fu">factor</span>(</span>
+<span id="cb6-6"><a href="index.html#cb6-6" tabindex="-1"></a>      <span class="fu">if_else</span>(<span class="fu">is.na</span>(<span class="st">`</span><span class="at">PavCA Index</span><span class="st">`</span>), <span class="st">&quot;Control&quot;</span>, </span>
+<span id="cb6-7"><a href="index.html#cb6-7" tabindex="-1"></a>              <span class="fu">if_else</span>(<span class="fu">abs</span>(<span class="st">`</span><span class="at">PavCA Index</span><span class="st">`</span>) <span class="sc">&lt;</span> <span class="fl">0.3</span>, <span class="st">&quot;IN&quot;</span>, </span>
+<span id="cb6-8"><a href="index.html#cb6-8" tabindex="-1"></a>                      <span class="fu">if_else</span>(<span class="st">`</span><span class="at">PavCA Index</span><span class="st">`</span> <span class="sc">&gt;=</span> <span class="fl">0.3</span>, </span>
+<span id="cb6-9"><a href="index.html#cb6-9" tabindex="-1"></a>                              <span class="st">&quot;ST&quot;</span>, <span class="st">&quot;GT&quot;</span>))),</span>
+<span id="cb6-10"><a href="index.html#cb6-10" tabindex="-1"></a>      <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Control&quot;</span>, <span class="st">&quot;ST&quot;</span>, <span class="st">&quot;IN&quot;</span>, <span class="st">&quot;GT&quot;</span>)),</span>
+<span id="cb6-11"><a href="index.html#cb6-11" tabindex="-1"></a>    <span class="at">Phenotype4 =</span> <span class="fu">factor</span>(</span>
+<span id="cb6-12"><a href="index.html#cb6-12" tabindex="-1"></a>      <span class="fu">if_else</span>(<span class="fu">is.na</span>(<span class="st">`</span><span class="at">PavCA Index</span><span class="st">`</span>), <span class="st">&quot;Control&quot;</span>, </span>
+<span id="cb6-13"><a href="index.html#cb6-13" tabindex="-1"></a>              <span class="fu">if_else</span>(<span class="fu">abs</span>(<span class="st">`</span><span class="at">PavCA Index</span><span class="st">`</span>) <span class="sc">&lt;</span> <span class="fl">0.4</span>, <span class="st">&quot;IN&quot;</span>, </span>
+<span id="cb6-14"><a href="index.html#cb6-14" tabindex="-1"></a>                      <span class="fu">if_else</span>(<span class="st">`</span><span class="at">PavCA Index</span><span class="st">`</span> <span class="sc">&gt;=</span> <span class="fl">0.4</span>, </span>
+<span id="cb6-15"><a href="index.html#cb6-15" tabindex="-1"></a>                              <span class="st">&quot;ST&quot;</span>, <span class="st">&quot;GT&quot;</span>))),</span>
+<span id="cb6-16"><a href="index.html#cb6-16" tabindex="-1"></a>      <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Control&quot;</span>, <span class="st">&quot;ST&quot;</span>, <span class="st">&quot;IN&quot;</span>, <span class="st">&quot;GT&quot;</span>)),</span>
+<span id="cb6-17"><a href="index.html#cb6-17" tabindex="-1"></a>    <span class="at">Phenotype5 =</span> <span class="fu">factor</span>(</span>
+<span id="cb6-18"><a href="index.html#cb6-18" tabindex="-1"></a>      <span class="fu">if_else</span>(<span class="fu">is.na</span>(<span class="st">`</span><span class="at">PavCA Index</span><span class="st">`</span>), <span class="st">&quot;Control&quot;</span>, </span>
+<span id="cb6-19"><a href="index.html#cb6-19" tabindex="-1"></a>              <span class="fu">if_else</span>(<span class="fu">abs</span>(<span class="st">`</span><span class="at">PavCA Index</span><span class="st">`</span>) <span class="sc">&lt;</span> <span class="fl">0.5</span>, <span class="st">&quot;IN&quot;</span>, </span>
+<span id="cb6-20"><a href="index.html#cb6-20" tabindex="-1"></a>                      <span class="fu">if_else</span>(<span class="st">`</span><span class="at">PavCA Index</span><span class="st">`</span> <span class="sc">&gt;=</span> <span class="fl">0.5</span>, </span>
+<span id="cb6-21"><a href="index.html#cb6-21" tabindex="-1"></a>                              <span class="st">&quot;ST&quot;</span>, <span class="st">&quot;GT&quot;</span>))),</span>
+<span id="cb6-22"><a href="index.html#cb6-22" tabindex="-1"></a>      <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Control&quot;</span>, <span class="st">&quot;ST&quot;</span>, <span class="st">&quot;IN&quot;</span>, <span class="st">&quot;GT&quot;</span>)),</span>
+<span id="cb6-23"><a href="index.html#cb6-23" tabindex="-1"></a>    <span class="at">.after =</span> <span class="st">`</span><span class="at">PavCA Index</span><span class="st">`</span></span>
+<span id="cb6-24"><a href="index.html#cb6-24" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb6-25"><a href="index.html#cb6-25" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(</span>
+<span id="cb6-26"><a href="index.html#cb6-26" tabindex="-1"></a>    <span class="at">.cols =</span> <span class="fu">ends_with</span>(<span class="st">&quot;Pre&quot;</span>),</span>
+<span id="cb6-27"><a href="index.html#cb6-27" tabindex="-1"></a>    <span class="at">.fns =</span> <span class="sc">~</span> <span class="fu">get</span>(<span class="fu">sub</span>(<span class="st">&quot;_Pre&quot;</span>, <span class="st">&quot;_Post&quot;</span>, <span class="fu">cur_column</span>())) <span class="sc">-</span> .,</span>
+<span id="cb6-28"><a href="index.html#cb6-28" tabindex="-1"></a>    <span class="at">.names =</span> <span class="st">&quot;{.col}_Change&quot;</span></span>
+<span id="cb6-29"><a href="index.html#cb6-29" tabindex="-1"></a>  )</span>
+<span id="cb6-30"><a href="index.html#cb6-30" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb6-31"><a href="index.html#cb6-31" tabindex="-1"></a>  <span class="fu">rename_with</span>(</span>
+<span id="cb6-32"><a href="index.html#cb6-32" tabindex="-1"></a>    <span class="at">.fn =</span> <span class="sc">~</span><span class="fu">str_replace</span>(., <span class="st">&quot;_Pre_Change&quot;</span>, <span class="st">&quot;_Change&quot;</span>),</span>
+<span id="cb6-33"><a href="index.html#cb6-33" tabindex="-1"></a>    <span class="fu">all_of</span>(<span class="fu">contains</span>(<span class="st">&quot;Pre_Change&quot;</span>))</span>
+<span id="cb6-34"><a href="index.html#cb6-34" tabindex="-1"></a>  )</span>
+<span id="cb6-35"><a href="index.html#cb6-35" tabindex="-1"></a></span>
+<span id="cb6-36"><a href="index.html#cb6-36" tabindex="-1"></a><span class="co"># all.data &lt;- mod.data</span></span>
+<span id="cb6-37"><a href="index.html#cb6-37" tabindex="-1"></a></span>
+<span id="cb6-38"><a href="index.html#cb6-38" tabindex="-1"></a>all.data <span class="ot">&lt;-</span> mod.data <span class="sc">%&gt;%</span></span>
+<span id="cb6-39"><a href="index.html#cb6-39" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">PavCA =</span> <span class="st">`</span><span class="at">PavCA Index</span><span class="st">`</span>,</span>
+<span id="cb6-40"><a href="index.html#cb6-40" tabindex="-1"></a>         <span class="at">ID =</span> <span class="st">`</span><span class="at">Rat ID</span><span class="st">`</span>,</span>
+<span id="cb6-41"><a href="index.html#cb6-41" tabindex="-1"></a>         <span class="st">`</span><span class="at">X5HT_Pre</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">5HT_Pre</span><span class="st">`</span>,</span>
+<span id="cb6-42"><a href="index.html#cb6-42" tabindex="-1"></a>         <span class="st">`</span><span class="at">X5HT_Post</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">5HT_Post</span><span class="st">`</span>,</span>
+<span id="cb6-43"><a href="index.html#cb6-43" tabindex="-1"></a>         <span class="st">`</span><span class="at">X5HT_Change</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">5HT_Change</span><span class="st">`</span></span>
+<span id="cb6-44"><a href="index.html#cb6-44" tabindex="-1"></a>         )</span>
+<span id="cb6-45"><a href="index.html#cb6-45" tabindex="-1"></a></span>
+<span id="cb6-46"><a href="index.html#cb6-46" tabindex="-1"></a><span class="fu">nice_table</span>(<span class="fu">bind_rows</span>(</span>
+<span id="cb6-47"><a href="index.html#cb6-47" tabindex="-1"></a>  all.data <span class="sc">%&gt;%</span></span>
+<span id="cb6-48"><a href="index.html#cb6-48" tabindex="-1"></a>    <span class="fu">filter</span>(Phenotype3 <span class="sc">==</span> <span class="st">&quot;Control&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-49"><a href="index.html#cb6-49" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb6-50"><a href="index.html#cb6-50" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">cutoff =</span> <span class="st">&quot;&quot;</span>, <span class="at">Phenotype =</span> <span class="st">&quot;Control&quot;</span>, <span class="at">.before =</span> <span class="dv">1</span>),</span>
+<span id="cb6-51"><a href="index.html#cb6-51" tabindex="-1"></a>  </span>
+<span id="cb6-52"><a href="index.html#cb6-52" tabindex="-1"></a>  all.data <span class="sc">%&gt;%</span></span>
+<span id="cb6-53"><a href="index.html#cb6-53" tabindex="-1"></a>    <span class="fu">filter</span>(Phenotype3 <span class="sc">!=</span> <span class="st">&quot;Control&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-54"><a href="index.html#cb6-54" tabindex="-1"></a>    reshape2<span class="sc">::</span><span class="fu">melt</span>(<span class="at">measure.vars =</span> <span class="fu">c</span>(<span class="st">&quot;Phenotype3&quot;</span>, <span class="st">&quot;Phenotype4&quot;</span>, <span class="st">&quot;Phenotype5&quot;</span>),</span>
+<span id="cb6-55"><a href="index.html#cb6-55" tabindex="-1"></a>                   <span class="at">variable.name =</span> <span class="st">&quot;cutoff&quot;</span>, <span class="at">value.name =</span> <span class="st">&quot;Phenotype&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-56"><a href="index.html#cb6-56" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">cutoff =</span> <span class="fu">str_replace</span>(cutoff, <span class="st">&quot;Phenotype&quot;</span>, <span class="st">&quot;0.&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb6-57"><a href="index.html#cb6-57" tabindex="-1"></a>    <span class="fu">group_by</span>(cutoff, Phenotype) <span class="sc">%&gt;%</span></span>
+<span id="cb6-58"><a href="index.html#cb6-58" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>())</span>
+<span id="cb6-59"><a href="index.html#cb6-59" tabindex="-1"></a>))</span></code></pre></div>
+<div class="tabwid"><style>.cl-8536af32{table-layout:auto;}.cl-853325e2{font-family:'Times New Roman';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-853325ec{font-family:'Times New Roman';font-size:12pt;font-weight:normal;font-style:italic;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-8534a44e{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 2;background-color:transparent;}.cl-8534a44f{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 2;background-color:transparent;}.cl-8534b51a{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0.5pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8534b51b{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8534b524{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8534b525{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8534b52e{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-8536af32'><thead><tr style="overflow-wrap:break-word;"><th class="cl-8534b51a"><p class="cl-8534a44e"><span class="cl-853325e2">cutoff</span></p></th><th class="cl-8534b51a"><p class="cl-8534a44e"><span class="cl-853325e2">Phenotype</span></p></th><th class="cl-8534b51a"><p class="cl-8534a44e"><span class="cl-853325ec">n</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-8534b51b"><p class="cl-8534a44f"><span class="cl-853325e2"></span></p></td><td class="cl-8534b524"><p class="cl-8534a44e"><span class="cl-853325e2">Control</span></p></td><td class="cl-8534b524"><p class="cl-8534a44e"><span class="cl-853325e2">17</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8534b51b"><p class="cl-8534a44f"><span class="cl-853325e2">0.3</span></p></td><td class="cl-8534b524"><p class="cl-8534a44e"><span class="cl-853325e2">GT</span></p></td><td class="cl-8534b524"><p class="cl-8534a44e"><span class="cl-853325e2">11</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8534b51b"><p class="cl-8534a44f"><span class="cl-853325e2">0.3</span></p></td><td class="cl-8534b524"><p class="cl-8534a44e"><span class="cl-853325e2">IN</span></p></td><td class="cl-8534b524"><p class="cl-8534a44e"><span class="cl-853325e2">11</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8534b51b"><p class="cl-8534a44f"><span class="cl-853325e2">0.3</span></p></td><td class="cl-8534b524"><p class="cl-8534a44e"><span class="cl-853325e2">ST</span></p></td><td class="cl-8534b524"><p class="cl-8534a44e"><span class="cl-853325e2">14</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8534b51b"><p class="cl-8534a44f"><span class="cl-853325e2">0.4</span></p></td><td class="cl-8534b524"><p class="cl-8534a44e"><span class="cl-853325e2">GT</span></p></td><td class="cl-8534b524"><p class="cl-8534a44e"><span class="cl-853325e2">8</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8534b51b"><p class="cl-8534a44f"><span class="cl-853325e2">0.4</span></p></td><td class="cl-8534b524"><p class="cl-8534a44e"><span class="cl-853325e2">IN</span></p></td><td class="cl-8534b524"><p class="cl-8534a44e"><span class="cl-853325e2">16</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8534b51b"><p class="cl-8534a44f"><span class="cl-853325e2">0.4</span></p></td><td class="cl-8534b524"><p class="cl-8534a44e"><span class="cl-853325e2">ST</span></p></td><td class="cl-8534b524"><p class="cl-8534a44e"><span class="cl-853325e2">12</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8534b51b"><p class="cl-8534a44f"><span class="cl-853325e2">0.5</span></p></td><td class="cl-8534b524"><p class="cl-8534a44e"><span class="cl-853325e2">GT</span></p></td><td class="cl-8534b524"><p class="cl-8534a44e"><span class="cl-853325e2">4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8534b51b"><p class="cl-8534a44f"><span class="cl-853325e2">0.5</span></p></td><td class="cl-8534b524"><p class="cl-8534a44e"><span class="cl-853325e2">IN</span></p></td><td class="cl-8534b524"><p class="cl-8534a44e"><span class="cl-853325e2">21</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8534b525"><p class="cl-8534a44f"><span class="cl-853325e2">0.5</span></p></td><td class="cl-8534b52e"><p class="cl-8534a44e"><span class="cl-853325e2">ST</span></p></td><td class="cl-8534b52e"><p class="cl-8534a44e"><span class="cl-853325e2">11</span></p></td></tr></tbody></table></div>
+</div>
+</div>
+<div id="grouping-of-analytes" class="section level2" number="1.4">
+<h2><span class="header-section-number">1.4</span> Grouping of Analytes</h2>
+<div id="groups" class="section level3" number="1.4.1">
+<h3><span class="header-section-number">1.4.1</span> Groups:</h3>
+<ul>
+<li><strong>DA Metabolite</strong>: DA, DOPAC, 3MT, HVA</li>
+<li><strong>NE Metabolite</strong>: NE, NM, VMA, MOPEG, DOPEG, E</li>
+<li><strong>5HT Metabolite</strong>: X5HT, 5HIAA</li>
+<li><strong>Amino Acid</strong>: Glu, Gln, Gly, Asp, Ser</li>
+<li><strong>Neurotransmitter</strong>: Hist, GABA, Tau, Ado</li>
+<li><strong>ACh Ch</strong>: ACh, Ch</li>
+<li><strong>Energy</strong>: Glc</li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="index.html#cb7-1" tabindex="-1"></a>good.compound[good.compound <span class="sc">==</span> <span class="st">&quot;5HT&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;X5HT&quot;</span></span>
+<span id="cb7-2"><a href="index.html#cb7-2" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="index.html#cb7-3" tabindex="-1"></a>long.data <span class="ot">&lt;-</span> all.data <span class="sc">%&gt;%</span></span>
+<span id="cb7-4"><a href="index.html#cb7-4" tabindex="-1"></a>  reshape2<span class="sc">::</span><span class="fu">melt</span>(<span class="at">id.vars =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, </span>
+<span id="cb7-5"><a href="index.html#cb7-5" tabindex="-1"></a>                 <span class="at">variable.name =</span> <span class="st">&quot;compound&quot;</span>, <span class="at">value.name =</span> <span class="st">&quot;conc&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb7-6"><a href="index.html#cb7-6" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb7-7"><a href="index.html#cb7-7" tabindex="-1"></a>    <span class="at">type =</span> <span class="fu">str_extract</span>(compound, <span class="st">&quot;[^_]+$&quot;</span>),</span>
+<span id="cb7-8"><a href="index.html#cb7-8" tabindex="-1"></a>    <span class="at">.before =</span> compound</span>
+<span id="cb7-9"><a href="index.html#cb7-9" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb7-10"><a href="index.html#cb7-10" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">compound =</span> <span class="fu">str_extract</span>(compound, <span class="st">&quot;^[^_]+&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-11"><a href="index.html#cb7-11" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb7-12"><a href="index.html#cb7-12" tabindex="-1"></a>    <span class="at">group1 =</span> <span class="fu">case_when</span>(</span>
+<span id="cb7-13"><a href="index.html#cb7-13" tabindex="-1"></a>      compound <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Glu&quot;</span>, <span class="st">&quot;Gln&quot;</span>, <span class="st">&quot;Gly&quot;</span>, <span class="st">&quot;Asp&quot;</span>, <span class="st">&quot;Ser&quot;</span>) <span class="sc">~</span> <span class="st">&quot;Amino Acid&quot;</span>,</span>
+<span id="cb7-14"><a href="index.html#cb7-14" tabindex="-1"></a>      compound <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Glc&quot;</span>) <span class="sc">~</span> <span class="st">&quot;Energy&quot;</span>,</span>
+<span id="cb7-15"><a href="index.html#cb7-15" tabindex="-1"></a>      <span class="at">.default =</span> <span class="st">&quot;Neurotransmitter&quot;</span></span>
+<span id="cb7-16"><a href="index.html#cb7-16" tabindex="-1"></a>    ),</span>
+<span id="cb7-17"><a href="index.html#cb7-17" tabindex="-1"></a>    <span class="at">group2 =</span> <span class="fu">case_when</span>(</span>
+<span id="cb7-18"><a href="index.html#cb7-18" tabindex="-1"></a>      compound <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;DA&quot;</span>, <span class="st">&quot;DOPAC&quot;</span>, <span class="st">&quot;3MT&quot;</span>, <span class="st">&quot;HVA&quot;</span>) <span class="sc">~</span> <span class="st">&quot;DA Metabolite&quot;</span>,</span>
+<span id="cb7-19"><a href="index.html#cb7-19" tabindex="-1"></a>      compound <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;NE&quot;</span>, <span class="st">&quot;NM&quot;</span>, <span class="st">&quot;VMA&quot;</span>, <span class="st">&quot;MOPEG&quot;</span>, <span class="st">&quot;DOPEG&quot;</span>, <span class="st">&quot;E&quot;</span>) <span class="sc">~</span> </span>
+<span id="cb7-20"><a href="index.html#cb7-20" tabindex="-1"></a>        <span class="st">&quot;NE Metabolite&quot;</span>,</span>
+<span id="cb7-21"><a href="index.html#cb7-21" tabindex="-1"></a>      compound <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;X5HT&quot;</span>, <span class="st">&quot;5HIAA&quot;</span>) <span class="sc">~</span> <span class="st">&quot;X5HT Metabolite&quot;</span>,</span>
+<span id="cb7-22"><a href="index.html#cb7-22" tabindex="-1"></a>      compound <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Glu&quot;</span>, <span class="st">&quot;Gln&quot;</span>, <span class="st">&quot;Gly&quot;</span>, <span class="st">&quot;Asp&quot;</span>, <span class="st">&quot;Ser&quot;</span>) <span class="sc">~</span> <span class="st">&quot;Amino Acid&quot;</span>,</span>
+<span id="cb7-23"><a href="index.html#cb7-23" tabindex="-1"></a>      compound <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Hist&quot;</span>, <span class="st">&quot;GABA&quot;</span>, <span class="st">&quot;Tau&quot;</span>, <span class="st">&quot;Ado&quot;</span>) <span class="sc">~</span> <span class="st">&quot;Neurotransmitter&quot;</span>,</span>
+<span id="cb7-24"><a href="index.html#cb7-24" tabindex="-1"></a>      compound <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;ACh&quot;</span>, <span class="st">&quot;Ch&quot;</span>) <span class="sc">~</span> <span class="st">&quot;Ach Ch&quot;</span>,</span>
+<span id="cb7-25"><a href="index.html#cb7-25" tabindex="-1"></a>      compound <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Glc&quot;</span>) <span class="sc">~</span> <span class="st">&quot;Energy&quot;</span></span>
+<span id="cb7-26"><a href="index.html#cb7-26" tabindex="-1"></a>    ),</span>
+<span id="cb7-27"><a href="index.html#cb7-27" tabindex="-1"></a>  <span class="at">.after =</span> <span class="st">&quot;compound&quot;</span>)</span></code></pre></div>
+</div>
+</div>
+<div id="outliers" class="section level2" number="1.5">
+<h2><span class="header-section-number">1.5</span> Outliers</h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="index.html#cb8-1" tabindex="-1"></a>outlier <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Time <span class="sc">==</span> <span class="st">&quot;Pre&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="index.html#cb8-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">&quot;Animal Num Per Phenotype&quot;</span>, <span class="st">&quot;Rat ID&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="index.html#cb8-3" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">grepl</span>(<span class="st">&quot;out&quot;</span>,<span class="st">`</span><span class="at">Animal Num Per Phenotype</span><span class="st">`</span>, <span class="at">ignore.case =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-4"><a href="index.html#cb8-4" tabindex="-1"></a>  <span class="fu">pull</span>(<span class="st">&quot;Rat ID&quot;</span>)</span>
+<span id="cb8-5"><a href="index.html#cb8-5" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="index.html#cb8-6" tabindex="-1"></a><span class="fu">paste0</span>(<span class="fu">c</span>(outlier, <span class="st">&quot;107_Rd3&quot;</span>), <span class="at">collapse =</span> <span class="st">&quot;, &quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;106_Rd3, 103_Rd1, 104_Rd1, 105_Rd1, 107_Rd2, 108_Rd3, 107_Rd3&quot;</code></pre>
+</div>
+<div id="saving-the-cleaned-data" class="section level2" number="1.6">
+<h2><span class="header-section-number">1.6</span> Saving the Cleaned Data</h2>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="index.html#cb10-1" tabindex="-1"></a><span class="fu">saveRDS</span>(long.data, <span class="st">&quot;long_data.rds&quot;</span>)</span>
+<span id="cb10-2"><a href="index.html#cb10-2" tabindex="-1"></a><span class="fu">saveRDS</span>(all.data, <span class="st">&quot;all_data.rds&quot;</span>)</span></code></pre></div>
 
 </div>
 </div>
 <p style="text-align: center;">
-<a href="intro.html"><button class="btn btn-default">Next</button></a>
+<a href="basefunctions.html"><button class="btn btn-default">Next</button></a>
 </p>
 </div>
 </div>
 
 
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
 
 </body>
 </html>

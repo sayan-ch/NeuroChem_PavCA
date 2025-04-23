@@ -1,0 +1,233 @@
+# Repeatedly Used Functions {#basefunctions}
+
+In this chapter, we define a few convenient functions that we used throughout the analysis.
+
+## Functions {.panelset}
+
+### Model Runner
+```{r}
+mod.runner <- function(mod.data){
+  
+  base.model <- lm(PavCA ~ ., data = mod.data)
+  nice_lm(base.model)
+  # plot_selectivity_ratio(base.model, mod.data)
+  
+  base.R2 <- summary(base.model)$r.squared
+  base.rmse <- sqrt(mean(base.model$residuals^2))
+  base.nrmse <- 100*base.rmse/(max(mod.data %>% 
+                                     pull(PavCA)) - 
+                                 min((mod.data %>% 
+                                        pull(PavCA))))
+  base.R2; base.rmse; base.nrmse
+  sum.base <- summary(base.model)
+  sum.base
+  # rownames(sum.base$coefficients[sum.base$coefficients[,4] <= 0.05, ])
+  # rownames(sum.base$coefficients[sum.base$coefficients[,4] <= 0.1, ])
+  # rownames(sum.base$coefficients[order(sum.base$coefficients[,4]),])[1:5]
+  
+  base.PavCA.hat <- predict(base.model, newdata = mod.data)
+  base.Phenotype3.hat <- ifelse(abs(base.PavCA.hat) < 0.3, "IN", 
+                                ifelse(base.PavCA.hat >= 0.3, "ST", "GT"))
+  
+  # 100*mean(base.Phenotype3.hat == (all.data %>% drop_na %>% pull(Phenotype3)))
+  
+  base.Phenotype4.hat <- ifelse(abs(base.PavCA.hat) < 0.4, "IN", 
+                                ifelse(base.PavCA.hat >= 0.4, "ST", "GT"))
+  
+  # 100*mean(base.Phenotype4.hat == (all.data %>% drop_na %>% pull(Phenotype4)))
+  
+  base.Phenotype5.hat <- ifelse(abs(base.PavCA.hat) < 0.5, "IN", 
+                                ifelse(base.PavCA.hat >= 0.5, "ST", "GT"))
+  
+  # 100*mean(base.Phenotype5.hat == (all.data %>% drop_na %>% pull(Phenotype5)))
+  
+  # check_model(base.model, panel = T, 
+              # check = c("qq", "outliers", "normality", "linearity"),
+              # residual_type = "normal")
+  
+  base.infl <- 
+    (all.data %>% drop_na() %>% pull(ID))[check_outliers(base.model)]
+  
+  # plot(check_collinearity(base.model)) + coord_flip()
+  
+  
+  list(
+    model = base.model,
+    R2 = base.R2,
+    rmse = base.rmse,
+    nrmse = base.nrmse,
+    summary = sum.base,
+    signif05 = rownames(sum.base$coefficients[sum.base$coefficients[,4] <= 0.05, ]),
+    signif1 = rownames(sum.base$coefficients[sum.base$coefficients[,4] <= 0.1, ]),
+    small5p = rownames(sum.base$coefficients[order(sum.base$coefficients[,4]),])[1:6],
+    # select.plot = plot_selectivity_ratio(base.model, mod.data),
+    PavCA.hat = base.PavCA.hat,
+    Phenotype3.hat = base.Phenotype3.hat,
+    Phenotype3.accu = 100*mean(base.Phenotype3.hat == 
+                                 (all.data %>% drop_na %>% pull(Phenotype3))),
+    Phenotype4.hat = base.Phenotype4.hat,
+    Phenotype4.accu = 100*mean(base.Phenotype4.hat == 
+                                 (all.data %>% drop_na %>% pull(Phenotype4))),
+    Phenotype5.hat = base.Phenotype5.hat,
+    Phenotype5.accu = 100*mean(base.Phenotype5.hat == 
+                                 (all.data %>% drop_na %>% pull(Phenotype5))),
+    check_model = check_model(base.model, panel = T, 
+                              check = c("qq", "outliers", "normality", "linearity"),
+                              residual_type = "normal"),
+    influential = base.infl,
+    check_collinearity = plot(check_collinearity(base.model)) + coord_flip())
+    
+}
+```
+
+### Plotters
+```{r}
+plot_selectivity_ratio <- function(fit, data, cleanup = "_") {
+  
+  # Extract model matrix (excluding intercept)
+  X <- model.matrix(fit)[, -1]  # Remove intercept column
+  Y <- data[[as.character(formula(fit)[[2]])]]  # Extract response variable
+  
+  # Compute explained variance per predictor
+  sav <- anova(fit)
+  SSR <- sav$`Sum Sq`[1:ncol(X)]
+  
+  # Compute total residual variance
+  # SSE <- sum(residuals^2)
+  SSE <- sum(sav$`Sum Sq`[ncol(X) + 1])
+  
+  # Compute Selectivity Ratio (SR)
+  SR <- SSR / SSE
+  
+  # Create a data frame for plotting
+  SR_df <- data.frame(
+    Predictor = colnames(X),
+    Selectivity_Ratio = SR
+  )
+  
+  # Add negative log p-value from t-test
+  sum.fit <- summary(fit)$coefficients[-1, ]
+  SR_df$neg_log_p <- -log10(sum.fit[, 4])
+  
+  # cleaning up names
+  SR_df <- SR_df %>%
+    mutate(Predictor = gsub(cleanup, "", Predictor)) %>%
+    mutate(Predictor = gsub("X", "", Predictor)) %>%
+    mutate(Predictor = gsub("`", "", Predictor)) %>%
+    mutate(Predictor = gsub(" ", "_", Predictor))
+  
+  # Plot using ggplot2
+  sel.plot <- ggplot(SR_df, aes(y = Selectivity_Ratio, x = Predictor)) +
+    geom_bar(stat = "identity", fill = "steelblue") +
+    labs(title = "Selectivity Ratio", y = "Selectivity Ratio", x = "Predictors") +
+    theme_minimal() +
+    geom_hline(yintercept = mean(SR), linetype = "dashed", color = "red") +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1),
+          axis.title = element_text(size = 12, face = "bold"),
+          axis.title.x = element_blank())
+  
+  p.plot <- ggplot(SR_df, aes(y = neg_log_p, x = Predictor)) +
+    geom_bar(stat = "identity", fill = "steelblue") +
+    labs(title = "Significance", y = "-log(p-value)", x = "Predictors") +
+    theme_minimal() +
+    geom_hline(yintercept = -log10(0.05), linetype = "dashed", color = "red") +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1),
+          axis.title = element_text(size = 12, face = "bold"),
+          axis.title.x = element_blank())
+  
+  ggarrange(sel.plot, p.plot, nrow = 2)
+}
+```
+
+
+
+
+### Cross-Validation
+```{r}
+cv.lm <- function(b.pca, ncv = 10000, train.cv = 0.8, nn = nrow(b.pca)){
+  cv.out <- parallel::mclapply(1:ncv, function(vv) {
+    train.ind <- sample(1:nn, size = floor(train.cv*nn), replace = F)
+    test.ind <- setdiff(1:nn, train.ind)
+    
+    train.data <- b.pca[train.ind, ]
+    test.data <- b.pca[test.ind, ]
+    
+    test.data$Phenotype3 <- ifelse(abs(test.data$PavCA) < 0.3, "IN", 
+                                   ifelse(test.data$PavCA >= 0.3, "ST", "GT"))
+    test.data$Phenotype4 <- ifelse(abs(test.data$PavCA) < 0.4, "IN",
+                                   ifelse(test.data$PavCA >= 0.4, "ST", "GT"))
+    test.data$Phenotype5 <- ifelse(abs(test.data$PavCA) < 0.5, "IN",
+                                   ifelse(test.data$PavCA >= 0.5, "ST", "GT"))
+    
+    train.fit <- lm(PavCA ~ ., data = train.data)
+    
+    test.pred.full <- predict(train.fit, newdata = test.data)
+    test.pred <- ifelse(test.pred.full > 1, 1, 
+                          ifelse(test.pred.full < -1, -1, test.pred.full))
+    
+    test.mse <- mean((test.data$PavCA - test.pred)^2) 
+    
+    test.nmse <- sqrt(test.mse)/((
+      max(test.data$PavCA) - min(test.data$PavCA))^2)
+    
+    test.P3.hat <- ifelse(abs(test.pred) < 0.3, "IN", 
+                          ifelse(test.pred >= 0.3, "ST", "GT"))
+    
+    test.P4.hat <- ifelse(abs(test.pred) < 0.4, "IN", 
+                          ifelse(test.pred >= 0.4, "ST", "GT"))
+    
+    test.P5.hat <- ifelse(abs(test.pred) < 0.5, "IN",
+                          ifelse(test.pred >= 0.5, "ST", "GT"))
+    
+    return(data.table(
+      test.mse = test.mse,
+      test.nmse = test.nmse,
+      test.P3.acc = mean(test.P3.hat == (test.data %>% pull(Phenotype3))),
+      test.P4.acc = mean(test.P4.hat == (test.data %>% pull(Phenotype4))),
+      test.P5.acc = mean(test.P5.hat == (test.data %>% pull(Phenotype5)))
+    ))
+    
+  }, mc.cores = 8)
+  
+  cv.tab <- do.call(bind_rows, cv.out)
+  
+  cv.tab %>% summarize(
+    cv.rmse = sqrt(mean(test.mse)),
+    cv.nrmse = 100*sqrt(mean(test.nmse)),
+    cv.P3.acc = mean(test.P3.acc),
+    cv.P4.acc = mean(test.P4.acc),
+    cv.P5.acc = mean(test.P5.acc)
+  )
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
