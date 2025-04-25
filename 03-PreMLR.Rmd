@@ -16,12 +16,12 @@ pre.data <- all.data %>%
 ### Model Fitting
 ```{r}
 pre.full <- mod.runner(pre.data)
-pre.cv <- cv.lm(pre.data)
+pre.full.cv <- cv.lm(pre.data)
 ```
 
 * **$R^2$**: `r paste0(round(100*pre.full$R2, 2), "%")`
-* **RMSE**: `r round(pre.full$rmse, 4)`, **Cross-Validated RMSE**: `r round(pre.cv$cv.rmse, 4)`
-* **NRMSE**: `r paste0(round(pre.full$nrmse, 2), "%")`, **Cross-Validated NRMSE**: `r paste0(round(pre.cv$cv.nrmse, 2), "%")`
+* **RMSE**: `r round(pre.full$rmse, 4)`, **Cross-Validated RMSE**: `r round(pre.full.cv$cv.rmse, 4)`
+* **NRMSE**: `r paste0(round(pre.full$nrmse, 2), "%")`, **Cross-Validated NRMSE**: `r paste0(round(pre.full.cv$cv.nrmse, 2), "%")`
 * **Significant Predictors**: `r paste0(pre.full$signif05, collapse = ", ")`
 * **Phenotype Prediction Accuracy**: 
 ```{r} 
@@ -33,9 +33,9 @@ nice_table(data.frame(
     round(pre.full$Phenotype5.accu, 2)
   ), "%"),
   "CV Accuracy" = paste0(c(
-    round(pre.cv$cv.P3.acc, 2),
-    round(pre.cv$cv.P4.acc, 2),
-    round(pre.cv$cv.P5.acc, 2)
+    round(pre.full.cv$cv.P3.acc, 2),
+    round(pre.full.cv$cv.P4.acc, 2),
+    round(pre.full.cv$cv.P5.acc, 2)
   ), "%")
   ))
 ```
@@ -52,6 +52,46 @@ pre.full$check_collinearity
 pre.full$check_model
 ```
 * *Influential Points*: `r paste0(pre.full$influential, collapse = ", ")`
+
+## AIC Model
+### Stepwise Selection Using AIC
+* Selected predictors
+```{r}
+pre.step <- step(lm(PavCA ~ ., data = pre.data), direction = "both", k = 2,
+                 trace = F)
+paste0(names(coef(pre.step))[-1], collapse = ", ")
+
+pre.aic.data <- pre.data %>%
+  select(PavCA, Sex, all_of(names(coef(pre.step))[-(1:2)]))
+```
+
+### Model Fitting
+```{r}
+pre.aic <- mod.runner(pre.aic.data)
+pre.aic.cv <- cv.lm(pre.aic.data)
+```
+
+* **$R^2$**: `r paste0(round(100*pre.aic$R2, 2), "%")`
+* **RMSE**: `r round(pre.aic$rmse, 4)`, **Cross-Validated RMSE**: `r round(pre.aic.cv$cv.rmse, 4)`
+* **NRMSE**: `r paste0(round(pre.aic$nrmse, 2), "%")`, **Cross-Validated NRMSE**: `r paste0(round(pre.aic.cv$cv.nrmse, 2), "%")`
+* **Significant Predictors**: `r paste0(pre.aic$signif05, collapse = ", ")`
+* **Phenotype Prediction Accuracy**: 
+```{r} 
+nice_table(data.frame(
+  "Cutoff" = c(0.3, 0.4, 0.5),
+  "Accuracy" = paste0(c(
+    round(pre.aic$Phenotype3.accu, 2),
+    round(pre.aic$Phenotype4.accu, 2),
+    round(pre.aic$Phenotype5.accu, 2)
+  ), "%"),
+  "CV Accuracy" = paste0(c(
+    round(pre.aic.cv$cv.P3.acc, 2),
+    round(pre.aic.cv$cv.P4.acc, 2),
+    round(pre.aic.cv$cv.P5.acc, 2)
+  ), "%")
+  ))
+```
+
 
 
 

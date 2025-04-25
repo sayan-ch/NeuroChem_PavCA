@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Chapter 5 MLR With Post-Learning Concentrations | Neurochemical Concentrations as Predictors of PavCA" />
+<meta property="og:type" content="book" />
+
+<meta property="og:description" content="…" />
+
+
+<meta name="author" content="Sayan Chakrabarty" />
+
+<meta name="date" content="2025-04-23" />
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<meta name="description" content="…">
+
+<title>Chapter 5 MLR With Post-Learning Concentrations | Neurochemical Concentrations as Predictors of PavCA</title>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="libs/navigation-1.1/tabsets.js"></script>
+<link href="libs/panelset-0.3.0/panelset.css" rel="stylesheet" />
+<script src="libs/panelset-0.3.0/panelset.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
+<script src="libs/tabwid-1.1.3/tabwid.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="toc.css" type="text/css" />
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+/* show arrow before summary tag as in bootstrap
+TODO: remove if bootstrap in updated in html_document (rmarkdown#1485) */
+details > summary {
+  display: list-item;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container-fluid main-container">
+
+
+<div class="row">
+<div class="col-sm-12">
+<div id="TOC">
+<ul>
+<li class="has-sub"><a href="index.html#data-description-and-cleaning" id="toc-data-description-and-cleaning"><span class="toc-section-number">1</span> Data Description and Cleaning</a>
+<ul>
+<li><a href="index.html#loading-the-packages-and-setting-up" id="toc-loading-the-packages-and-setting-up"><span class="toc-section-number">1.1</span> Loading the Packages and Setting Up</a></li>
+<li><a href="index.html#data-description" id="toc-data-description"><span class="toc-section-number">1.2</span> Data Description</a></li>
+<li class="has-sub"><a href="index.html#data-cleaning" id="toc-data-cleaning"><span class="toc-section-number">1.3</span> Data Cleaning</a>
+<ul>
+<li><a href="index.html#all-analytes-with-geq-50-missing-values-na-or-0-or-0-were-removed." id="toc-all-analytes-with-geq-50-missing-values-na-or-0-or-0-were-removed."><span class="toc-section-number">1.3.1</span> All analytes with <span class="math inline">\(\geq 50\%\)</span> missing values (NA or <span class="math inline">\(0\)</span> or <span class="math inline">\(&lt;0\)</span>) were removed.</a></li>
+<li><a href="index.html#new-phenotypes-were-defined-based-on-cutoffs-in-0.3-0.4-0.5" id="toc-new-phenotypes-were-defined-based-on-cutoffs-in-0.3-0.4-0.5"><span class="toc-section-number">1.3.2</span> New Phenotypes were defined based on cutoffs <span class="math inline">\(\in \{0.3, 0.4, 0.5\}\)</span></a></li>
+</ul></li>
+<li class="has-sub"><a href="index.html#grouping-of-analytes" id="toc-grouping-of-analytes"><span class="toc-section-number">1.4</span> Grouping of Analytes</a>
+<ul>
+<li><a href="index.html#groups" id="toc-groups"><span class="toc-section-number">1.4.1</span> Groups:</a></li>
+</ul></li>
+<li><a href="index.html#outliers" id="toc-outliers"><span class="toc-section-number">1.5</span> Outliers</a></li>
+<li><a href="index.html#saving-the-cleaned-data" id="toc-saving-the-cleaned-data"><span class="toc-section-number">1.6</span> Saving the Cleaned Data</a></li>
+</ul></li>
+<li class="has-sub"><a href="concentration-plots.html#concentration-plots" id="toc-concentration-plots"><span class="toc-section-number">2</span> Concentration Plots</a>
+<ul>
+<li><a href="concentration-plots.html#overall-plots" id="toc-overall-plots"><span class="toc-section-number">2.1</span> Overall Plots</a></li>
+<li><a href="concentration-plots.html#cutoff-0.3" id="toc-cutoff-0.3"><span class="toc-section-number">2.2</span> Cutoff = <span class="math inline">\(0.3\)</span></a></li>
+<li><a href="concentration-plots.html#cutoff-0.4" id="toc-cutoff-0.4"><span class="toc-section-number">2.3</span> Cutoff = <span class="math inline">\(0.4\)</span></a></li>
+<li><a href="concentration-plots.html#cutoff-0.5" id="toc-cutoff-0.5"><span class="toc-section-number">2.4</span> Cutoff = <span class="math inline">\(0.5\)</span></a></li>
+</ul></li>
+<li class="has-sub"><a href="basefunctions.html#basefunctions" id="toc-basefunctions"><span class="toc-section-number">3</span> Repeatedly Used Functions</a>
+<ul>
+<li class="has-sub"><a href="basefunctions.html#functions" id="toc-functions"><span class="toc-section-number">3.1</span> Functions</a>
+<ul>
+<li><a href="basefunctions.html#model-runner" id="toc-model-runner"><span class="toc-section-number">3.1.1</span> Model Runner</a></li>
+<li><a href="basefunctions.html#plotters" id="toc-plotters"><span class="toc-section-number">3.1.2</span> Plotters</a></li>
+<li><a href="basefunctions.html#cross-validation" id="toc-cross-validation"><span class="toc-section-number">3.1.3</span> Cross-Validation</a></li>
+</ul></li>
+</ul></li>
+<li class="has-sub"><a href="mlr-with-pre-learning-concentrations.html#mlr-with-pre-learning-concentrations" id="toc-mlr-with-pre-learning-concentrations"><span class="toc-section-number">4</span> MLR With Pre-Learning Concentrations</a>
+<ul>
+<li class="has-sub"><a href="mlr-with-pre-learning-concentrations.html#full-model" id="toc-full-model"><span class="toc-section-number">4.1</span> Full Model</a>
+<ul>
+<li><a href="mlr-with-pre-learning-concentrations.html#model-fitting" id="toc-model-fitting"><span class="toc-section-number">4.1.1</span> Model Fitting</a></li>
+<li><a href="mlr-with-pre-learning-concentrations.html#model-diagnostics" id="toc-model-diagnostics"><span class="toc-section-number">4.1.2</span> Model Diagnostics</a></li>
+</ul></li>
+<li class="has-sub"><a href="mlr-with-pre-learning-concentrations.html#aic-model" id="toc-aic-model"><span class="toc-section-number">4.2</span> AIC Model</a>
+<ul>
+<li><a href="mlr-with-pre-learning-concentrations.html#stepwise-selection-using-aic" id="toc-stepwise-selection-using-aic"><span class="toc-section-number">4.2.1</span> Stepwise Selection Using AIC</a></li>
+<li><a href="mlr-with-pre-learning-concentrations.html#model-fitting-1" id="toc-model-fitting-1"><span class="toc-section-number">4.2.2</span> Model Fitting</a></li>
+</ul></li>
+</ul></li>
+<li class="has-sub"><a href="mlr-with-post-learning-concentrations.html#mlr-with-post-learning-concentrations" id="toc-mlr-with-post-learning-concentrations"><span class="toc-section-number">5</span> MLR With Post-Learning Concentrations</a>
+<ul>
+<li class="has-sub"><a href="mlr-with-post-learning-concentrations.html#full-model-1" id="toc-full-model-1"><span class="toc-section-number">5.1</span> Full Model</a>
+<ul>
+<li><a href="mlr-with-post-learning-concentrations.html#model-fitting-2" id="toc-model-fitting-2"><span class="toc-section-number">5.1.1</span> Model Fitting</a></li>
+<li><a href="mlr-with-post-learning-concentrations.html#model-diagnostics-1" id="toc-model-diagnostics-1"><span class="toc-section-number">5.1.2</span> Model Diagnostics</a></li>
+</ul></li>
+<li class="has-sub"><a href="mlr-with-post-learning-concentrations.html#aic-model-1" id="toc-aic-model-1"><span class="toc-section-number">5.2</span> AIC Model</a>
+<ul>
+<li><a href="mlr-with-post-learning-concentrations.html#stepwise-selection-using-aic-1" id="toc-stepwise-selection-using-aic-1"><span class="toc-section-number">5.2.1</span> Stepwise Selection Using AIC</a></li>
+<li><a href="mlr-with-post-learning-concentrations.html#model-fitting-3" id="toc-model-fitting-3"><span class="toc-section-number">5.2.2</span> Model Fitting</a></li>
+</ul></li>
+</ul></li>
+<li class="has-sub"><a href="blocks.html#blocks" id="toc-blocks"><span class="toc-section-number">6</span> Blocks</a>
+<ul>
+<li><a href="blocks.html#equations" id="toc-equations"><span class="toc-section-number">6.1</span> Equations</a></li>
+<li><a href="blocks.html#theorems-and-proofs" id="toc-theorems-and-proofs"><span class="toc-section-number">6.2</span> Theorems and proofs</a></li>
+<li><a href="blocks.html#callout-blocks" id="toc-callout-blocks"><span class="toc-section-number">6.3</span> Callout blocks</a></li>
+</ul></li>
+<li class="has-sub"><a href="sharing-your-book.html#sharing-your-book" id="toc-sharing-your-book"><span class="toc-section-number">7</span> Sharing your book</a>
+<ul>
+<li><a href="sharing-your-book.html#publishing" id="toc-publishing"><span class="toc-section-number">7.1</span> Publishing</a></li>
+<li><a href="sharing-your-book.html#pages" id="toc-pages"><span class="toc-section-number">7.2</span> 404 pages</a></li>
+<li><a href="sharing-your-book.html#metadata-for-sharing" id="toc-metadata-for-sharing"><span class="toc-section-number">7.3</span> Metadata for sharing</a></li>
+</ul></li>
+<li class="has-sub"><a href="panels.html#panels" id="toc-panels"><span class="toc-section-number">8</span> Panelset In R Markdown!</a>
+<ul>
+<li class="has-sub"><a href="panels.html#figures-and-tables" id="toc-figures-and-tables"><span class="toc-section-number">8.1</span> Figures and Tables</a>
+<ul>
+<li><a href="panels.html#figures" id="toc-figures"><span class="toc-section-number">8.1.1</span> Figures</a></li>
+<li><a href="panels.html#tables" id="toc-tables"><span class="toc-section-number">8.1.2</span> Tables</a></li>
+</ul></li>
+<li><a href="panels.html#section" id="toc-section"></a></li>
+</ul></li>
+<li><a href="references.html#references" id="toc-references">References</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<div id="mlr-with-post-learning-concentrations" class="section level1 panelset" number="5">
+<h1><span class="header-section-number">Chapter 5</span> MLR With Post-Learning Concentrations</h1>
+<ul>
+<li>Response Variable: PavCA</li>
+<li>Postdictors: Post-learning concentrations of analytes</li>
+<li>Covariate: Sex</li>
+</ul>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="mlr-with-post-learning-concentrations.html#cb109-1" tabindex="-1"></a>post.data <span class="ot">&lt;-</span> all.data <span class="sc">%&gt;%</span></span>
+<span id="cb109-2"><a href="mlr-with-post-learning-concentrations.html#cb109-2" tabindex="-1"></a>  <span class="fu">select</span>(PavCA, Sex, <span class="fu">ends_with</span>(<span class="st">&quot;Post&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb109-3"><a href="mlr-with-post-learning-concentrations.html#cb109-3" tabindex="-1"></a>  <span class="fu">drop_na</span>()</span></code></pre></div>
+<div id="full-model-1" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Full Model</h2>
+<div id="model-fitting-2" class="section level3" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> Model Fitting</h3>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="mlr-with-post-learning-concentrations.html#cb110-1" tabindex="-1"></a>post.full <span class="ot">&lt;-</span> <span class="fu">mod.runner</span>(post.data)</span>
+<span id="cb110-2"><a href="mlr-with-post-learning-concentrations.html#cb110-2" tabindex="-1"></a>post.full.cv <span class="ot">&lt;-</span> <span class="fu">cv.lm</span>(post.data)</span></code></pre></div>
+<ul>
+<li><strong><span class="math inline">\(R^2\)</span></strong>: 69.47%</li>
+<li><strong>RMSE</strong>: 0.2821, <strong>Cross-Validated RMSE</strong>: 0.8366</li>
+<li><strong>NRMSE</strong>: 17.74%, <strong>Cross-Validated NRMSE</strong>: 69.74%</li>
+<li><strong>Significant Postdictors</strong>: Ado_Post, NM_Post</li>
+<li><strong>Phenotype Postdiction Accuracy</strong>:</li>
+</ul>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="mlr-with-post-learning-concentrations.html#cb111-1" tabindex="-1"></a><span class="fu">nice_table</span>(<span class="fu">data.frame</span>(</span>
+<span id="cb111-2"><a href="mlr-with-post-learning-concentrations.html#cb111-2" tabindex="-1"></a>  <span class="st">&quot;Cutoff&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">0.3</span>, <span class="fl">0.4</span>, <span class="fl">0.5</span>),</span>
+<span id="cb111-3"><a href="mlr-with-post-learning-concentrations.html#cb111-3" tabindex="-1"></a>  <span class="st">&quot;Accuracy&quot;</span> <span class="ot">=</span> <span class="fu">paste0</span>(<span class="fu">c</span>(</span>
+<span id="cb111-4"><a href="mlr-with-post-learning-concentrations.html#cb111-4" tabindex="-1"></a>    <span class="fu">round</span>(post.full<span class="sc">$</span>Phenotype3.accu, <span class="dv">2</span>),</span>
+<span id="cb111-5"><a href="mlr-with-post-learning-concentrations.html#cb111-5" tabindex="-1"></a>    <span class="fu">round</span>(post.full<span class="sc">$</span>Phenotype4.accu, <span class="dv">2</span>),</span>
+<span id="cb111-6"><a href="mlr-with-post-learning-concentrations.html#cb111-6" tabindex="-1"></a>    <span class="fu">round</span>(post.full<span class="sc">$</span>Phenotype5.accu, <span class="dv">2</span>)</span>
+<span id="cb111-7"><a href="mlr-with-post-learning-concentrations.html#cb111-7" tabindex="-1"></a>  ), <span class="st">&quot;%&quot;</span>),</span>
+<span id="cb111-8"><a href="mlr-with-post-learning-concentrations.html#cb111-8" tabindex="-1"></a>  <span class="st">&quot;CV Accuracy&quot;</span> <span class="ot">=</span> <span class="fu">paste0</span>(<span class="fu">c</span>(</span>
+<span id="cb111-9"><a href="mlr-with-post-learning-concentrations.html#cb111-9" tabindex="-1"></a>    <span class="fu">round</span>(post.full.cv<span class="sc">$</span>cv.P3.acc, <span class="dv">2</span>),</span>
+<span id="cb111-10"><a href="mlr-with-post-learning-concentrations.html#cb111-10" tabindex="-1"></a>    <span class="fu">round</span>(post.full.cv<span class="sc">$</span>cv.P4.acc, <span class="dv">2</span>),</span>
+<span id="cb111-11"><a href="mlr-with-post-learning-concentrations.html#cb111-11" tabindex="-1"></a>    <span class="fu">round</span>(post.full.cv<span class="sc">$</span>cv.P5.acc, <span class="dv">2</span>)</span>
+<span id="cb111-12"><a href="mlr-with-post-learning-concentrations.html#cb111-12" tabindex="-1"></a>  ), <span class="st">&quot;%&quot;</span>)</span>
+<span id="cb111-13"><a href="mlr-with-post-learning-concentrations.html#cb111-13" tabindex="-1"></a>  ))</span></code></pre></div>
+<div class="tabwid"><style>.cl-2921ccdc{table-layout:auto;}.cl-291efcdc{font-family:'Times New Roman';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-2920253a{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 2;background-color:transparent;}.cl-2920253b{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 2;background-color:transparent;}.cl-292030e8{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0.5pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-292030e9{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-292030ea{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-292030f2{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-292030f3{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-2921ccdc'><thead><tr style="overflow-wrap:break-word;"><th class="cl-292030e8"><p class="cl-2920253a"><span class="cl-291efcdc">Cutoff</span></p></th><th class="cl-292030e8"><p class="cl-2920253a"><span class="cl-291efcdc">Accuracy</span></p></th><th class="cl-292030e8"><p class="cl-2920253a"><span class="cl-291efcdc">CV.Accuracy</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-292030e9"><p class="cl-2920253b"><span class="cl-291efcdc">0.30</span></p></td><td class="cl-292030ea"><p class="cl-2920253a"><span class="cl-291efcdc">77.78%</span></p></td><td class="cl-292030ea"><p class="cl-2920253a"><span class="cl-291efcdc">39.6%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-292030e9"><p class="cl-2920253b"><span class="cl-291efcdc">0.40</span></p></td><td class="cl-292030ea"><p class="cl-2920253a"><span class="cl-291efcdc">66.67%</span></p></td><td class="cl-292030ea"><p class="cl-2920253a"><span class="cl-291efcdc">37.77%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-292030f2"><p class="cl-2920253b"><span class="cl-291efcdc">0.50</span></p></td><td class="cl-292030f3"><p class="cl-2920253a"><span class="cl-291efcdc">69.44%</span></p></td><td class="cl-292030f3"><p class="cl-2920253a"><span class="cl-291efcdc">36.69%</span></p></td></tr></tbody></table></div>
+</div>
+<div id="model-diagnostics-1" class="section level3" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> Model Diagnostics</h3>
+<ul>
+<li><em>Checking Multicollinearity</em></li>
+</ul>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="mlr-with-post-learning-concentrations.html#cb112-1" tabindex="-1"></a>post.full<span class="sc">$</span>check_collinearity</span></code></pre></div>
+<p><img src="_main_files/figure-html/post-coll-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<ul>
+<li><em>Other Diagnostics</em></li>
+</ul>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="mlr-with-post-learning-concentrations.html#cb113-1" tabindex="-1"></a>post.full<span class="sc">$</span>check_model</span></code></pre></div>
+<p><img src="_main_files/figure-html/post-diag-1.png" width="80%" style="display: block; margin: auto;" />
+* <em>Influential Points</em>: 102_Rd4, 106_Rd3, 103_Rd1, 104_Rd1, 108_Rd4, 105_Rd1</p>
+</div>
+</div>
+<div id="aic-model-1" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> AIC Model</h2>
+<div id="stepwise-selection-using-aic-1" class="section level3" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Stepwise Selection Using AIC</h3>
+<ul>
+<li>Selected postdictors</li>
+</ul>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="mlr-with-post-learning-concentrations.html#cb114-1" tabindex="-1"></a>post.step <span class="ot">&lt;-</span> <span class="fu">step</span>(<span class="fu">lm</span>(PavCA <span class="sc">~</span> ., <span class="at">data =</span> post.data), <span class="at">direction =</span> <span class="st">&quot;both&quot;</span>, <span class="at">k =</span> <span class="dv">2</span>,</span>
+<span id="cb114-2"><a href="mlr-with-post-learning-concentrations.html#cb114-2" tabindex="-1"></a>                  <span class="at">trace =</span> F)</span>
+<span id="cb114-3"><a href="mlr-with-post-learning-concentrations.html#cb114-3" tabindex="-1"></a><span class="fu">paste0</span>(<span class="fu">names</span>(<span class="fu">coef</span>(post.step))[<span class="sc">-</span><span class="dv">1</span>], <span class="at">collapse =</span> <span class="st">&quot;, &quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;ACh_Post, Gln_Post, Gly_Post, Glc_Post, Ado_Post, VMA_Post, HVA_Post, NM_Post, DOPAC_Post, NE_Post, X5HT_Post&quot;</code></pre>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="mlr-with-post-learning-concentrations.html#cb116-1" tabindex="-1"></a>post.aic.data <span class="ot">&lt;-</span> post.data <span class="sc">%&gt;%</span></span>
+<span id="cb116-2"><a href="mlr-with-post-learning-concentrations.html#cb116-2" tabindex="-1"></a>  <span class="fu">select</span>(PavCA, Sex, <span class="fu">all_of</span>(<span class="fu">names</span>(<span class="fu">coef</span>(post.step))[<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)]))</span></code></pre></div>
+</div>
+<div id="model-fitting-3" class="section level3" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> Model Fitting</h3>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="mlr-with-post-learning-concentrations.html#cb117-1" tabindex="-1"></a>post.aic <span class="ot">&lt;-</span> <span class="fu">mod.runner</span>(post.aic.data)</span>
+<span id="cb117-2"><a href="mlr-with-post-learning-concentrations.html#cb117-2" tabindex="-1"></a>post.aic.cv <span class="ot">&lt;-</span> <span class="fu">cv.lm</span>(post.aic.data)</span></code></pre></div>
+<ul>
+<li><strong><span class="math inline">\(R^2\)</span></strong>: 64.16%</li>
+<li><strong>RMSE</strong>: 0.3057, <strong>Cross-Validated RMSE</strong>: 0.5706</li>
+<li><strong>NRMSE</strong>: 19.22%, <strong>Cross-Validated NRMSE</strong>: 56.63%</li>
+<li><strong>Significant Postdictors</strong>: Gln_Post, Glc_Post, Ado_Post, VMA_Post, HVA_Post, NM_Post, X5HT_Post</li>
+<li><strong>Phenotype Postdiction Accuracy</strong>:</li>
+</ul>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="mlr-with-post-learning-concentrations.html#cb118-1" tabindex="-1"></a><span class="fu">nice_table</span>(<span class="fu">data.frame</span>(</span>
+<span id="cb118-2"><a href="mlr-with-post-learning-concentrations.html#cb118-2" tabindex="-1"></a>  <span class="st">&quot;Cutoff&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">0.3</span>, <span class="fl">0.4</span>, <span class="fl">0.5</span>),</span>
+<span id="cb118-3"><a href="mlr-with-post-learning-concentrations.html#cb118-3" tabindex="-1"></a>  <span class="st">&quot;Accuracy&quot;</span> <span class="ot">=</span> <span class="fu">paste0</span>(<span class="fu">c</span>(</span>
+<span id="cb118-4"><a href="mlr-with-post-learning-concentrations.html#cb118-4" tabindex="-1"></a>    <span class="fu">round</span>(post.aic<span class="sc">$</span>Phenotype3.accu, <span class="dv">2</span>),</span>
+<span id="cb118-5"><a href="mlr-with-post-learning-concentrations.html#cb118-5" tabindex="-1"></a>    <span class="fu">round</span>(post.aic<span class="sc">$</span>Phenotype4.accu, <span class="dv">2</span>),</span>
+<span id="cb118-6"><a href="mlr-with-post-learning-concentrations.html#cb118-6" tabindex="-1"></a>    <span class="fu">round</span>(post.aic<span class="sc">$</span>Phenotype5.accu, <span class="dv">2</span>)</span>
+<span id="cb118-7"><a href="mlr-with-post-learning-concentrations.html#cb118-7" tabindex="-1"></a>  ), <span class="st">&quot;%&quot;</span>),</span>
+<span id="cb118-8"><a href="mlr-with-post-learning-concentrations.html#cb118-8" tabindex="-1"></a>  <span class="st">&quot;CV Accuracy&quot;</span> <span class="ot">=</span> <span class="fu">paste0</span>(<span class="fu">c</span>(</span>
+<span id="cb118-9"><a href="mlr-with-post-learning-concentrations.html#cb118-9" tabindex="-1"></a>    <span class="fu">round</span>(post.aic.cv<span class="sc">$</span>cv.P3.acc, <span class="dv">2</span>),</span>
+<span id="cb118-10"><a href="mlr-with-post-learning-concentrations.html#cb118-10" tabindex="-1"></a>    <span class="fu">round</span>(post.aic.cv<span class="sc">$</span>cv.P4.acc, <span class="dv">2</span>),</span>
+<span id="cb118-11"><a href="mlr-with-post-learning-concentrations.html#cb118-11" tabindex="-1"></a>    <span class="fu">round</span>(post.aic.cv<span class="sc">$</span>cv.P5.acc, <span class="dv">2</span>)</span>
+<span id="cb118-12"><a href="mlr-with-post-learning-concentrations.html#cb118-12" tabindex="-1"></a>  ), <span class="st">&quot;%&quot;</span>)</span>
+<span id="cb118-13"><a href="mlr-with-post-learning-concentrations.html#cb118-13" tabindex="-1"></a>  ))</span></code></pre></div>
+<div class="tabwid"><style>.cl-2c78202a{table-layout:auto;}.cl-2c753e78{font-family:'Times New Roman';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-2c766672{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 2;background-color:transparent;}.cl-2c76667c{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 2;background-color:transparent;}.cl-2c767a18{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0.5pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2c767a2c{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2c767a2d{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2c767a2e{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2c767a36{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-2c78202a'><thead><tr style="overflow-wrap:break-word;"><th class="cl-2c767a18"><p class="cl-2c766672"><span class="cl-2c753e78">Cutoff</span></p></th><th class="cl-2c767a18"><p class="cl-2c766672"><span class="cl-2c753e78">Accuracy</span></p></th><th class="cl-2c767a18"><p class="cl-2c766672"><span class="cl-2c753e78">CV.Accuracy</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-2c767a2c"><p class="cl-2c76667c"><span class="cl-2c753e78">0.30</span></p></td><td class="cl-2c767a2d"><p class="cl-2c766672"><span class="cl-2c753e78">63.89%</span></p></td><td class="cl-2c767a2d"><p class="cl-2c766672"><span class="cl-2c753e78">53.85%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2c767a2c"><p class="cl-2c76667c"><span class="cl-2c753e78">0.40</span></p></td><td class="cl-2c767a2d"><p class="cl-2c766672"><span class="cl-2c753e78">63.89%</span></p></td><td class="cl-2c767a2d"><p class="cl-2c766672"><span class="cl-2c753e78">51.84%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2c767a2e"><p class="cl-2c76667c"><span class="cl-2c753e78">0.50</span></p></td><td class="cl-2c767a36"><p class="cl-2c766672"><span class="cl-2c753e78">69.44%</span></p></td><td class="cl-2c767a36"><p class="cl-2c766672"><span class="cl-2c753e78">53.74%</span></p></td></tr></tbody></table></div>
+
+</div>
+</div>
+</div>
+<p style="text-align: center;">
+<a href="mlr-with-pre-learning-concentrations.html"><button class="btn btn-default">Previous</button></a>
+<a href="blocks.html"><button class="btn btn-default">Next</button></a>
+</p>
+</div>
+</div>
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+</body>
+</html>

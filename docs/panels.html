@@ -220,11 +220,24 @@ details > summary {
 <li><a href="mlr-with-pre-learning-concentrations.html#model-fitting" id="toc-model-fitting"><span class="toc-section-number">4.1.1</span> Model Fitting</a></li>
 <li><a href="mlr-with-pre-learning-concentrations.html#model-diagnostics" id="toc-model-diagnostics"><span class="toc-section-number">4.1.2</span> Model Diagnostics</a></li>
 </ul></li>
-</ul></li>
-<li class="has-sub"><a href="footnotes-and-citations.html#footnotes-and-citations" id="toc-footnotes-and-citations"><span class="toc-section-number">5</span> Footnotes and citations</a>
+<li class="has-sub"><a href="mlr-with-pre-learning-concentrations.html#aic-model" id="toc-aic-model"><span class="toc-section-number">4.2</span> AIC Model</a>
 <ul>
-<li><a href="footnotes-and-citations.html#footnotes" id="toc-footnotes"><span class="toc-section-number">5.1</span> Footnotes</a></li>
-<li><a href="footnotes-and-citations.html#citations" id="toc-citations"><span class="toc-section-number">5.2</span> Citations</a></li>
+<li><a href="mlr-with-pre-learning-concentrations.html#stepwise-selection-using-aic" id="toc-stepwise-selection-using-aic"><span class="toc-section-number">4.2.1</span> Stepwise Selection Using AIC</a></li>
+<li><a href="mlr-with-pre-learning-concentrations.html#model-fitting-1" id="toc-model-fitting-1"><span class="toc-section-number">4.2.2</span> Model Fitting</a></li>
+</ul></li>
+</ul></li>
+<li class="has-sub"><a href="mlr-with-post-learning-concentrations.html#mlr-with-post-learning-concentrations" id="toc-mlr-with-post-learning-concentrations"><span class="toc-section-number">5</span> MLR With Post-Learning Concentrations</a>
+<ul>
+<li class="has-sub"><a href="mlr-with-post-learning-concentrations.html#full-model-1" id="toc-full-model-1"><span class="toc-section-number">5.1</span> Full Model</a>
+<ul>
+<li><a href="mlr-with-post-learning-concentrations.html#model-fitting-2" id="toc-model-fitting-2"><span class="toc-section-number">5.1.1</span> Model Fitting</a></li>
+<li><a href="mlr-with-post-learning-concentrations.html#model-diagnostics-1" id="toc-model-diagnostics-1"><span class="toc-section-number">5.1.2</span> Model Diagnostics</a></li>
+</ul></li>
+<li class="has-sub"><a href="mlr-with-post-learning-concentrations.html#aic-model-1" id="toc-aic-model-1"><span class="toc-section-number">5.2</span> AIC Model</a>
+<ul>
+<li><a href="mlr-with-post-learning-concentrations.html#stepwise-selection-using-aic-1" id="toc-stepwise-selection-using-aic-1"><span class="toc-section-number">5.2.1</span> Stepwise Selection Using AIC</a></li>
+<li><a href="mlr-with-post-learning-concentrations.html#model-fitting-3" id="toc-model-fitting-3"><span class="toc-section-number">5.2.2</span> Model Fitting</a></li>
+</ul></li>
 </ul></li>
 <li class="has-sub"><a href="blocks.html#blocks" id="toc-blocks"><span class="toc-section-number">6</span> Blocks</a>
 <ul>
@@ -263,8 +276,8 @@ If you do not manually label them, there will be automatic labels anyway, e.g., 
 <div id="figures" class="section level3" number="8.1.1">
 <h3><span class="header-section-number">8.1.1</span> Figures</h3>
 <p>Figures and tables with captions will be placed in <code>figure</code> and <code>table</code> environments, respectively.</p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="panels.html#cb105-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, .<span class="dv">1</span>, .<span class="dv">1</span>))</span>
-<span id="cb105-2"><a href="panels.html#cb105-2" tabindex="-1"></a><span class="fu">plot</span>(pressure, <span class="at">type =</span> <span class="st">&#39;b&#39;</span>, <span class="at">pch =</span> <span class="dv">19</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="panels.html#cb120-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, .<span class="dv">1</span>, .<span class="dv">1</span>))</span>
+<span id="cb120-2"><a href="panels.html#cb120-2" tabindex="-1"></a><span class="fu">plot</span>(pressure, <span class="at">type =</span> <span class="st">&#39;b&#39;</span>, <span class="at">pch =</span> <span class="dv">19</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:nice-fig2"></span>
 <img src="_main_files/figure-html/nice-fig2-1.png" alt="Here is a nice figure!" width="80%" />
 <p class="caption">
@@ -276,10 +289,10 @@ Figure 8.1: Here is a nice figure!
 <h3><span class="header-section-number">8.1.2</span> Tables</h3>
 <p>Reference a figure by its code chunk label with the <code>fig:</code> prefix, e.g., see Figure <a href="#fig:nice-fig"><strong>??</strong></a>.
 Similarly, you can reference tables generated from <code>knitr::kable()</code>, e.g., see Table <a href="#tab:nice-tab"><strong>??</strong></a>.</p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="panels.html#cb106-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
-<span id="cb106-2"><a href="panels.html#cb106-2" tabindex="-1"></a>  <span class="fu">head</span>(iris, <span class="dv">20</span>), <span class="at">caption =</span> <span class="st">&#39;Here is a nice table!&#39;</span>,</span>
-<span id="cb106-3"><a href="panels.html#cb106-3" tabindex="-1"></a>  <span class="at">booktabs =</span> <span class="cn">TRUE</span></span>
-<span id="cb106-4"><a href="panels.html#cb106-4" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="panels.html#cb121-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb121-2"><a href="panels.html#cb121-2" tabindex="-1"></a>  <span class="fu">head</span>(iris, <span class="dv">20</span>), <span class="at">caption =</span> <span class="st">&#39;Here is a nice table!&#39;</span>,</span>
+<span id="cb121-3"><a href="panels.html#cb121-3" tabindex="-1"></a>  <span class="at">booktabs =</span> <span class="cn">TRUE</span></span>
+<span id="cb121-4"><a href="panels.html#cb121-4" tabindex="-1"></a>)</span></code></pre></div>
 <table>
 <caption><span id="tab:nice-tab2">Table 8.1: </span>Here is a nice table!</caption>
 <thead>

@@ -1,0 +1,93 @@
+# MLR With Post-Learning Concentrations {.panelset}
+
+* Response Variable: PavCA
+* Postdictors: Post-learning concentrations of analytes
+* Covariate: Sex
+
+```{r}
+post.data <- all.data %>%
+  select(PavCA, Sex, ends_with("Post")) %>%
+  drop_na()
+```
+
+
+## Full Model
+
+### Model Fitting
+```{r}
+post.full <- mod.runner(post.data)
+post.full.cv <- cv.lm(post.data)
+```
+
+* **$R^2$**: `r paste0(round(100*post.full$R2, 2), "%")`
+* **RMSE**: `r round(post.full$rmse, 4)`, **Cross-Validated RMSE**: `r round(post.full.cv$cv.rmse, 4)`
+* **NRMSE**: `r paste0(round(post.full$nrmse, 2), "%")`, **Cross-Validated NRMSE**: `r paste0(round(post.full.cv$cv.nrmse, 2), "%")`
+* **Significant Postdictors**: `r paste0(post.full$signif05, collapse = ", ")`
+* **Phenotype Postdiction Accuracy**: 
+```{r} 
+nice_table(data.frame(
+  "Cutoff" = c(0.3, 0.4, 0.5),
+  "Accuracy" = paste0(c(
+    round(post.full$Phenotype3.accu, 2),
+    round(post.full$Phenotype4.accu, 2),
+    round(post.full$Phenotype5.accu, 2)
+  ), "%"),
+  "CV Accuracy" = paste0(c(
+    round(post.full.cv$cv.P3.acc, 2),
+    round(post.full.cv$cv.P4.acc, 2),
+    round(post.full.cv$cv.P5.acc, 2)
+  ), "%")
+  ))
+```
+
+### Model Diagnostics
+* *Checking Multicollinearity*
+```{r post-coll, message = FALSE, warning = FALSE, out.width='80%', fig.asp=.75, fig.align='center'}
+post.full$check_collinearity
+
+```
+
+* *Other Diagnostics*
+```{r post-diag, message = FALSE, warning = FALSE, out.width='80%', fig.asp=.75, fig.align='center'}
+post.full$check_model
+```
+* *Influential Points*: `r paste0(post.full$influential, collapse = ", ")`
+
+## AIC Model
+### Stepwise Selection Using AIC
+* Selected postdictors
+```{r}
+post.step <- step(lm(PavCA ~ ., data = post.data), direction = "both", k = 2,
+                  trace = F)
+paste0(names(coef(post.step))[-1], collapse = ", ")
+
+post.aic.data <- post.data %>%
+  select(PavCA, Sex, all_of(names(coef(post.step))[-(1:2)]))
+```
+
+### Model Fitting
+```{r}
+post.aic <- mod.runner(post.aic.data)
+post.aic.cv <- cv.lm(post.aic.data)
+```
+
+* **$R^2$**: `r paste0(round(100*post.aic$R2, 2), "%")`
+* **RMSE**: `r round(post.aic$rmse, 4)`, **Cross-Validated RMSE**: `r round(post.aic.cv$cv.rmse, 4)`
+* **NRMSE**: `r paste0(round(post.aic$nrmse, 2), "%")`, **Cross-Validated NRMSE**: `r paste0(round(post.aic.cv$cv.nrmse, 2), "%")`
+* **Significant Postdictors**: `r paste0(post.aic$signif05, collapse = ", ")`
+* **Phenotype Postdiction Accuracy**: 
+```{r} 
+nice_table(data.frame(
+  "Cutoff" = c(0.3, 0.4, 0.5),
+  "Accuracy" = paste0(c(
+    round(post.aic$Phenotype3.accu, 2),
+    round(post.aic$Phenotype4.accu, 2),
+    round(post.aic$Phenotype5.accu, 2)
+  ), "%"),
+  "CV Accuracy" = paste0(c(
+    round(post.aic.cv$cv.P3.acc, 2),
+    round(post.aic.cv$cv.P4.acc, 2),
+    round(post.aic.cv$cv.P5.acc, 2)
+  ), "%")
+  ))
+```
